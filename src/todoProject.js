@@ -13,8 +13,7 @@ const createProject = (id, name, todoTasks = {}) => {
         return name;
     }
 
-
-    return { getTodoTasks, getId, getName }
+    return { getTodoTasks, getId, getName };
 };
 
 export default createProject;
