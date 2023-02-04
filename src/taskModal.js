@@ -72,7 +72,7 @@ export function generateTaskModal() {
     modalForm.appendChild(duedateLabel);
     modalForm.appendChild(duedate);
     modalForm.appendChild(priority);
-    modalForm.appendChild(prioritySelections);
+    // modalForm.appendChild(prioritySelections);
     modalForm.appendChild(submit);
 
     // Append form to modal
