@@ -33,6 +33,30 @@ export function generateTaskModal() {
     duedate.name = 'duedate';
     duedate.className = 'form-item duedate';
 
+    // Psuedocode for priority
+    //
+    // I need an element which takes a value of either 1, 2 or 3 
+    // Options: dropdown menu, radio buttons(preference)
+    let priority = document.createElement('select');
+    priority.className = 'hidden-priority'
+    for (let i = 0; i < 3; i++) {
+        let option = document.createElement('option');
+        option.value = i
+        priority.options.add(option);
+    }
+
+    priority.style.display = 'none';
+    //Now I need to create buttons/spans that correspond to those values?
+
+    let prioritySelections = document.createElement('div');
+    prioritySelections.className = 'form-item modal-priority';
+    prioritySelections.innerHTML = `
+        <label id="priority-label"> Priority </label>
+        <div class="priority-div" id="priority-1"></div>
+        <div class="priority-div" id="priority-2"></div>
+        <div class="priority-div" id="priority-3"></div>
+    `
+    
     let submit = document.createElement('input');
     submit.type = 'submit';
     submit.value = 'DONE';
@@ -44,6 +68,8 @@ export function generateTaskModal() {
     modalForm.appendChild(description);
     modalForm.appendChild(duedateLabel);
     modalForm.appendChild(duedate);
+    modalForm.appendChild(priority);
+    modalForm.appendChild(prioritySelections);
     modalForm.appendChild(submit);
 
     // Append form to modal
