@@ -45,6 +45,8 @@ export function generateTaskModal() {
         priority.options.add(option);
     }
 
+    // Commented out until I tackle CSS and can add event listeners better
+    /*
     priority.style.display = 'none';
     //Now I need to create buttons/spans that correspond to those values?
 
@@ -52,10 +54,11 @@ export function generateTaskModal() {
     prioritySelections.className = 'form-item modal-priority';
     prioritySelections.innerHTML = `
         <label id="priority-label"> Priority </label>
-        <div class="priority-div" id="priority-1"></div>
+        <div class="priority-div" id="priority-1"></div> // These should be buttons for accessibility concerns?
         <div class="priority-div" id="priority-2"></div>
         <div class="priority-div" id="priority-3"></div>
     `
+    */
     
     let submit = document.createElement('input');
     submit.type = 'submit';
