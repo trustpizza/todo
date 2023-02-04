@@ -1,8 +1,12 @@
+// CSS Files
+import './reset.css';
+import './styles.css';
+
 import TodoTask from "./todoTask";
 import TodoProject from "./todoProject";
 
+
 import { generateTaskModal } from './taskModal';
-import { values } from "lodash";
 
 document.body.appendChild(generateTaskModal())
 
