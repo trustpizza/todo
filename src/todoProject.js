@@ -1,6 +1,6 @@
 const createProject = (id, name, todoTasks = {}) => {
     let counter = 0;
-
+    
     const getTodoTasks = () => {
         return todoTasks;
     };
