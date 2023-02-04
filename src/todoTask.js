@@ -8,6 +8,5 @@ export default function(id, title, description, dueDate, priority, notes) {
         notes: notes,
         isComplete: false
     };
-
     return { todoTask }
 };

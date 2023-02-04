@@ -1,3 +1,6 @@
-import todoTask from "./todoTask";
+import TodoTask from "./todoTask";
+import TodoProject from "./todoProject";
 
-console.log(todoTask());
+console.log(TodoTask());
+
+console.log(TodoProject());
