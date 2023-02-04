@@ -1,1 +1,1 @@
-(()=>{"use strict";console.log({todoTask:{id:undefined,title:undefined,description:undefined,dueDate:undefined,priority:undefined,notes:undefined,isComplete:!1}}),console.log(((e,d,n={})=>({getTodoTasks:()=>n,getId:()=>e,getName:()=>d}))())})();
+(()=>{"use strict";let e=0,t=((e,t,s={})=>({getTodoTasks:()=>s,getId:()=>e,getName:()=>t}))(e++,"First");console.log(t)})();
