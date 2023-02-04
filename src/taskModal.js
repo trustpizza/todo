@@ -50,5 +50,5 @@ export function generateTaskModal() {
     modalContent.appendChild(modalForm);
     modal.appendChild(modalContent);
 
-    return { modal };
+    return modal;
 }

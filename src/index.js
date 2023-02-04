@@ -1,11 +1,6 @@
 import TodoTask from "./todoTask";
 import TodoProject from "./todoProject";
 
+import { generateTaskModal } from './taskModal';
 
-let task = TodoTask(1, "Test", "A test task", "today", 3, "this is important!");
-//console.log(task);
-
-let counter = 0;
-
-let project = TodoProject(counter++, "First");
-console.log(project);
+document.body.appendChild(generateTaskModal())
