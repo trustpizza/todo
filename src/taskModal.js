@@ -26,12 +26,12 @@ export function generateTaskModal() {
     description.maxLength = 240;
     description.className = 'form-item description';
 
-    let dueDateLabel = document.createElement('label');
-    dueDateLabel.for = 'due-date';
-    let dueDate = document.createElement('input');
-    dueDate.type = 'date';
-    dueDate.name = 'due-date';
-    dueDate.className = 'form-item due-date';
+    let duedateLabel = document.createElement('label');
+    duedateLabel.for = 'duedate';
+    let duedate = document.createElement('input');
+    duedate.type = 'date';
+    duedate.name = 'duedate';
+    duedate.className = 'form-item duedate';
 
     let submit = document.createElement('input');
     submit.type = 'submit';
@@ -42,8 +42,8 @@ export function generateTaskModal() {
     //  Add all items to modal-form
     modalForm.appendChild(title);
     modalForm.appendChild(description);
-    modalForm.appendChild(dueDateLabel);
-    modalForm.appendChild(dueDate);
+    modalForm.appendChild(duedateLabel);
+    modalForm.appendChild(duedate);
     modalForm.appendChild(submit);
 
     // Append form to modal
