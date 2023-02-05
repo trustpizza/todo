@@ -7,5 +7,5 @@ export default function(id, title, description, duedate, priority) {
         priority: priority,
         isComplete: false
     };
-    return { todoTask }
+    return todoTask 
 };

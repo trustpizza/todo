@@ -11,7 +11,7 @@ const createProject = (id, name, todoTasks = {}) => {
     };
 
     const inputTask = (task) => {
-        todoTasks[task.todoTask.id] = task
+        todoTasks[task.id] = task
     }
     
     const getTodoTasks = () => {
