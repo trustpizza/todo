@@ -1,7 +1,7 @@
 import { generateTaskModal } from './taskModal';
 
-export function appendTaskModal() {
-    document.body.appendChild(generateTaskModal())
+export function appendTaskModal(parent) {
+    parent.appendChild(generateTaskModal())
 
     // Modal Submit Listener
     document.getElementById('modal-form').addEventListener('submit', (e) => {
