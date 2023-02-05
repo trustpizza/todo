@@ -5,11 +5,20 @@ import './styles.css';
 import TodoTask from "./todoTask";
 import TodoProject from "./todoProject";
 
+// Create a new project
+//
+// Psuedocode
+// we need a counter variable to count how many projects there are
+// We need a currentProject variable that is undefined
+// We need to create an array of all projects that starts as empty
+// Run a check to see if the all-Projets array is empty, if empty, create a new project using the counter
+// Set the currentProject to the first entry to allProjects (now the new projects)
 
+
+// Create modal which has the Todo Task Form
 import { generateTaskModal } from './taskModal';
-
+import createProject from './todoProject';
 document.body.appendChild(generateTaskModal())
-
 // Modal Submit Listener
 document.getElementById('modal-form').addEventListener('submit', (e) => {
     e.preventDefault();
@@ -19,7 +28,7 @@ document.getElementById('modal-form').addEventListener('submit', (e) => {
     let duedate = e.target[2].value;
     let priority = parseInt(e.target[3].value);
 
-    let newTask = TodoTask(1, title, description, duedate, priority); // ID and priority are made up at the moment!
+    let newTask = TodoTask(1, title, description, duedate, priority); // ID is made up at the moment!
     console.log(newTask);
 });
 
@@ -30,11 +39,3 @@ for (const priority of document.getElementsByClassName('priority-div')) {
         document.getElementsByClassName('hidden-priority')[0].value = value;
     })
 }
-
-// Psuedo code
-// 
-/*
-1) Select all priority-divs
-2. Take each div and add an event listener
-3.  The event listener waits for a click and then changes the value of priority to select that value
-*/
