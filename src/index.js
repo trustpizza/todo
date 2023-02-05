@@ -22,3 +22,13 @@ document.getElementById('modal-form').addEventListener('submit', (e) => {
     let newTask = TodoTask(1, title, description, duedate, priority); // ID and priority are made up at the moment!
     console.log(newTask);
 });
+
+// Priority Div Logic to add event listeners to each selection
+document.getElementsByClassName('priority-div')
+// Psuedo code
+// 
+/*
+1) Select all priority-divs
+2. Take each div and add an event listener
+3.  The event listener waits for a click and then changes the value of priority to select that value
+*/

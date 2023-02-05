@@ -1,0 +1,9 @@
+.modal-priority {
+    display: flex;
+}
+
+.priority-div {
+    height: 10px;
+    width: 20px;
+    border: solid black 2px;
+}
