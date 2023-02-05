@@ -54,9 +54,9 @@ export function generateTaskModal() {
     prioritySelections.className = 'form-item modal-priority';
     prioritySelections.innerHTML = `
         <label id="priority-label"> Priority: </label>
+        <div class="priority-div" id="priority-0"></div>
         <div class="priority-div" id="priority-1"></div>
         <div class="priority-div" id="priority-2"></div>
-        <div class="priority-div" id="priority-3"></div>
     `
     
     

@@ -24,7 +24,13 @@ document.getElementById('modal-form').addEventListener('submit', (e) => {
 });
 
 // Priority Div Logic to add event listeners to each selection
-document.getElementsByClassName('priority-div')
+for (const priority of document.getElementsByClassName('priority-div')) {
+    priority.addEventListener('click', (e) => {
+        let value = e.target.id.slice(-1);
+        document.getElementsByClassName('hidden-priority')[0].value = value;
+    })
+}
+
 // Psuedo code
 // 
 /*
