@@ -13,7 +13,17 @@ import TodoProject from "./todoProject";
 // We need to create an array of all projects that starts as empty
 // Run a check to see if the all-Projets array is empty, if empty, create a new project using the counter
 // Set the currentProject to the first entry to allProjects (now the new projects)
-
+let projectCounter = 0;
+let currentProject;
+let allProjects = [];
+if (allProjects.length === 0) {
+    let newProject = TodoProject(projectCounter++, 'Default Project')
+    allProjects.push(newProject);
+    currentProject = allProjects[0];
+    console.log(currentProject);
+} else {
+    
+}
 
 // Create modal which has the Todo Task Form
 import { generateTaskModal } from './taskModal';
