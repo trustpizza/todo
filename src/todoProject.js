@@ -6,9 +6,13 @@ const createProject = (id, name, todoTasks = {}) => {
     // Ability to create a new task
     const createNewTask = (title, description, duedate, priority) => {
         let newTask = TodoTask(counter++, title, description, duedate, priority)
-        // put newTask into todoTasks!
+        inputTask(newTask);
         return newTask
     };
+
+    const inputTask = (task) => {
+        todoTasks[task.todoTask.id] = task
+    }
     
     const getTodoTasks = () => {
         return todoTasks;
