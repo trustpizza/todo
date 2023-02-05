@@ -2,7 +2,6 @@
 import './reset.css';
 import './styles.css';
 
-import TodoTask from "./todoTask";
 import TodoProject from "./todoProject";
 
 // Create a new project
@@ -19,8 +18,7 @@ let allProjects = [];
 if (allProjects.length === 0) {
     let newProject = TodoProject(projectCounter++, 'Default Project')
     allProjects.push(newProject);
-    currentProject = allProjects[0];
-    console.log(currentProject);
+    currentProject = newProject;
 } else {
     
 }
@@ -38,8 +36,7 @@ document.getElementById('modal-form').addEventListener('submit', (e) => {
     let duedate = e.target[2].value;
     let priority = parseInt(e.target[3].value);
 
-    let newTask = TodoTask(1, title, description, duedate, priority); // ID is made up at the moment!
-    console.log(newTask);
+    currentProject.createNewTask(title, description, duedate, priority);
 });
 
 // Priority Div Logic to add event listeners to each selection
