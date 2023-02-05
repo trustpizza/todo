@@ -38,7 +38,6 @@ document.getElementById('modal-form').addEventListener('submit', (e) => {
     let priority = parseInt(e.target[3].value);
 
     currentProject.createNewTask(title, description, duedate, priority);
-    console.log(currentProject.getTodoTasks());
 });
 
 // Priority Div Logic to add event listeners to each selection

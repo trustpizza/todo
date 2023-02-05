@@ -17,6 +17,10 @@ const createProject = (id, name, todoTasks = {}) => {
     const getTodoTasks = () => {
         return todoTasks;
     };
+
+    const getTask = (key) => {
+        return todoTasks[key];
+    }
     
     const getId = () => {
         return id;
@@ -26,7 +30,7 @@ const createProject = (id, name, todoTasks = {}) => {
         return name;
     }
 
-    return { getTodoTasks, getId, getName, createNewTask };
+    return { getTodoTasks, getId, getName, createNewTask, getTask };
 };
 
 export default createProject;
