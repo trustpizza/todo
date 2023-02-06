@@ -1,5 +1,4 @@
 // CSS Files
-import './reset.css';
 import './styles.css';
 
 import TodoProject from "./todoProject";
