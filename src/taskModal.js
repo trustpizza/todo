@@ -1,7 +1,7 @@
 export function generateTaskModal() {
     let modal = document.createElement('div');
     modal.id = 'modal';
-    modal.className = 'hidden'; // Have modal hidden by default
+    modal.className = ''; // Have modal hidden by default
 
     let modalContent = document.createElement('div');
     modalContent.className = 'modal-content';
