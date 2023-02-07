@@ -11,6 +11,16 @@ const sidebar = (parent) => {
     let list = document.createElement('ul');
     list.className = "space-y-2";
 
+    console.log(listItemFactory("Project"));
+    
+    //list.appendChild(listItem);
+    sidebarContainer.appendChild(list);
+    sidebar.appendChild(sidebarContainer);
+    // Sidebar will eventually house other elements
+    parent.appendChild(sidebar);
+};
+
+const listItemFactory = (title) => {
     let listItem = document.createElement('li');
     let link = document.createElement('a');
     link.className = "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700";
@@ -21,17 +31,13 @@ const sidebar = (parent) => {
 
     let listSpan = document.createElement('span');
     listSpan.className = "ml-3";
-    listSpan.textContent = "Project";
+    listSpan.textContent = title;
 
-    
     link.appendChild(listImg);
     link.appendChild(listSpan);
     listItem.appendChild(link);
-    list.appendChild(listItem);
-    sidebarContainer.appendChild(list);
-    sidebar.appendChild(sidebarContainer);
-    // Sidebar will eventually house other elements
-    parent.appendChild(sidebar);
-};
+
+    return listItem;
+}
 
 export default sidebar;
