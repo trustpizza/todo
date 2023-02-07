@@ -2,6 +2,7 @@
 import './styles.css';
 
 import TodoProject from "./todoProject";
+import sidebar from "./sidebar"
 
 // Create a new project
 //
@@ -24,5 +25,7 @@ if (allProjects.length === 0) {
 
 // Create modal which has the Todo Task Form
 let parentContainer = document.getElementById("content");
-import { appendTaskModal } from './appendTaskModal';
-appendTaskModal(parentContainer);
+sidebar(parentContainer);
+
+// import { appendTaskModal } from './appendTaskModal';
+// appendTaskModal(parentContainer);
