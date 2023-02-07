@@ -1,3 +1,5 @@
+import ExclamationPoint from './photos/exclamation-thick.svg'
+
 const sidebar = (parent) => {
     let sidebar = document.createElement('div');
     sidebar.id = "sidebar";
@@ -16,8 +18,10 @@ const sidebar = (parent) => {
     link.href = "#"
     link.className = "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg"
 
-    let linkImage = document.createElement('img');
-    linkImage.src = "";
+    let linkImage = new Image();
+    linkImage.src = ExclamationPoint;
+    linkImage.className = "h-6 w'6 text-gray-500 transition duration-75"
+    link.appendChild(linkImage);
 
     let linkSpan = document.createElement('span');
     linkSpan.className = "ml-3";
