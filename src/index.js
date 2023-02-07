@@ -30,6 +30,5 @@ let parentContainer = document.getElementById("content");
 sidebar(parentContainer, allProjects);
 collapsedSidebar(parentContainer)
 
-console.log(sidebar)
 // import { appendTaskModal } from './appendTaskModal';
 // appendTaskModal(parentContainer);
