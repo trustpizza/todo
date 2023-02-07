@@ -27,6 +27,7 @@ if (allProjects.length === 0) {
 // Create modal which has the Todo Task Form
 let parentContainer = document.getElementById("content");
 sidebar(parentContainer, allProjects);
+collapsedSidebar(parentContainer)
 
 // import { appendTaskModal } from './appendTaskModal';
 // appendTaskModal(parentContainer);
