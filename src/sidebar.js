@@ -1,6 +1,6 @@
 import ExclamationPoint from './photos/exclamation-thick.svg'
 
-const sidebar = (parent) => {
+const sidebar = (parent, projects) => {
     let sidebar = document.createElement('aside');
     sidebar.id = "sidebar";
     sidebar.className = "fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-gray-50";
@@ -10,10 +10,11 @@ const sidebar = (parent) => {
 
     let list = document.createElement('ul');
     list.className = "space-y-2";
-
-    console.log(listItemFactory("Project"));
     
-    //list.appendChild(listItem);
+    for (const project of projects) {
+        list.appendChild(listItemFactory(project.getName()))
+    }
+
     sidebarContainer.appendChild(list);
     sidebar.appendChild(sidebarContainer);
     // Sidebar will eventually house other elements
