@@ -16,6 +16,9 @@ const sidebar = (parent) => {
     link.href = "#"
     link.className = "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg"
 
+    let linkImage = document.createElement('img');
+    linkImage.src = "";
+
     let linkSpan = document.createElement('span');
     linkSpan.className = "ml-3";
     linkSpan.textContent = 'Dashboard';
