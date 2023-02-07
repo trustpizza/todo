@@ -3,7 +3,7 @@ import './styles.css';
 
 import TodoProject from "./todoProject";
 import { sidebar, collapsedSidebar } from "./sidebar"
-import { showItem } from "./showAndHideFunctions"
+import { showOrHideItem } from "./showAndHideFunctions"
 
 // Create a new project
 //
@@ -24,11 +24,16 @@ if (allProjects.length === 0) {
     // Create ability to create new projects and/or switch to projects later
 }
 
+function populatePage() {
+    const parentContainer = document.getElementById('content');
+    sidebar(parentContainer, allProjects)
+    collapsedSidebar(parentContainer);
+}
+populatePage();
 
-// Create modal which has the Todo Task Form
-let parentContainer = document.getElementById("content");
-sidebar(parentContainer, allProjects);
-collapsedSidebar(parentContainer)
+let sidebarPointer = document.getElementById('sidebar');
+let collapsedSidebarPointer = document.getElementById('collapsed-sidebar');
+    
 
 // import { appendTaskModal } from './appendTaskModal';
 // appendTaskModal(parentContainer);
