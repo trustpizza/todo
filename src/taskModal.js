@@ -1,7 +1,7 @@
 export function generateTaskModal() {
     let modal = document.createElement('div');
     modal.id = 'modal';
-    modal.className = ''; // Have modal hidden by default
+    modal.className = 'max-w-xs'; // Have modal hidden by default
 
     let modalContent = document.createElement('div');
     modalContent.className = 'modal-content';
@@ -58,7 +58,6 @@ export function generateTaskModal() {
         <div class="priority-div" id="priority-1"></div>
         <div class="priority-div" id="priority-2"></div>
     `
-    
     
     let submit = document.createElement('input');
     submit.type = 'submit';
