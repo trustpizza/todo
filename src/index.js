@@ -3,6 +3,7 @@ import './styles.css';
 
 import TodoProject from "./todoProject";
 import { sidebar, collapsedSidebar } from "./sidebar"
+import { showItem } from "./showAndHideFunctions"
 
 // Create a new project
 //
@@ -29,5 +30,6 @@ let parentContainer = document.getElementById("content");
 sidebar(parentContainer, allProjects);
 collapsedSidebar(parentContainer)
 
+console.log(sidebar)
 // import { appendTaskModal } from './appendTaskModal';
 // appendTaskModal(parentContainer);

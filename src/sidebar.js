@@ -17,14 +17,9 @@ const collapsedSidebar = (parent) => {
     collapsedSidebar.appendChild(collapsedSVG);
     parent.appendChild(collapsedSidebar);
 
-    showItem(collapsedSVG, parent)
 }
 
 const sidebar = (parent, projects) => {
-
-    // Sidebar button for small screens
-
-
     // Normal Sidebar
     let sidebar = document.createElement('aside');
     sidebar.id = "sidebar";
@@ -44,6 +39,7 @@ const sidebar = (parent, projects) => {
     sidebar.appendChild(sidebarContainer);
     // Sidebar will eventually house other elements
     parent.appendChild(sidebar);
+    
 };
 
 const listItemFactory = (title) => {
@@ -66,10 +62,6 @@ const listItemFactory = (title) => {
     return listItem;
 }
 
-function showItem(target, goal) {
-    target.addEventListener("click", () => {
-        console.log(goal);
-    })
-}
+
 
 export { sidebar, collapsedSidebar };
