@@ -15,7 +15,9 @@ const collapsedSidebar = (parent) => {
 
     collapsedSidebar.appendChild(collapsedSpan);
     collapsedSidebar.appendChild(collapsedSVG);
-    parent.appendChild(collapsedSidebar)
+    parent.appendChild(collapsedSidebar);
+
+    showItem(collapsedSVG, parent)
 }
 
 const sidebar = (parent, projects) => {
@@ -64,8 +66,10 @@ const listItemFactory = (title) => {
     return listItem;
 }
 
-function showSidebar() {
-    
+function showItem(target, goal) {
+    target.addEventListener("click", () => {
+        console.log(goal);
+    })
 }
 
 export { sidebar, collapsedSidebar };
