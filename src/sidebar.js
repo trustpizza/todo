@@ -1,6 +1,29 @@
 import ExclamationPoint from './photos/exclamation-thick.svg'
+import HamburgerMenu from './photos/menu.svg'
+
+const collapsedSidebar = (parent) => {
+    let collapsedSidebar = document.createElement('button');
+    collapsedSidebar.className = "inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+    
+    let collapsedSpan = document.createElement('span');
+    collapsedSpan.className = "sr-only";
+    collapsedSpan.textContent = "Open Sidebar";
+
+    let collapsedSVG = new Image();
+    collapsedSVG.className = "w-6 h-6"
+    collapsedSVG.src = HamburgerMenu;
+
+    collapsedSidebar.appendChild(collapsedSpan);
+    collapsedSidebar.appendChild(collapsedSVG);
+    parent.appendChild(collapsedSidebar)
+}
 
 const sidebar = (parent, projects) => {
+
+    // Sidebar button for small screens
+
+
+    // Normal Sidebar
     let sidebar = document.createElement('aside');
     sidebar.id = "sidebar";
     sidebar.className = "fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-gray-50";
@@ -41,4 +64,4 @@ const listItemFactory = (title) => {
     return listItem;
 }
 
-export default sidebar;
+export { sidebar, collapsedSidebar };

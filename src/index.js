@@ -2,7 +2,7 @@
 import './styles.css';
 
 import TodoProject from "./todoProject";
-import sidebar from "./sidebar"
+import { sidebar, collapsedSidebar } from "./sidebar"
 
 // Create a new project
 //
