@@ -2,7 +2,6 @@
 import './styles.css';
 
 import TodoProject from "./todoProject";
-import { SidebarFactory, CollapsedSidebarFactory } from "./sidebar"
 import buildSidebar from "./buildSidebar"
 
 // Create a new project
@@ -25,10 +24,7 @@ if (allProjects.length === 0) {
 }
 
 const parentContainer = document.getElementById('content');
-const sidebar = SidebarFactory(allProjects);
-const collapsedSidebar = CollapsedSidebarFactory();
-
-buildSidebar(parentContainer, [sidebar, collapsedSidebar])
+buildSidebar(parentContainer)
 
 // The following sections ensure that mobile applications can access the sidebar
 
@@ -45,11 +41,11 @@ parentContainer.addEventListener("click", (e) => {
     // This checks to make sure that neither the sidebar, any of the sidebar's children, the collapsedSidebar button NOr its children are the event Target
 });
 
-export function closeSidebar() {
+function closeSidebar() {
     sidebar.classList.add('-translate-x-full');
 }
 
-export function openSidebar() {
+function openSidebar() {
     sidebar.classList.remove('-translate-x-full');
 }
 
