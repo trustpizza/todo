@@ -62,6 +62,6 @@ const ListItemFactory = (title) => {
     return listItem;
 }
 
-
+// Each time you click on a  
 
 export { SidebarFactory, CollapsedSidebarFactory };
