@@ -1,21 +1,41 @@
 import { SidebarFactory, CollapsedSidebarFactory } from "./sidebar"
 
-function buildSidebar(parent, ...children) {
+const SidebarBuilder = (parent, projects) => {
+    const sidebar = SidebarFactory(projects);
+    const collapsedSidebar = CollapsedSidebarFactory();
+
+    buildSidebar(parent, [sidebar, collapsedSidebar]);
+
+    collapsedSidebar.addEventListener("click", (e) => {
+        if (sidebar.classList.contains('-translate-x-full')) {
+            openSidebar();
+        } 
+    });
+    
+    parent.addEventListener("click", (e) => {
+        if (e.target !== sidebar && !sidebar.contains(e.target) && !sidebar.classList.contains('-translate-x-full') && e.target != collapsedSidebar && !collapsedSidebar.contains(e.target)) {
+            closeSidebar();
+        }
+        // This checks to make sure that neither the sidebar, any of the sidebar's children, the collapsedSidebar button NOr its children are the event Target
+    });
+
+    const closeSidebar = () => {
+        sidebar.classList.add('-translate-x-full');
+    }
+
+    const openSidebar = () => {
+        sidebar.classList.remove('-translate-x-full');
+    }
+};
+
+function  buildSidebar(parent, ...children) {
     for (const child of children[0]) {
         parent.appendChild(child);
     }
-}
+    
+};
 
-const sidebar = SidebarFactory(allProjects);
-const collapsedSidebar = CollapsedSidebarFactory();
-
-const SidebarBuilder = (parent, ...children) {
-    buildSidebar(parent, ...children);
-
-    let sidebar;
-    let collapsedSidebar;
-
-}
+export {SidebarBuilder};
 
 // Declare the sidebar variables here
 // Add event listeners to the sidebar as needed

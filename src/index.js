@@ -2,7 +2,7 @@
 import './styles.css';
 
 import TodoProject from "./todoProject";
-import buildSidebar from "./buildSidebar"
+import { SidebarBuilder } from './buildSidebar'
 
 // Create a new project
 //
@@ -24,30 +24,9 @@ if (allProjects.length === 0) {
 }
 
 const parentContainer = document.getElementById('content');
-buildSidebar(parentContainer)
-
+SidebarBuilder(parentContainer, allProjects);
 // The following sections ensure that mobile applications can access the sidebar
 
-collapsedSidebar.addEventListener("click", (e) => {
-    if (sidebar.classList.contains('-translate-x-full')) {
-        openSidebar();
-    } 
-});
-
-parentContainer.addEventListener("click", (e) => {
-    if (e.target !== sidebar && !sidebar.contains(e.target) && !sidebar.classList.contains('-translate-x-full') && e.target != collapsedSidebar && !collapsedSidebar.contains(e.target)) {
-        closeSidebar();
-    }
-    // This checks to make sure that neither the sidebar, any of the sidebar's children, the collapsedSidebar button NOr its children are the event Target
-});
-
-function closeSidebar() {
-    sidebar.classList.add('-translate-x-full');
-}
-
-function openSidebar() {
-    sidebar.classList.remove('-translate-x-full');
-}
 
 
 //let sidebarPointer = document.getElementById('sidebar');
