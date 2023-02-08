@@ -34,11 +34,10 @@ collapsedSidebar.addEventListener("click", (e) => {
     } 
 });
 parentContainer.addEventListener("click", (e) => {
-    console.log(e.target != sidebar || sidebar.contains(e.target) && !sidebar.classList.contains('-translate-x-full'))
-    //if ((e.target == sidebar || sidebar.contains(e.target)) && !sidebar.classList.contains('-translate-x-full')) {
-    //    sidebar.classList.add('-translate-x-full');
-    //}
-    // if
+    if (e.target !== sidebar && !sidebar.contains(e.target) && !sidebar.classList.contains('-translate-x-full') && e.target != collapsedSidebar && !collapsedSidebar.contains(e.target)) {
+        sidebar.classList.add('-translate-x-full');
+    }
+    // This checks to make sure that neither the sidebar, any of the sidebar's children, the collapsedSidebar button NOr its children are the event Target
 })
 
 buildSidebar(parentContainer, [sidebar, collapsedSidebar])
