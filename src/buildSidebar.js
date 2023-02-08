@@ -1,3 +1,4 @@
+import { delay } from "lodash";
 import { SidebarFactory, CollapsedSidebarFactory } from "./sidebar"
 
 
@@ -21,15 +22,19 @@ const SidebarBuilder = (parent, projects) => {
     });
 
     const closeSidebar = () => {
-        sidebar.classList.add('hidden')
-
+        
         sidebar.classList.add('-translate-x-full');
+        setTimeout(() => {
+            sidebar.classList.add('hidden')
+        }, 100);
         //sidebar.classList.add('fixed');
     }
 
     const openSidebar = () => {
         sidebar.classList.remove('hidden');
-        sidebar.classList.remove('-translate-x-full');
+        setTimeout(() => {
+            sidebar.classList.remove('-translate-x-full');
+        }, 100)
     }
 };
 
