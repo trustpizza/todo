@@ -1,7 +1,7 @@
 import ExclamationPoint from './photos/exclamation-thick.svg'
 import HamburgerMenu from './photos/menu.svg'
 
-const collapsedSidebar = (parent) => {
+const CollapsedSidebarFactory = () => {
     let collapsedSidebar = document.createElement('button');
     collapsedSidebar.id = 'collapsed-sidebar'
     collapsedSidebar.className = "inline-flex self-start items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -16,11 +16,11 @@ const collapsedSidebar = (parent) => {
 
     collapsedSidebar.appendChild(collapsedSpan);
     collapsedSidebar.appendChild(collapsedSVG);
-    parent.appendChild(collapsedSidebar);
-
+    
+    return collapsedSidebar;
 }
 
-const sidebar = (parent, projects) => {
+const SidebarFactory = (projects) => {
     // Normal Sidebar
     let sidebar = document.createElement('aside');
     sidebar.id = "sidebar";
@@ -31,19 +31,18 @@ const sidebar = (parent, projects) => {
 
     let list = document.createElement('ul');
     list.className = "space-y-2";
-    
+
     for (const project of projects) {
-        list.appendChild(listItemFactory(project.getName()))
+        list.appendChild(ListItemFactory(project.getName()))
     }
 
     sidebarContainer.appendChild(list);
     sidebar.appendChild(sidebarContainer);
     // Sidebar will eventually house other elements
-    parent.appendChild(sidebar);
-    
+    return sidebar;    
 };
 
-const listItemFactory = (title) => {
+const ListItemFactory = (title) => {
     let listItem = document.createElement('li');
     let link = document.createElement('a');
     link.className = "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700";
@@ -65,4 +64,4 @@ const listItemFactory = (title) => {
 
 
 
-export { sidebar, collapsedSidebar };
+export { SidebarFactory, CollapsedSidebarFactory };

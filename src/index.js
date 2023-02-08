@@ -2,8 +2,8 @@
 import './styles.css';
 
 import TodoProject from "./todoProject";
-import { sidebar, collapsedSidebar } from "./sidebar"
-import { showOrHideItem } from "./showAndHideFunctions"
+import { SidebarFactory, CollapsedSidebarFactory } from "./sidebar"
+import buildSidebar from "./buildSidebar"
 
 // Create a new project
 //
@@ -24,16 +24,28 @@ if (allProjects.length === 0) {
     // Create ability to create new projects and/or switch to projects later
 }
 
-function populatePage() {
-    const parentContainer = document.getElementById('content');
-    sidebar(parentContainer, allProjects)
-    collapsedSidebar(parentContainer);
-}
-populatePage();
+const parentContainer = document.getElementById('content');
+const sidebar = SidebarFactory(allProjects);
+const collapsedSidebar = CollapsedSidebarFactory();
 
-let sidebarPointer = document.getElementById('sidebar');
-let collapsedSidebarPointer = document.getElementById('collapsed-sidebar');
-    
+collapsedSidebar.addEventListener("click", (e) => {
+    if (sidebar.classList.contains('-translate-x-full')) {
+        sidebar.classList.remove('-translate-x-full');
+    } 
+});
+parentContainer.addEventListener("click", (e) => {
+    console.log(e.target != sidebar || sidebar.contains(e.target) && !sidebar.classList.contains('-translate-x-full'))
+    //if ((e.target == sidebar || sidebar.contains(e.target)) && !sidebar.classList.contains('-translate-x-full')) {
+    //    sidebar.classList.add('-translate-x-full');
+    //}
+    // if
+})
+
+buildSidebar(parentContainer, [sidebar, collapsedSidebar])
+
+//let sidebarPointer = document.getElementById('sidebar');
+//let collapsedSidebarPointer = document.getElementById('collapsed-sidebar');
+
 
 // import { appendTaskModal } from './appendTaskModal';
 // appendTaskModal(parentContainer);
