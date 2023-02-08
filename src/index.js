@@ -2,7 +2,8 @@
 import './styles.css';
 
 import TodoProject from "./todoProject";
-import { SidebarBuilder } from './buildSidebar'
+import { SidebarBuilder } from './buildSidebar';
+import { TaskModalFactory } from './taskModal';
 
 // Create a new project
 //
@@ -25,6 +26,8 @@ if (allProjects.length === 0) {
 
 const parentContainer = document.getElementById('content');
 SidebarBuilder(parentContainer, allProjects);
+
+
 // The following sections ensure that mobile applications can access the sidebar
 
 

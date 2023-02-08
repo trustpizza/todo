@@ -1,4 +1,4 @@
-export function generateTaskModal() {
+const TaskModalFactory = () => {
     let modal = document.createElement('div');
     modal.id = 'modal';
     modal.className = 'max-w-xs'; // Have modal hidden by default
@@ -80,3 +80,5 @@ export function generateTaskModal() {
 
     return modal;
 }
+
+export { TaskModalFactory };

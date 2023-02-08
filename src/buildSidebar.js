@@ -28,11 +28,10 @@ const SidebarBuilder = (parent, projects) => {
     }
 };
 
-function  buildSidebar(parent, ...children) {
+const buildSidebar = (parent, ...children) => {
     for (const child of children[0]) {
         parent.appendChild(child);
-    }
-    
+    } 
 };
 
 export {SidebarBuilder};
