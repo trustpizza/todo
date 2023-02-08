@@ -26,7 +26,9 @@ if (allProjects.length === 0) {
 
 const parentContainer = document.getElementById('content');
 SidebarBuilder(parentContainer, allProjects);
-
+let title = document.createElement('h1');
+title.textContent = 'Hello'
+parentContainer.appendChild(title);
 
 // The following sections ensure that mobile applications can access the sidebar
 

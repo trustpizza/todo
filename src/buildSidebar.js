@@ -21,10 +21,12 @@ const SidebarBuilder = (parent, projects) => {
 
     const closeSidebar = () => {
         sidebar.classList.add('-translate-x-full');
+        sidebar.classList.add('fixed');
     }
 
     const openSidebar = () => {
         sidebar.classList.remove('-translate-x-full');
+        sidebar.classList.remove('fixed');
     }
 };
 
