@@ -1,10 +1,10 @@
 const ProjectDisplayFactory = (parent, project) => {
     const container = document.createElement("div");
-    container.className = "container mx-auto my-4 mx-4 bg-white rounded-md flex flex-col"
+    container.className = "container mx-auto my-10 mx-4 bg-white rounded-md flex flex-col"
 
     let title = document.createElement('h1')
     title.textContent = project.getName();
-    title.className = "text-2xl bold text-center";
+    title.className = "text-4xl bold text-center";
 
     const tasksDiv = document.createElement('div');
     tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col";
@@ -30,18 +30,18 @@ const TaskDisplayFactory = (task) => {
 
     let checkBox = document.createElement('input');
     checkBox.setAttribute('type', 'checkbox');
-    checkBox.className = "row-span-2 p-2"
+    checkBox.className = "row-span-2 p-2 md:w-10 md:h-10 h-6 w-6"
 
     let sectionDiv = document.createElement('div');
     sectionDiv.className = "grid grid-rows-2 p-2";
 
     let title = document.createElement('h2');
     title.textContent = `${task.title}:`;
-    title.className = "";
+    title.className = "text-2xl";
 
     let description = document.createElement('div');
     description.textContent = `${task.description}`;
-    description.className = "";
+    description.className = "text-slate-600";
     
     sectionDiv.append(title, description)
 

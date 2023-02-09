@@ -24,7 +24,7 @@ const SidebarFactory = (projects) => {
     // Normal Sidebar
     let sidebar = document.createElement('aside');
     sidebar.id = "sidebar";
-    sidebar.className = "hidden md:relative fixed md:block top-0 left-0 z-40 w-64 md:w-96 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-gray-50";
+    sidebar.className = "hidden md:relative fixed md:block top-0 left-0 z-40 w-64 md:w-4/12 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-gray-50";
 
     let sidebarContainer = document.createElement('div');
     sidebarContainer.className = "h-full px-3 py-4 overflow-y-auto bg-gray-200 dark:bg-gray-800";
