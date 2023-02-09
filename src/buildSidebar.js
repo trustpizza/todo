@@ -26,7 +26,7 @@ const SidebarBuilder = (parent, projects) => {
         sidebar.classList.add('-translate-x-full');
         setTimeout(() => {
             sidebar.classList.add('hidden')
-        }, 100);
+        }, 5);
         //sidebar.classList.add('fixed');
     }
 
@@ -35,7 +35,7 @@ const SidebarBuilder = (parent, projects) => {
         sidebar.classList.remove('hidden');
         setTimeout(() => {
             sidebar.classList.remove('-translate-x-full');
-        }, 100)
+        }, 5)
     }
 };
 
