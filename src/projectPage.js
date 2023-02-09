@@ -28,18 +28,27 @@ const ProjectDisplayFactory = (parent, project) => {
 
 const TaskDisplayFactory = (task) => {
     let taskDisplay = document.createElement('div');
+    taskDisplay.className = "grid grid-cols-3 grid-rows-2";
+
+    let checkBox = document.createElement('input');
+    checkBox.setAttribute('type', 'checkbox');
+    checkBox.className = "row-span-2"
+
 
     let title = document.createElement('h2');
+    title.textContent = `${task.title}:`;
+    title.className = "-start-1";
 
     let description = document.createElement('div');
-
-    let dueDate = document.createElement('div');
+    description.textContent = `${task.description}`;
+    description.className = "row-start-2 col-start-2";    
 
     let priority = document.createElement('div');
+    priority.textContent = `${task.priority}`;
+    priority.className = "row-span-3"
 
-    let checkBox = document.createElement('div');
 
-    taskDisplay.append(title, description, dueDate, priority, checkBox);
+    taskDisplay.append(checkBox, title, description, priority);
     return taskDisplay;
 }
 
