@@ -7,15 +7,19 @@ const ProjectDisplayFactory = (parent, project) => {
     title.className = "text-2xl bold text-center";
 
     const tasks = project.getTodoTasks();
-    console.log(tasks);
 
     Object.keys(tasks).forEach( (key) => {
         // This iterates over the tasks hash
         const task = tasks[key];
+        // Build a display for each task
     })
 
     container.appendChild(title);
     parent.appendChild(container)
+}
+
+const TaskDisplayFactory = (task) => {
+    
 }
 
 export { ProjectDisplayFactory }
