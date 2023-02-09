@@ -2,26 +2,22 @@ import _ from "lodash";
 
 const ProjectDisplayFactory = (parent, project) => {
     const container = document.createElement("div");
-    container.className = "container mx-auto my-4 mx-4 bg-slate-50 rounded-md p-4"
+    container.className = "container mx-auto my-4 mx-4 bg-slate-50 rounded-md p-4 flex flex-col"
 
     let title = document.createElement('h1')
     title.textContent = project.getName();
     title.className = "text-2xl bold text-center";
 
     const tasksDiv = document.createElement('div');
-    tasksDiv.className = "";
+    tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col";
 
     const tasks = project.getTodoTasks();
-    console.log(tasks)
 
     Object.keys(tasks).forEach( (key) => {
         // This iterates over the tasks hash
         const task = tasks[key];
-        let div = document.createElement('div');
-        div.appendChild(TaskDisplayFactory(task));
-        console.log(TaskDisplayFactory(task))
-
-        tasksDiv.appendChild(div);
+        
+        tasksDiv.appendChild(TaskDisplayFactory(task))
         // Build a display for each task
     })
 
