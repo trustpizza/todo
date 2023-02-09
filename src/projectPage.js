@@ -9,7 +9,7 @@ const ProjectDisplayFactory = (parent, project) => {
     title.className = "text-2xl bold text-center";
 
     const tasksDiv = document.createElement('div');
-    tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col border-8";
+    tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col";
 
     const tasks = project.getTodoTasks();
 
@@ -28,7 +28,7 @@ const ProjectDisplayFactory = (parent, project) => {
 
 const TaskDisplayFactory = (task) => {
     let taskDisplay = document.createElement('div');
-    taskDisplay.className = "flex";
+    taskDisplay.className = "flex items-center justify-center gap-10";
 
     let checkBox = document.createElement('input');
     checkBox.setAttribute('type', 'checkbox');
