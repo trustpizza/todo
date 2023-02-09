@@ -4,7 +4,7 @@ import HamburgerMenu from './photos/menu.svg'
 const CollapsedSidebarFactory = () => {
     let collapsedSidebar = document.createElement('button');
     collapsedSidebar.id = 'collapsed-sidebar'
-    collapsedSidebar.className = "inline-flex self-start items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+    collapsedSidebar.className = "fixed inline-flex self-start items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
     
     let collapsedSpan = document.createElement('span');
     collapsedSpan.className = "sr-only";
@@ -24,7 +24,7 @@ const SidebarFactory = (projects) => {
     // Normal Sidebar
     let sidebar = document.createElement('aside');
     sidebar.id = "sidebar";
-    sidebar.className = "hidden md:block top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-gray-50";
+    sidebar.className = "hidden md:block top-0 left-0 z-40 w-96 h-screen transition-transform -translate-x-full sm:translate-x-0 bg-gray-50";
 
     let sidebarContainer = document.createElement('div');
     sidebarContainer.className = "h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800";

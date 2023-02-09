@@ -2,14 +2,14 @@ import _ from "lodash";
 
 const ProjectDisplayFactory = (parent, project) => {
     const container = document.createElement("div");
-    container.className = "container mx-auto my-4 mx-4 bg-slate-50 rounded-md p-4 flex flex-col"
+    container.className = "container mx-auto my-4 mx-4 bg-slate-50 rounded-md flex flex-col"
 
     let title = document.createElement('h1')
     title.textContent = project.getName();
     title.className = "text-2xl bold text-center";
 
     const tasksDiv = document.createElement('div');
-    tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col";
+    tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col border-8";
 
     const tasks = project.getTodoTasks();
 
@@ -28,27 +28,31 @@ const ProjectDisplayFactory = (parent, project) => {
 
 const TaskDisplayFactory = (task) => {
     let taskDisplay = document.createElement('div');
-    taskDisplay.className = "grid grid-cols-3 grid-rows-2";
+    taskDisplay.className = "flex";
 
     let checkBox = document.createElement('input');
     checkBox.setAttribute('type', 'checkbox');
-    checkBox.className = "row-span-2"
+    checkBox.className = "row-span-2 p-2"
 
+    let sectionDiv = document.createElement('div');
+    sectionDiv.className = "grid grid-rows-2 p-2";
 
     let title = document.createElement('h2');
     title.textContent = `${task.title}:`;
-    title.className = "-start-1";
+    title.className = "";
 
     let description = document.createElement('div');
     description.textContent = `${task.description}`;
-    description.className = "row-start-2 col-start-2";    
+    description.className = "";
+    
+    sectionDiv.append(title, description)
 
     let priority = document.createElement('div');
     priority.textContent = `${task.priority}`;
-    priority.className = "row-span-3"
+    priority.className = "row-span-3 p-2"
 
 
-    taskDisplay.append(checkBox, title, description, priority);
+    taskDisplay.append(checkBox, sectionDiv, priority);
     return taskDisplay;
 }
 

@@ -1,4 +1,3 @@
-import { delay } from "lodash";
 import { SidebarFactory, CollapsedSidebarFactory } from "./sidebar"
 
 
