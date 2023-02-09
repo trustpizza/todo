@@ -17,7 +17,7 @@ let projectCounter = 0;
 let currentProject;
 let allProjects = [];
 if (allProjects.length === 0) {
-    let newProject = TodoProject(projectCounter++, 'Default Project', "A brief description about the scope of this project");
+    let newProject = TodoProject(projectCounter++, 'Default Project', "A brief description about the scope of this project.");
     allProjects.push(newProject);
     currentProject = newProject;
 } else {
