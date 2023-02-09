@@ -4,15 +4,18 @@ const createProject = (id, name, todoTasks = {}) => {
     let counter = 0;
 
     // Ability to create a new task
-    const createNewTask = (title, description, duedate, priority) => {
-        let newTask = TodoTask(counter++, title, description, duedate, priority)
-        inputTask(newTask);
-        return newTask
-    };
+   
 
     const inputTask = (task) => {
         todoTasks[task.id] = task
     }
+
+    const createNewTask = (title, description, duedate, priority) => {
+        let newTask = TodoTask(counter++, title, description, duedate, priority)
+        inputTask(newTask);
+    };
+    todoTasks[1] = createNewTask('Test', "A little about my task", "11/12/2022", 3)
+
     
     const getTodoTasks = () => {
         return todoTasks;
@@ -29,6 +32,8 @@ const createProject = (id, name, todoTasks = {}) => {
     const getName = () => {
         return name;
     }
+
+
 
     return { getTodoTasks, getId, getName, createNewTask, getTask };
 };
