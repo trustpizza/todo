@@ -2,6 +2,7 @@ import TodoTask from "./todoTask";
 
 const createProject = (id, name, todoTasks = {}) => {
     let counter = 0;
+    todoTasks[1] = "Hello";
 
     // Ability to create a new task
     const createNewTask = (title, description, duedate, priority) => {

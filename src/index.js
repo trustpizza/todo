@@ -26,7 +26,7 @@ if (allProjects.length === 0) {
 
 const parentContainer = document.getElementById('content');
 SidebarBuilder(parentContainer, allProjects);
-ProjectDisplayFactory(parentContainer)
+let display = ProjectDisplayFactory(parentContainer, currentProject);
 
 // The following sections ensure that mobile applications can access the sidebar
 
