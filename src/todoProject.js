@@ -14,8 +14,6 @@ const createProject = (id, name, todoTasks = {}) => {
         let newTask = TodoTask(counter++, title, description, duedate, priority)
         inputTask(newTask);
     };
-    todoTasks[1] = createNewTask('Test', "A little about my task", "11/12/2022", 3)
-
     
     const getTodoTasks = () => {
         return todoTasks;

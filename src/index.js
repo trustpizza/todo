@@ -24,6 +24,8 @@ if (allProjects.length === 0) {
     // Create ability to create new projects and/or switch to projects later
 }
 
+currentProject.createNewTask('Test', "A little about my task", "11/12/2022", 3);
+
 const parentContainer = document.getElementById('content');
 SidebarBuilder(parentContainer, allProjects);
 let display = ProjectDisplayFactory(parentContainer, currentProject);
