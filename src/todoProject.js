@@ -1,6 +1,6 @@
 import TodoTask from "./todoTask";
 
-const createProject = (id, name, todoTasks = {}) => {
+const createProject = (id, name, description, todoTasks = {}) => {
     let counter = 0;
 
     // Ability to create a new task
