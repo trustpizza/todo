@@ -31,9 +31,11 @@ const createProject = (id, name, description, todoTasks = {}) => {
         return name;
     }
 
+    const getDesc = () => {
+        return description
+    }
 
-
-    return { getTodoTasks, getId, getName, createNewTask, getTask };
+    return { getTodoTasks, getId, getName, createNewTask, getTask , getDesc };
 };
 
 export default createProject;

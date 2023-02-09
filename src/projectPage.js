@@ -6,6 +6,9 @@ const ProjectDisplayFactory = (parent, project) => {
     title.textContent = project.getName();
     title.className = "text-4xl bold text-center";
 
+    let projDescription = document.createElement('span');
+    projDescription.textContent = project.getDesc();
+
     const tasksDiv = document.createElement('div');
     tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col";
 
