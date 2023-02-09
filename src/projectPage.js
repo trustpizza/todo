@@ -40,6 +40,8 @@ const TaskDisplayFactory = (task) => {
     let checkBox = document.createElement('input');
     checkBox.setAttribute('type', 'checkbox');
     checkBox.className = "row-span-2 p-2 md:w-10 md:h-10 h-6 w-6"
+    if (task.isComplete) { checkBox.checked = true; }
+
     checkBox.addEventListener('click', () => {
         if (task.isComplete == false) {
             task.isComplete = true;
