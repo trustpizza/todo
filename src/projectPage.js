@@ -1,8 +1,6 @@
-import _ from "lodash";
-
 const ProjectDisplayFactory = (parent, project) => {
     const container = document.createElement("div");
-    container.className = "container mx-auto my-4 mx-4 bg-slate-50 rounded-md flex flex-col"
+    container.className = "container mx-auto my-4 mx-4 bg-white rounded-md flex flex-col"
 
     let title = document.createElement('h1')
     title.textContent = project.getName();
