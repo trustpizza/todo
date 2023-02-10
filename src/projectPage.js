@@ -19,6 +19,7 @@ const ProjectDisplayFactory = (parent, project) => {
     titleSection.append(title, projDescription);
 
     const tasksDiv = document.createElement('div');
+    tasksDiv.id = "tasks-container";
     tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col";
 
     const newTaskButton = document.createElement('button');

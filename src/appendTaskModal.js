@@ -1,4 +1,5 @@
 import { TaskFormFactory } from './taskForm';
+import { displayTasks } from './projectPage';
 
 const appendTaskForm = (parent, currentProject) => {
     let taskForm = TaskFormFactory();
@@ -17,6 +18,7 @@ const appendTaskForm = (parent, currentProject) => {
 
         currentProject.createNewTask(title, description, priority);
         // Add a show-updated-form
+        displayTasks(currentProject.getTodoTasks(), document.getElementById('tasks-container'))
     });
 
     // Priority Div Logic to add event listeners to each selection
