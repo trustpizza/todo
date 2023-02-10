@@ -36,17 +36,18 @@ const ProjectDisplayFactory = (parent, project) => {
 
     const tasks = project.getTodoTasks();
 
-    Object.keys(tasks).forEach( (key) => {
-        // This iterates over the tasks hash
-        const task = tasks[key];
-        
-        tasksDiv.appendChild(TaskDisplayFactory(task))
-        // Build a display for each task
-    })
+    displayTasks(tasks, tasksDiv);
 
     container.appendChild(titleSection);
     container.appendChild(tasksDiv);
     parent.appendChild(container);
+}
+
+function displayTasks(tasks, parent) {
+    Object.keys(tasks).forEach( (key) => {
+        const task = tasks[key];
+        parent.appendChild(TaskDisplayFactory(task))
+    })
 }
 
 const TaskDisplayFactory = (task) => {
@@ -88,4 +89,4 @@ const TaskDisplayFactory = (task) => {
     return taskDisplay;
 }
 
-export { ProjectDisplayFactory }
+export { ProjectDisplayFactory, displayTasks }
