@@ -1,6 +1,6 @@
 import { TaskFormFactory } from './taskForm';
 
-const appendTaskForm = (parent) => {
+const appendTaskForm = (parent, currentProject) => {
     let taskForm = TaskFormFactory();
     parent.appendChild(taskForm);
     // Modal Submit Listener
@@ -15,7 +15,7 @@ const appendTaskForm = (parent) => {
         //let duedate = e.target[2].value;
         let priority = parseInt(e.target[3].value);
 
-        currentProject.createNewTask(title, description, duedate, priority);
+        currentProject.createNewTask(title, description, priority);
         console.log(currentProject);
         console.log(currentProject.getTodoTasks());
     });

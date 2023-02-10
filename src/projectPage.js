@@ -30,7 +30,7 @@ const ProjectDisplayFactory = (parent, project) => {
 
     tasksDiv.append(newTaskButton)
 
-    appendTaskForm(tasksDiv)
+    appendTaskForm(tasksDiv, project);
     //appendTaskModal(tasksDiv)
     //const newTask = appendTaskModal(tasksDiv);
 
