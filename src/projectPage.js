@@ -45,6 +45,7 @@ const ProjectDisplayFactory = (parent, project) => {
 }
 
 function displayTasks(tasks, parent) {
+    console.log(parent)
     Object.keys(tasks).forEach( (key) => {
         const task = tasks[key];
         parent.appendChild(TaskDisplayFactory(task))
