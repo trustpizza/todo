@@ -12,7 +12,7 @@ const TaskFormFactory = () => {
 
     let form = document.createElement('form');
     form.id = '';
-    form.className = 'w-full max-w-sm';
+    form.className = 'w-full max-w-sm flex flex-col gap-2';
 
     let innerFormDiv = document.createElement('div')
     innerFormDiv.className = 'flex items-center border-b border-teal-500 py-2';
