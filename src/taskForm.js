@@ -4,7 +4,7 @@ const TaskFormFactory = () => {
     newTaskForm.className = 'max-w-xs'; // Have newTaskForml hidden by default
 
     let newContent = document.createElement('div');
-    newContent.className = '';
+    newContent.className = 'flex items-center justify-center';
 
     let newTaskTitle = document.createElement('h3'); 
     newTaskTitle.textContent = 'New Task';
@@ -47,7 +47,7 @@ const TaskFormFactory = () => {
     // I need an element which takes a value of either 1, 2 or 3 
     // Options: dropdown menu, radio buttons(preference)
     let priority = document.createElement('select');
-    priority.className = 'hidden-priority';
+    priority.className = 'block appearance-none bg-white border border-gray-400 hover:border-gray-500 rounded px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline';
     let defaultOption = document.createElement('option');
     defaultOption.disabled = true;
     defaultOption.textContent = "Priority";
