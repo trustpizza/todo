@@ -1,37 +1,38 @@
 const TaskFormFactory = () => {
-    let modal = document.createElement('div');
-    modal.id = 'modal';
-    modal.className = 'max-w-xs'; // Have modal hidden by default
+    let newTaskForm = document.createElement('div');
+    newTaskForm.id = '';
+    newTaskForm.className = 'max-w-xs'; // Have newTaskForml hidden by default
 
-    let modalContent = document.createElement('div');
-    modalContent.className = 'modal-content';
+    let newContent = document.createElement('div');
+    newContent.className = '';
 
     let newTaskTitle = document.createElement('h3'); 
     newTaskTitle.textContent = 'New Task';
 
-    let modalForm = document.createElement('form');
-    modalForm.id = 'modal-form';
+    let form = document.createElement('form');
+    form.id = '';
+    form.className = '';
 
     let title = document.createElement('input');
     title.type = 'text';
     title.placeholder = 'Title';
     title.required = true;
     title.maxLength = 20;
-    title.className = 'form-item title';
+    title.className = '';
 
     let description = document.createElement('input');
     description.type = 'text';
     description.placeholder = "Description...";
     description.required = false;
     description.maxLength = 240;
-    description.className = 'form-item description';
+    description.className = '';
 
     let duedateLabel = document.createElement('label');
     duedateLabel.for = 'duedate';
     let duedate = document.createElement('input');
     duedate.type = 'date';
     duedate.name = 'duedate';
-    duedate.className = 'form-item duedate';
+    duedate.className = '';
 
     // Psuedocode for priority
     //
@@ -51,7 +52,7 @@ const TaskFormFactory = () => {
     //Now I need to create buttons/spans that correspond to those values?
 
     let prioritySelections = document.createElement('div');
-    prioritySelections.className = 'form-item modal-priority';
+    prioritySelections.className = '';
     prioritySelections.innerHTML = `
         <label id="priority-label"> Priority: </label>
         <div class="priority-div" id="priority-0"></div>
@@ -61,8 +62,8 @@ const TaskFormFactory = () => {
     
     let submit = document.createElement('input');
     submit.type = 'submit';
-    submit.value = 'DONE';
-    submit.className = 'form-item submit';
+    submit.value = 'Add New Task';
+    submit.className = '';
     submit.id = 'submit';
 
     //  Add all items to modal-form
