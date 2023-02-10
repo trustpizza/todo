@@ -67,19 +67,19 @@ const TaskFormFactory = () => {
     submit.id = 'submit';
 
     //  Add all items to modal-form
-    modalForm.appendChild(title);
-    modalForm.appendChild(description);
-    modalForm.appendChild(duedateLabel);
-    modalForm.appendChild(duedate);
-    modalForm.appendChild(priority);
-    modalForm.appendChild(prioritySelections);
-    modalForm.appendChild(submit);
+    form.appendChild(title);
+    form.appendChild(description);
+    form.appendChild(duedateLabel);
+    form.appendChild(duedate);
+    form.appendChild(priority);
+    form.appendChild(prioritySelections);
+    form.appendChild(submit);
 
     // Append form to modal
-    modalContent.appendChild(modalForm);
-    modal.appendChild(modalContent);
+    newContent.appendChild(form);
+    newTaskForm.appendChild(newContent);
 
-    return modal;
+    return newTaskForm;
 }
 
 export { TaskFormFactory };
