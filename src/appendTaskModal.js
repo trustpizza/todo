@@ -1,8 +1,9 @@
-import { TaskModalFactory } from './taskModal';
+import { TaskFormFactory } from './taskForm';
 
-export function appendTaskModal(parent) {
-    parent.appendChild(TaskModalFactory().firstChild);
+export function appendTaskForm(parent) {
+    parent.appendChild(TaskFormFactory().firstChild);
     // Modal Submit Listener
+    /*
     document.getElementById('modal-form').addEventListener('submit', (e) => {
         e.preventDefault();
 
@@ -23,4 +24,5 @@ export function appendTaskModal(parent) {
             document.getElementsByClassName('hidden-priority')[0].value = value;
         })
     };
+    */
 }

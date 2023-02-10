@@ -1,4 +1,5 @@
-import { TaskModalFactory } from "./taskModal";
+import { TaskFormFactory } from "./taskForm";
+import { appendTaskForm } from "./appendTaskModal";
 
 const ProjectDisplayFactory = (parent, project) => {
     const container = document.createElement("div");
@@ -29,10 +30,7 @@ const ProjectDisplayFactory = (parent, project) => {
 
     tasksDiv.append(newTaskButton)
 
-    let x = TaskModalFactory();
-    console.log(x)
-    tasksDiv.append(x)
-
+    appendTaskForm(tasksDiv)
     //appendTaskModal(tasksDiv)
     //const newTask = appendTaskModal(tasksDiv);
 

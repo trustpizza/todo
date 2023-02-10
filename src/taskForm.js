@@ -1,4 +1,4 @@
-const TaskModalFactory = () => {
+const TaskFormFactory = () => {
     let modal = document.createElement('div');
     modal.id = 'modal';
     modal.className = 'max-w-xs'; // Have modal hidden by default
@@ -81,4 +81,4 @@ const TaskModalFactory = () => {
     return modal;
 }
 
-export { TaskModalFactory };
+export { TaskFormFactory };
