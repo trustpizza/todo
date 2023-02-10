@@ -29,8 +29,9 @@ const ProjectDisplayFactory = (parent, project) => {
 
     tasksDiv.append(newTaskButton)
 
-    let x = TaskModalFactory().firstChild;
+    let x = TaskModalFactory();
     console.log(x)
+    tasksDiv.append(x)
 
     //appendTaskModal(tasksDiv)
     //const newTask = appendTaskModal(tasksDiv);
