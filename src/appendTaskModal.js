@@ -13,11 +13,10 @@ const appendTaskForm = (parent, currentProject) => {
         let title = e.target[0].value;
         let description = e.target[1].value;
         //let duedate = e.target[2].value;
-        let priority = parseInt(e.target[3].value);
+        let priority = parseInt(e.target[2].value);
 
         currentProject.createNewTask(title, description, priority);
-        console.log(currentProject);
-        console.log(currentProject.getTodoTasks());
+        // Add a show-updated-form
     });
 
     // Priority Div Logic to add event listeners to each selection
