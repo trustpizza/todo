@@ -11,7 +11,7 @@ const TaskFormFactory = () => {
 
 
     let form = document.createElement('form');
-    form.id = '';
+    form.id = 'new-task-form';
     form.className = 'w-full max-w-sm flex flex-col gap-2';
 
     let innerFormDiv = document.createElement('div')
@@ -30,7 +30,7 @@ const TaskFormFactory = () => {
     description.placeholder = "Description...";
     description.required = false;
     description.maxLength = 240;
-    description.className = 'appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight';
+    description.className = 'flex-grow appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight';
 
     /*
     let duedateLabel = document.createElement('label');

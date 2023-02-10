@@ -3,6 +3,9 @@ import { TaskFormFactory } from './taskForm';
 export function appendTaskForm(parent) {
     parent.appendChild(TaskFormFactory().firstChild);
     // Modal Submit Listener
+
+    let form = document.getElementById("new-task-form");
+    console.log(form);
     /*
     document.getElementById('modal-form').addEventListener('submit', (e) => {
         e.preventDefault();
