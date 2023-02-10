@@ -38,5 +38,5 @@ let display = ProjectDisplayFactory(parentContainer, currentProject);
 //let collapsedSidebarPointer = document.getElementById('collapsed-sidebar');
 
 
-// import { appendTaskModal } from './appendTaskModal';
+import { appendTaskModal } from './appendTaskModal';
 // appendTaskModal(parentContainer);

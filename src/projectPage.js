@@ -1,3 +1,5 @@
+import { TaskModalFactory } from "./taskModal";
+
 const ProjectDisplayFactory = (parent, project) => {
     const container = document.createElement("div");
     container.className = "container mx-auto my-10 mx-4 bg-white rounded-md flex flex-col"
@@ -26,6 +28,12 @@ const ProjectDisplayFactory = (parent, project) => {
     })
 
     tasksDiv.append(newTaskButton)
+
+    let x = TaskModalFactory().firstChild;
+    console.log(x)
+
+    //appendTaskModal(tasksDiv)
+    //const newTask = appendTaskModal(tasksDiv);
 
     const tasks = project.getTodoTasks();
 
