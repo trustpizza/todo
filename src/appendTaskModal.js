@@ -1,18 +1,18 @@
 import { TaskFormFactory } from './taskForm';
 
-export function appendTaskForm(parent) {
-    parent.appendChild(TaskFormFactory().firstChild);
+const appendTaskForm = (parent) => {
+    let taskForm = TaskFormFactory();
+    parent.appendChild(taskForm);
     // Modal Submit Listener
 
-    let form = document.getElementById("new-task-form");
-    console.log(form);
-    /*
-    document.getElementById('modal-form').addEventListener('submit', (e) => {
+    let form = taskForm.firstChild.firstChild
+    
+    form.addEventListener('submit', (e) => {
         e.preventDefault();
 
         let title = e.target[0].value;
         let description = e.target[1].value;
-        let duedate = e.target[2].value;
+        //let duedate = e.target[2].value;
         let priority = parseInt(e.target[3].value);
 
         currentProject.createNewTask(title, description, duedate, priority);
@@ -27,5 +27,6 @@ export function appendTaskForm(parent) {
             document.getElementsByClassName('hidden-priority')[0].value = value;
         })
     };
-    */
 }
+
+export { appendTaskForm }
