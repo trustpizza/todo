@@ -30,7 +30,9 @@ const ProjectDisplayFactory = (parent, project) => {
     })
 
     tasksDiv.append(newTaskButton)
-
+    // Create a div that holds the tasks within the TasksDiv (rename tasksDiv)
+    // Update THAT div, setting it's internals to null everytime you do so that it resets
+    // Place this in its own section
     appendTaskForm(tasksDiv, project);
     //appendTaskModal(tasksDiv)
     //const newTask = appendTaskModal(tasksDiv);
