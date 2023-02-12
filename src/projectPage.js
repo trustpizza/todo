@@ -20,7 +20,7 @@ const ProjectDisplayFactory = (parent, project) => {
 
     const content = document.createElement('div');
     content.id = "tasks-container";
-    content.className = "container mx-auto px-2 w-full h-full rounded flex flex-col";
+    content.className = "container mx-auto px-2 rounded flex flex-col";
 
     const newTaskButton = document.createElement('button');
     newTaskButton.textContent = 'Add Task';
@@ -33,21 +33,26 @@ const ProjectDisplayFactory = (parent, project) => {
     // Create a div that holds the tasks within the TasksDiv (rename tasksDiv)
     // Update THAT div, setting it's internals to null everytime you do so that it resets
     // Place this in its own section
-    appendTaskForm(content, project);
+    let tasksDiv = document.createElement('div');
+    tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col";
+
+
+    //appendTaskForm(content, project);
     //appendTaskModal(tasksDiv)
     //const newTask = appendTaskModal(tasksDiv);
 
     const tasks = project.getTodoTasks();
 
-    displayTasks(tasks, content);
+    //displayTasks(tasks, tasksDiv);
+    // console.log(tasksDiv);
 
-    container.appendChild(titleSection);
-    container.appendChild(content);
+    container.append(titleSection, content, tasksDiv);
+
     parent.appendChild(container);
 }
 
 function displayTasks(tasks, parent) {
-    console.log(parent)
+    // console.log(parent);
     Object.keys(tasks).forEach( (key) => {
         const task = tasks[key];
         parent.appendChild(TaskDisplayFactory(task))
@@ -90,6 +95,7 @@ const TaskDisplayFactory = (task) => {
 
 
     taskDisplay.append(checkBox, sectionDiv, priority);
+    console.log(taskDisplay)
     return taskDisplay;
 }
 
