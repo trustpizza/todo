@@ -20,7 +20,7 @@ const ProjectDisplayFactory = (parent, project) => {
     tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col";
     
     
-    let form = TaskFormLogic(project);
+    let form = TaskFormLogic(project, tasksDiv);
 
 
     //appendTaskModal(tasksDiv)
@@ -38,7 +38,7 @@ const ProjectDisplayFactory = (parent, project) => {
 // From here below are helper functions!
 
 function displayTasks(tasks, parent) {
-    // console.log(parent);
+    parent.innerHTML = "";
     Object.keys(tasks).forEach( (key) => {
         const task = tasks[key];
         parent.appendChild(TaskDisplayFactory(task))
