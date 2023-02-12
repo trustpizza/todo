@@ -9,7 +9,7 @@ const ProjectDisplayFactory = (parent, project) => {
 
     const content = document.createElement('div');
     content.id = "tasks-container";
-    content.className = "container mx-auto px-2 rounded flex flex-col";
+    content.className = "container mx-auto px-2 rounded flex flex-col items-center";
 
     let newTaskButton = NewTaskButton();
 
@@ -53,7 +53,7 @@ const TaskDisplayFactory = (task) => {
     });
 
     let sectionDiv = document.createElement('div');
-    sectionDiv.className = "grid grid-rows-2 p-2";
+    sectionDiv.className = " flex- flex-col p-2";
 
     let title = document.createElement('h2');
     title.textContent = `${task.title}:`;
