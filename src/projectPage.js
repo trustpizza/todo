@@ -1,5 +1,5 @@
 import { TaskFormFactory } from "./taskForm";
-import { appendTaskForm } from "./appendTaskModal";
+import { TaskFormLogic } from "./appendTaskModal";
 
 const ProjectDisplayFactory = (parent, project) => {
     const container = document.createElement("div");
@@ -18,9 +18,11 @@ const ProjectDisplayFactory = (parent, project) => {
     // Place this in its own section
     let tasksDiv = document.createElement('div');
     tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col";
+    
+    
+    let form = TaskFormLogic(project);
 
 
-    //appendTaskForm(content, project);
     //appendTaskModal(tasksDiv)
     //const newTask = appendTaskModal(tasksDiv);
 
@@ -28,10 +30,12 @@ const ProjectDisplayFactory = (parent, project) => {
 
     //displayTasks(tasks, tasksDiv);
     // console.log(tasksDiv);
-    content.append(newTaskButton)
+    content.append(newTaskButton, form)
     container.append(titleSection, content, tasksDiv);
     parent.appendChild(container);
 }
+
+// From here below are helper functions!
 
 function displayTasks(tasks, parent) {
     // console.log(parent);
@@ -99,7 +103,7 @@ const TitleDispay = (project) => {
 
 const NewTaskButton = () => {
     const newTaskButton = document.createElement('button');
-    newTaskButton.textContent = 'Add Task';
+    newTaskButton.textContent = 'New Task';
     newTaskButton.className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded self-center"
     newTaskButton.addEventListener("click", () => {
         

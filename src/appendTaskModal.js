@@ -1,9 +1,8 @@
 import { TaskFormFactory } from './taskForm';
 import { displayTasks } from './projectPage';
 
-const appendTaskForm = (parent, currentProject) => {
+const TaskFormLogic = (currentProject, tasksContainer) => {
     let taskForm = TaskFormFactory();
-    parent.appendChild(taskForm);
     // Modal Submit Listener
 
     let form = taskForm.firstChild.firstChild
@@ -18,7 +17,7 @@ const appendTaskForm = (parent, currentProject) => {
 
         currentProject.createNewTask(title, description, priority);
         // Add a show-updated-form
-        displayTasks(currentProject.getTodoTasks(), document.getElementById('tasks-container'))
+        displayTasks(currentProject.getTodoTasks(), tasksContainer)
     });
 
     // Priority Div Logic to add event listeners to each selection
@@ -28,6 +27,7 @@ const appendTaskForm = (parent, currentProject) => {
             document.getElementsByClassName('hidden-priority')[0].value = value;
         })
     };
+    return taskForm;
 }
 
-export { appendTaskForm }
+export { TaskFormLogic }
