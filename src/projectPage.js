@@ -11,14 +11,8 @@ const ProjectDisplayFactory = (parent, project) => {
     content.id = "tasks-container";
     content.className = "container mx-auto px-2 rounded flex flex-col";
 
-    const newTaskButton = document.createElement('button');
-    newTaskButton.textContent = 'Add Task';
-    newTaskButton.className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded self-center"
-    newTaskButton.addEventListener("click", () => {
-        
-    })
+    let newTaskButton = NewTaskButton();
 
-    content.append(newTaskButton)
     // Create a div that holds the tasks within the TasksDiv (rename tasksDiv)
     // Update THAT div, setting it's internals to null everytime you do so that it resets
     // Place this in its own section
@@ -34,7 +28,7 @@ const ProjectDisplayFactory = (parent, project) => {
 
     //displayTasks(tasks, tasksDiv);
     // console.log(tasksDiv);
-
+    content.append(newTaskButton)
     container.append(titleSection, content, tasksDiv);
     parent.appendChild(container);
 }
@@ -101,6 +95,17 @@ const TitleDispay = (project) => {
 
     titleSection.append(title, projDescription);
     return titleSection;
+}
+
+const NewTaskButton = () => {
+    const newTaskButton = document.createElement('button');
+    newTaskButton.textContent = 'Add Task';
+    newTaskButton.className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded self-center"
+    newTaskButton.addEventListener("click", () => {
+        
+    })
+
+    return newTaskButton;
 }
 
 export { ProjectDisplayFactory, displayTasks }
