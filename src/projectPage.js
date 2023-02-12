@@ -13,23 +13,14 @@ const ProjectDisplayFactory = (parent, project) => {
 
     let newTaskButton = NewTaskButton();
 
-    // Create a div that holds the tasks within the TasksDiv (rename tasksDiv)
-    // Update THAT div, setting it's internals to null everytime you do so that it resets
-    // Place this in its own section
     let tasksDiv = document.createElement('div');
     tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col";
     
     
     let form = TaskFormLogic(project, tasksDiv);
 
-
-    //appendTaskModal(tasksDiv)
-    //const newTask = appendTaskModal(tasksDiv);
-
     const tasks = project.getTodoTasks();
 
-    //displayTasks(tasks, tasksDiv);
-    // console.log(tasksDiv);
     content.append(newTaskButton, form)
     container.append(titleSection, content, tasksDiv);
     parent.appendChild(container);
@@ -55,11 +46,10 @@ const TaskDisplayFactory = (task) => {
     if (task.isComplete) { checkBox.checked = true; }
 
     checkBox.addEventListener('click', () => {
-        if (task.isComplete == false) {
-            task.isComplete = true;
-        } else {
-            task.isComplete = false;
-        } // I shoudl eventually turn this into a function that checks if the checkbox is checked
+        task.isComplete == true ? task.isComplete = false : task.isComplete = true;
+        
+        console.log(task);
+        // I shoudl eventually turn this into a function that checks if the checkbox is checked
     });
 
     let sectionDiv = document.createElement('div');
