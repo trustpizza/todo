@@ -5,18 +5,7 @@ const ProjectDisplayFactory = (parent, project) => {
     const container = document.createElement("div");
     container.className = "container mx-auto my-10 mx-4 bg-white rounded-md flex flex-col"
 
-    let titleSection = document.createElement('div');
-    titleSection.className = "flex flex-col";
-
-    let title = document.createElement('h1')
-    title.textContent = project.getName();
-    title.className = "text-4xl font-bold text-center";
-
-    let projDescription = document.createElement('span');
-    projDescription.textContent = project.getDesc();
-    projDescription.className = "text-slate-600 text-center";
-
-    titleSection.append(title, projDescription);
+    let titleSection = TitleDispay(project);
 
     const content = document.createElement('div');
     content.id = "tasks-container";
@@ -47,7 +36,6 @@ const ProjectDisplayFactory = (parent, project) => {
     // console.log(tasksDiv);
 
     container.append(titleSection, content, tasksDiv);
-
     parent.appendChild(container);
 }
 
@@ -97,6 +85,22 @@ const TaskDisplayFactory = (task) => {
     taskDisplay.append(checkBox, sectionDiv, priority);
     console.log(taskDisplay)
     return taskDisplay;
+}
+
+const TitleDispay = (project) => {
+    let titleSection = document.createElement('div');
+    titleSection.className = "flex flex-col";
+
+    let title = document.createElement('h1');
+    title.textContent = project.getName();
+    title.className = "text-4xl font-bold text-center";
+
+    let projDescription = document.createElement('span');
+    projDescription.textContent = project.getDesc();
+    projDescription.className = "text-slate-600 text-center";
+
+    titleSection.append(title, projDescription);
+    return titleSection;
 }
 
 export { ProjectDisplayFactory, displayTasks }
