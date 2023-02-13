@@ -1,5 +1,6 @@
 import { TaskFormFactory } from "./taskForm";
 import { TaskFormLogic } from "./appendTaskModal";
+import PlusSign from "./photos/plus.svg"
 
 const ProjectDisplayFactory = (parent, project) => {
     const container = document.createElement("div");
@@ -93,7 +94,11 @@ const TitleDispay = (project) => {
 
 const NewTaskButton = () => {
     const newTaskButton = document.createElement('button');
-    newTaskButton.textContent = 'New Task';
+    let buttonImage = new Image();
+    buttonImage.src = PlusSign;
+
+    newTaskButton.append(buttonImage);
+    
     newTaskButton.className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded self-center"
     newTaskButton.addEventListener("click", () => {
         

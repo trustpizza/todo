@@ -14,9 +14,7 @@ const CollapsedSidebarFactory = () => {
     collapsedSVG.className = "w-6 h-6";
     collapsedSVG.src = HamburgerMenu;
 
-    collapsedSidebar.appendChild(collapsedSpan);
-    collapsedSidebar.appendChild(collapsedSVG);
-    
+    collapsedSidebar.append(collapsedSpan, collapsedSVG);    
     return collapsedSidebar;
 }
 
