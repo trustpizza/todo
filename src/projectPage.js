@@ -96,11 +96,11 @@ const NewTaskButton = () => {
     const newTaskButton = document.createElement('button');
     let buttonImage = new Image();
     buttonImage.src = PlusSign;
-    buttonImage.className = "h-5 w-5 fill-white"
+    buttonImage.className = "h-10 w-10 p-0 fill-white"
 
     newTaskButton.append(buttonImage);
 
-    newTaskButton.className = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded self-center"
+    newTaskButton.className = "bg-blue-300 hover:bg-blue-400 text-white font-bold rounded self-center"
     newTaskButton.addEventListener("click", () => {
         
     })
