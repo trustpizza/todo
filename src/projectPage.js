@@ -96,7 +96,7 @@ const NewTaskButton = () => {
     const newTaskButton = document.createElement('button');
     let buttonImage = new Image();
     buttonImage.src = PlusSign;
-    buttonImage.className = "h-10 w-10 p-0 fill-white"
+    buttonImage.className = "h-10 w-10 p-0 fill-slate-50"
 
     newTaskButton.append(buttonImage);
 
