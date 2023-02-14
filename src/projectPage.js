@@ -100,7 +100,7 @@ const NewTaskButton = () => {
 
     newTaskButton.append(buttonImage);
 
-    newTaskButton.className = "bg-blue-300 hover:bg-blue-400 text-white font-bold rounded self-center"
+    newTaskButton.className = "bg-blue-500 hover:bg-blue-600 text-white font-bold rounded self-center"
     newTaskButton.addEventListener("click", () => {
         if (!buttonImage.classList.contains("rotate-45")) { 
             buttonImage.classList.add("transition", "ease-in-out", "delay-150", "rotate-45")
