@@ -216,7 +216,7 @@ eval("module.exports = __webpack_require__.p + \"2d4061552fac064ed076.svg\";\n\n
   \*****************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("module.exports = __webpack_require__.p + \"3cffe9a515498593b872.svg\";\n\n//# sourceURL=webpack://todo/./src/photos/plus.svg?");
+eval("module.exports = __webpack_require__.p + \"a598e96432081ba9848d.svg\";\n\n//# sourceURL=webpack://todo/./src/photos/plus.svg?");
 
 /***/ })
 
