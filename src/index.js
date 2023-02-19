@@ -3,7 +3,7 @@ import './styles.css';
 
 import TodoProject from "./todoProject";
 import { SidebarBuilder } from './buildSidebar';
-import { ProjectDisplayFactory } from "./projectPage"
+import { ProjectDisplayFactory } from "./projectPage";
 
 // Create a new project
 //

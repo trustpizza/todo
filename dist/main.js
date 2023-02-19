@@ -146,7 +146,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _sty
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"projectForm\": () => (/* binding */ projectForm)\n/* harmony export */ });\n/* harmony import */ var _todoProject__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./todoProject */ \"./src/todoProject.js\");\n\n\nlet projectForm = () => {\n    console.log('new')\n};\n\n\n\n//# sourceURL=webpack://todo/./src/projectForm.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"projectForm\": () => (/* binding */ projectForm)\n/* harmony export */ });\n/* harmony import */ var _todoProject__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./todoProject */ \"./src/todoProject.js\");\n\n\nconst projectForm = () => {\n    const projectFormModal = document.createElement('div');\n    // This will need a form for creating a new project\n    // Projects have: Id, Title, Description\n    const form = document.createElement('form');\n    const titleSection = document.createElement('input');\n    console.log('hi');\n};\n\n\n\n//# sourceURL=webpack://todo/./src/projectForm.js?");
 
 /***/ }),
 
