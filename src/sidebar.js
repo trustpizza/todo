@@ -30,12 +30,12 @@ const SidebarFactory = (projects) => {
     let list = document.createElement('ul');
     list.className = "space-y-2";
 
+    // Needs new sidebar item button!
+    list.appendChild(newProjectButton())
+
     for (const project of projects) {
         list.appendChild(ListItemFactory(project.getName()))
     }
-
-    // Needs new sidebar item button!
-    
 
     sidebarContainer.appendChild(list);
     sidebar.appendChild(sidebarContainer);
@@ -56,10 +56,23 @@ const ListItemFactory = (title) => {
     listSpan.className = "ml-3";
     listSpan.textContent = title;
 
-    link.appendChild(listImg);
-    link.appendChild(listSpan);
+    link.append(listImg, listSpan);
     listItem.appendChild(link);
 
+    return listItem;
+};
+
+const newProjectButton = () => {
+    let listItem = document.createElement('li');
+    let link = document.createElement('a');
+    link.className = "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700";
+
+    let listSpan = document.createElement('span');
+    listSpan.className = "ml-3";
+    listSpan.textContent = "Create New Project";
+
+    link.appendChild(listSpan);
+    listItem.append(link);
     return listItem;
 }
 
