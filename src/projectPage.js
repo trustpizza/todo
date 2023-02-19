@@ -5,19 +5,18 @@ const ProjectDisplayFactory = (parent, project) => {
     const container = document.createElement("div");
     container.className = "container mx-auto my-10 mx-4 bg-white rounded-md flex flex-col"
 
-    let titleSection = TitleDispay(project);
+    const titleSection = TitleDispay(project);
 
     const content = document.createElement('div');
     content.id = "tasks-container";
-    content.className = "container mx-auto px-2 rounded flex flex-col items-center";
+    content.className = "container mx-auto px-2 rounded flex flex-col items-center";   
 
-    let newTaskButton = NewTaskButton();
-
-    let tasksDiv = document.createElement('div');
+    const tasksDiv = document.createElement('div');
     tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col";
     
-    
-    let form = TaskFormLogic(project, tasksDiv);
+    const form = TaskFormLogic(project, tasksDiv);
+
+    const newTaskButton = NewTaskButton(form);
 
     const tasks = project.getTodoTasks();
 
@@ -91,11 +90,11 @@ const TitleDispay = (project) => {
     return titleSection;
 }
 
-const NewTaskButton = () => {
+const NewTaskButton = (target) => {
     const newTaskButton = document.createElement('button');
     let buttonImage = new Image();
     buttonImage.src = PlusSign;
-    buttonImage.className = "h-10 w-10 p-0 fill-slate-50"
+    buttonImage.className = "h-10 w-10 p-0 fill-slate-50 transition ease-in-out duration-100"
 
     newTaskButton.append(buttonImage);
 
@@ -106,9 +105,11 @@ const NewTaskButton = () => {
 
     const taskButtonControlls = () => {
         if (!buttonImage.classList.contains("rotate-45")) { 
-            buttonImage.classList.add("transition", "ease-in-out", "delay-150", "rotate-45");
+            buttonImage.classList.add("rotate-45");
+            target.classList.remove('-translate-y-96')
         } else {
             buttonImage.classList.remove("rotate-45");
+            target.classList.add('-translate-y-96')
         }
     };
 

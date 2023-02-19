@@ -16,7 +16,7 @@ const projectForm = () => {
     submitButton.id = 'submit';
 
     form.append(titleSection, descriptionSection, submitButton);
-    console.log(form);
+    return form;
 };
 
 const formSection =  ( labelName, inputFor = null) => {

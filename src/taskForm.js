@@ -1,7 +1,7 @@
 const TaskFormFactory = () => {
     let newTaskForm = document.createElement('div');
-    newTaskForm.id = '';
-    newTaskForm.className = 'max-w-xs md:max-w-lg'; // Have newTaskForml hidden by default
+    newTaskForm.id = 'newTaskForm';
+    newTaskForm.className = '-translate-y-96 transition duration-150 ease-in-out max-w-xs md:max-w-lg'; // Have newTaskForml hidden by default
 
     let newContent = document.createElement('div');
     newContent.className = 'flex items-center justify-center';
