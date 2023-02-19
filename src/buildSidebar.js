@@ -1,6 +1,5 @@
 import { SidebarFactory, CollapsedSidebarFactory } from "./sidebar"
 
-
 const SidebarBuilder = (parent, projects) => {
     const sidebar = SidebarFactory(projects);
     const collapsedSidebar = CollapsedSidebarFactory();

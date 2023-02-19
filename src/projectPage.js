@@ -1,4 +1,3 @@
-import { TaskFormFactory } from "./taskForm";
 import { TaskFormLogic } from "./appendTaskModal";
 import PlusSign from "./photos/plus.svg"
 

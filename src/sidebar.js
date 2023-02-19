@@ -34,6 +34,9 @@ const SidebarFactory = (projects) => {
         list.appendChild(ListItemFactory(project.getName()))
     }
 
+    // Needs new sidebar item button!
+    
+
     sidebarContainer.appendChild(list);
     sidebar.appendChild(sidebarContainer);
     // Sidebar will eventually house other elements
