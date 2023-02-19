@@ -73,6 +73,10 @@ const newProjectButton = () => {
 
     link.appendChild(listSpan);
     listItem.append(link);
+
+    link.addEventListener('click', () => {
+        console.log('New!')
+    })
     return listItem;
 }
 
