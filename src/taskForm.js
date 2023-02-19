@@ -54,8 +54,8 @@ const TaskFormFactory = () => {
     priority.options.add(defaultOption)
     for (let i = 0; i < 3; i++) {
         let option = document.createElement('option');
-        option.value = i
-        option.textContent = i + 1
+        option.value = i + 1;
+        option.textContent = i + 1;
         priority.options.add(option);
     }
 

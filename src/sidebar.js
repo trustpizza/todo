@@ -1,5 +1,6 @@
 import ExclamationPoint from './photos/exclamation-thick.svg'
 import HamburgerMenu from './photos/menu.svg'
+import { projectForm } from './projectForm';
 
 const CollapsedSidebarFactory = () => {
     let collapsedSidebar = document.createElement('button');
@@ -75,7 +76,7 @@ const newProjectButton = () => {
     listItem.append(link);
 
     link.addEventListener('click', () => {
-        console.log('New!')
+        projectForm();
     })
     return listItem;
 }
