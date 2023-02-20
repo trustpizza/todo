@@ -4,6 +4,7 @@ import './styles.css';
 import TodoProject from "./todoProject";
 import { SidebarBuilder } from './buildSidebar';
 import { ProjectDisplayFactory } from "./projectPage";
+import { projectForm } from './projectForm'; 
 
 // Create a new project
 //
@@ -24,9 +25,11 @@ if (allProjects.length === 0) {
     // Create ability to create new projects and/or switch to projects later
 }
 
+const projForm = projectForm();
 // currentProject.createNewTask('Test', "A little about my task", 3);
 
 const parentContainer = document.getElementById('content');
+parentContainer.appendChild(projForm)
 SidebarBuilder(parentContainer, allProjects);
 let display = ProjectDisplayFactory(parentContainer, currentProject);
 

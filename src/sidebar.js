@@ -76,7 +76,8 @@ const newProjectButton = () => {
     listItem.append(link);
 
     link.addEventListener('click', () => {
-        projectForm();
+        // projectForm();
+        console.log('clicked');
     })
     return listItem;
 }
