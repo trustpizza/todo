@@ -26,12 +26,11 @@ if (allProjects.length === 0) {
 }
 
 const projForm = projectForm();
-// currentProject.createNewTask('Test', "A little about my task", 3);
 
 const parentContainer = document.getElementById('content');
 SidebarBuilder(parentContainer, allProjects);
 let display = ProjectDisplayFactory(parentContainer, currentProject);
-
+parentContainer.append(projForm)
 // The following sections ensure that mobile applications can access the sidebar
 
 

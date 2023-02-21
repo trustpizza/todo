@@ -76,8 +76,14 @@ const newProjectButton = () => {
     listItem.append(link);
 
     link.addEventListener('click', () => {
-        // projectForm();
-        console.log('clicked');
+        let newProjectForm = document.getElementById('newProjectFormWrapper');
+        if (newProjectForm.classList.contains('hidden')) {
+            newProjectForm.classList.remove('hidden')
+            newProjectForm.classList.add('z-50');
+        } else {
+            newProjectForm.classList.remove('z-50')
+            newProjectForm.classList.add('hidden');
+        }
     })
     return listItem;
 }
