@@ -4,11 +4,11 @@ const projectForm = () => {
     // This will need a form for creating a new project
     // Projects have: Id, Title, Description
     const formWrapper = document.createElement('div');
-    formWrapper.className = 'w-full h-full fixed hidden bg-gray-400/90 flex align-center justify-center'
+    formWrapper.className = 'w-full h-full fixed hidden bg-gray-400/90 flex items-center justify-center'
     formWrapper.id = 'newProjectFormWrapper'
 
     const form = document.createElement('form');
-    form.className = "p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-modal md:h-full bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4";
+    form.className = "p-4 overflow-x-hidden overflow-y-auto md:inset-0 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4";
     form.id = 'newProjectForm';
 
     const titleSection = formSection("title");
