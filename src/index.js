@@ -5,6 +5,7 @@ import TodoProject from "./todoProject";
 import { SidebarBuilder } from './buildSidebar';
 import { ProjectDisplayFactory } from "./projectPage";
 import { projectForm } from './projectForm'; 
+import { projectFormLogic } from './projectFormLogic';
 
 // Create a new project
 //
@@ -25,17 +26,11 @@ if (allProjects.length === 0) {
     // Create ability to create new projects and/or switch to projects later
 }
 
-const projForm = projectForm();
-projForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let title = projForm.valu;
-    console.log(title);
-}) 
-
 const parentContainer = document.getElementById('content');
 SidebarBuilder(parentContainer, allProjects);
 let display = ProjectDisplayFactory(parentContainer, currentProject);
-parentContainer.append(projForm)
+
+projectFormLogic(allProjects, parentContainer)
 // The following sections ensure that mobile applications can access the sidebar
 
 
