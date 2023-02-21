@@ -4,7 +4,7 @@ const SidebarBuilder = (parent, projects) => {
     const sidebar = SidebarFactory(projects);
     const collapsedSidebar = CollapsedSidebarFactory();
 
-    buildSidebar(parent, [sidebar, collapsedSidebar]);
+    parent.append(sidebar, collapsedSidebar);
 
     collapsedSidebar.addEventListener("click", (e) => {
         if (sidebar.classList.contains('-translate-x-full')) {
@@ -35,12 +35,6 @@ const SidebarBuilder = (parent, projects) => {
             sidebar.classList.remove('-translate-x-full');
         }, 5)
     }
-};
-
-const buildSidebar = (parent, ...children) => {
-    for (const child of children[0]) {
-        parent.appendChild(child);
-    } 
 };
 
 export {SidebarBuilder};

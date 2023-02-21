@@ -5,6 +5,7 @@ const projectForm = () => {
     // Projects have: Id, Title, Description
     const form = document.createElement('form');
     form.className = "bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4";
+    form.id = 'newProjectForm';
 
     const titleSection = formSection("title");
 
