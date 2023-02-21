@@ -11,9 +11,9 @@ const projectForm = () => {
     form.className = "p-4 overflow-x-hidden overflow-y-auto md:inset-0 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4";
     form.id = 'newProjectForm';
 
-    const titleSection = formSection("Title");
+    const titleSection = formSection("title");
 
-    const descriptionSection = formSection("Description");
+    const descriptionSection = formSection("description");
     
     const submitButton = document.createElement('button');
     submitButton.value = 'Create Project';
@@ -32,7 +32,7 @@ const formSection =  ( labelName, inputFor = null) => {
 
     const label = document.createElement('label');
     label.className = 'block text-gray-700 text-sm font-bold mb-2'
-    label.textContent = labelName
+    label.textContent = labelName.capitalize();
 
     const input = document.createElement('input');
     input.className = 'shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
@@ -41,5 +41,12 @@ const formSection =  ( labelName, inputFor = null) => {
 
     return parentElement
 }
+
+Object.defineProperty(String.prototype, 'capitalize', {
+    value: function() {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    },
+    enumerable: false
+});
 
 export { projectForm }
