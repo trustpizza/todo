@@ -29,7 +29,6 @@ const projForm = projectForm();
 // currentProject.createNewTask('Test', "A little about my task", 3);
 
 const parentContainer = document.getElementById('content');
-parentContainer.appendChild(projForm)
 SidebarBuilder(parentContainer, allProjects);
 let display = ProjectDisplayFactory(parentContainer, currentProject);
 
