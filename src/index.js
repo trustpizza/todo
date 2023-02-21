@@ -26,6 +26,9 @@ if (allProjects.length === 0) {
 }
 
 const projForm = projectForm();
+projForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+}) 
 
 const parentContainer = document.getElementById('content');
 SidebarBuilder(parentContainer, allProjects);
