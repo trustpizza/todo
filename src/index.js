@@ -28,6 +28,8 @@ if (allProjects.length === 0) {
 const projForm = projectForm();
 projForm.addEventListener('submit', (e) => {
     e.preventDefault();
+    let title = projForm.valu;
+    console.log(title);
 }) 
 
 const parentContainer = document.getElementById('content');
