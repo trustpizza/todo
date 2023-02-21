@@ -1,4 +1,4 @@
-import { TaskFormLogic } from "./appendTaskModal";
+import { TaskFormLogic } from "./taskFormLogic";
 import PlusSign from "./photos/plus.svg"
 
 const ProjectDisplayFactory = (parent, project) => {

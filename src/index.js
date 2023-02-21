@@ -44,5 +44,5 @@ parentContainer.append(projForm)
 //let collapsedSidebarPointer = document.getElementById('collapsed-sidebar');
 
 
-import { appendTaskModal } from './appendTaskModal';
+import { appendTaskModal } from './taskFormLogic';
 // appendTaskModal(parentContainer);
