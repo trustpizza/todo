@@ -30,7 +30,7 @@ const parentContainer = document.getElementById('content');
 SidebarBuilder(parentContainer, allProjects);
 let display = ProjectDisplayFactory(parentContainer, currentProject);
 
-projectFormLogic(allProjects, parentContainer)
+projectFormLogic(allProjects, parentContainer, projectCounter)
 // The following sections ensure that mobile applications can access the sidebar
 
 
