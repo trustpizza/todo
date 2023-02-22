@@ -21,17 +21,20 @@ const counter = {
     },
     plus: function() {
         this.number += 1;
+        return this.number
     },
     count: function() {
         return this.number;
     }
 }
 
-let projectCounter = Object.create(counter);
+const projectCounter = Object.create(counter);
+projectCounter.init();
+
 let currentProject;
 let allProjects = [];
 if (allProjects.length === 0) {
-    let newProject = TodoProject(projectCounter.init(), 'Default Project', "A brief description about the scope of this project.");
+    let newProject = TodoProject(projectCounter.plus(), 'Default Project', "A brief description about the scope of this project.");
     allProjects.push(newProject);
     currentProject = newProject;
 } else {
