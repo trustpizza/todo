@@ -26,29 +26,28 @@ const counter = {
     count: function() {
         return this.number;
     }
-}
+};
 
 const projectCounter = Object.create(counter);
 projectCounter.init();
 
-let currentProject;
-let allProjects = [];
+let currentProject = []; // Now it is an array of 1 items
+let allProjects = []; 
 if (allProjects.length === 0) {
     let newProject = TodoProject(projectCounter.plus(), 'Default Project', "A brief description about the scope of this project.");
     allProjects.push(newProject);
-    currentProject = newProject;
+    currentProject[0] = newProject;
 } else {
     // Create ability to create new projects and/or switch to projects later
 }
 
 const parentContainer = document.getElementById('content');
 SidebarBuilder(parentContainer, allProjects);
-let display = ProjectDisplayFactory(parentContainer, currentProject);
+let display = ProjectDisplayFactory(parentContainer, currentProject[0]);
 parentContainer.addEventListener('click', () => {
-    projectCounter.plus();
-    console.log(projectCounter.count())
+    console.log(currentProject[0].getName())
 })
-projectFormLogic(allProjects, parentContainer, projectCounter)
+projectFormLogic(parentContainer)
 // The following sections ensure that mobile applications can access the sidebar
 
 //let sidebarPointer = document.getElementById('sidebar');
@@ -57,4 +56,4 @@ projectFormLogic(allProjects, parentContainer, projectCounter)
 import { appendTaskModal } from './taskFormLogic';
 // appendTaskModal(parentContainer);
 
-export { projectCounter as projectCounter }
+export { projectCounter, allProjects, currentProject };
