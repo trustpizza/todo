@@ -28,24 +28,38 @@ const counter = {
     }
 };
 
+const currentProjectObject = {
+    init: function() {
+        this.project;
+        return null;
+    },
+    set: function(newProject) {
+        this.project = newProject;
+        return this.project;
+    },
+    get: function() {
+        return this.project
+    }
+}
+
 const projectCounter = Object.create(counter);
 projectCounter.init();
 
-let currentProject = []; // Now it is an array of 1 items
+let currentProject = Object.create(currentProjectObject); // Now it is an array of 1 items
 let allProjects = []; 
 if (allProjects.length === 0) {
     let newProject = TodoProject(projectCounter.plus(), 'Default Project', "A brief description about the scope of this project.");
     allProjects.push(newProject);
-    currentProject[0] = newProject;
+    currentProject.set(newProject);
 } else {
     // Create ability to create new projects and/or switch to projects later
 }
 
 const parentContainer = document.getElementById('content');
 SidebarBuilder(parentContainer, allProjects);
-let display = ProjectDisplayFactory(parentContainer, currentProject[0]);
+let display = ProjectDisplayFactory(parentContainer, currentProject.get());
 parentContainer.addEventListener('click', () => {
-    console.log(currentProject[0].getName())
+    console.log(currentProject.get().getName())
 })
 projectFormLogic(parentContainer)
 // The following sections ensure that mobile applications can access the sidebar

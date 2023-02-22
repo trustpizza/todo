@@ -14,7 +14,7 @@ const projectFormLogic = (parentDiv) => {
 
         const newProject = TodoProject(projectCounter.plus(), projectTitle, projectDescription); // Need to pass projectCounter
         allProjects.push(newProject);
-        currentProject[0] = newProject
+        currentProject.set(newProject)
     })
 }
 
