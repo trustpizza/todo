@@ -15,11 +15,23 @@ import { projectFormLogic } from './projectFormLogic';
 // We need to create an array of all projects that starts as empty
 // Run a check to see if the all-Projets array is empty, if empty, create a new project using the counter
 // Set the currentProject to the first entry to allProjects (now the new projects)
-let projectCounter = 0;
+const counter = {
+    init: function() {
+        this.number = 0;
+    },
+    plus: function() {
+        this.number += 1;
+    },
+    count: function() {
+        return this.number;
+    }
+}
+
+let projectCounter = Object.create(counter);
 let currentProject;
 let allProjects = [];
 if (allProjects.length === 0) {
-    let newProject = TodoProject(projectCounter++, 'Default Project', "A brief description about the scope of this project.");
+    let newProject = TodoProject(projectCounter.init(), 'Default Project', "A brief description about the scope of this project.");
     allProjects.push(newProject);
     currentProject = newProject;
 } else {
@@ -29,15 +41,17 @@ if (allProjects.length === 0) {
 const parentContainer = document.getElementById('content');
 SidebarBuilder(parentContainer, allProjects);
 let display = ProjectDisplayFactory(parentContainer, currentProject);
-
+parentContainer.addEventListener('click', () => {
+    projectCounter.plus();
+    console.log(projectCounter.count())
+})
 projectFormLogic(allProjects, parentContainer, projectCounter)
 // The following sections ensure that mobile applications can access the sidebar
-
-
 
 //let sidebarPointer = document.getElementById('sidebar');
 //let collapsedSidebarPointer = document.getElementById('collapsed-sidebar');
 
-
 import { appendTaskModal } from './taskFormLogic';
 // appendTaskModal(parentContainer);
+
+export { projectCounter as projectCounter }
