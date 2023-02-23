@@ -5,7 +5,7 @@ import TodoProject from "./todoProject";
 import { SidebarBuilder } from './buildSidebar';
 import { ProjectDisplayFactory } from "./projectPage";
 import { projectFormLogic } from './projectFormLogic';
-import { test } from './updateSidebar';
+import { updateSidebar } from './updateSidebar';
 
 // Create a new project
 //
@@ -57,8 +57,6 @@ if (allProjects.length === 0) {
 
 const parentContainer = document.getElementById('content');
 SidebarBuilder(parentContainer, allProjects);
-
-test();
 
 let display = ProjectDisplayFactory(parentContainer, currentProject.get());
 parentContainer.addEventListener('click', () => {
