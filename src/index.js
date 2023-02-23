@@ -59,7 +59,7 @@ const parentContainer = document.getElementById('content');
 SidebarBuilder(parentContainer, allProjects);
 let display = ProjectDisplayFactory(parentContainer, currentProject.get());
 parentContainer.addEventListener('click', () => {
-    console.log(currentProject.get().getName())
+    // console.log(currentProject.get().getName())
 })
 projectFormLogic(parentContainer)
 // The following sections ensure that mobile applications can access the sidebar
