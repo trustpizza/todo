@@ -1,6 +1,5 @@
 import { TaskFormLogic } from "./taskFormLogic";
 import PlusSign from "./photos/plus.svg"
-import { currentProject } from ".";
 
 function ProjectDisplayFactory(project, parent) {
     const container = document.createElement("div");
@@ -127,10 +126,12 @@ const NewTaskButton = (target) => {
     const taskButtonControlls = () => {
         if (!buttonImage.classList.contains("rotate-45")) { 
             buttonImage.classList.add("rotate-45");
+            target.classList.remove('hidden');
             target.classList.remove('-translate-y-96')
+            console.log(target);
         } else {
             buttonImage.classList.remove("rotate-45");
-            target.classList.add('-translate-y-96')
+            target.classList.add('-translate-y-96', 'hidden')
         }
     };
 
