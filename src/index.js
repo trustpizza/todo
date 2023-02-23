@@ -48,7 +48,10 @@ let currentProject = Object.create(currentProjectObject); // Now it is an array 
 const allProjects = []; 
 if (allProjects.length === 0) {
     let newProject = TodoProject(projectCounter.plus(), 'Default Project', "A brief description about the scope of this project.");
+    let proj = TodoProject(projectCounter.plus(), 'second', 'asd;lfkjasd;flj');
+    
     allProjects.push(newProject);
+    allProjects.push(proj);
     currentProject.set(newProject);
 } else {
     // Create ability to create new projects and/or switch to projects later
@@ -57,18 +60,30 @@ if (allProjects.length === 0) {
 const parentContainer = document.getElementById('content');
 const sidebarDisplay = SidebarBuilder(parentContainer, allProjects);
 
-const display = ProjectDisplayFactory(parentContainer, currentProject.get());
+const displayProject = ProjectDisplayFactory(currentProject.get());
+
+
+parentContainer.appendChild(displayProject.setupDisplay())
+
 parentContainer.addEventListener('click', (e) => {
     let sidebar = sidebarDisplay.sidebar
     if (e.target !== sidebar && !sidebar.contains(e.target) && !sidebar.classList.contains('-translate-x-full') && e.target != collapsedSidebar && !collapsedSidebar.contains(e.target)) {
         sidebar.closeSidebar();
     }
+    reloadProjectDisplay();
 })
 projectFormLogic(parentContainer)
 // The following sections ensure that mobile applications can access the sidebar
+
+function reloadProjectDisplay() {
+    let projectDisplay = document.getElementById('projectDisplay');
+    displayProject.update(currentProject.get())
+    // console.log(displayProject.update(currentProject.get()))
+    // projectDisplay.parentNode.replaceChild(displayProject.update(currentProject.get()), projectDisplay);
+}
 
 //let sidebarPointer = document.getElementById('sidebar');
 //let collapsedSidebarPointer = document.getElementById('collapsed-sidebar');
 
 
-export { projectCounter, allProjects, parentContainer, currentProject, sidebarDisplay };
+export { projectCounter, allProjects, parentContainer, currentProject, sidebarDisplay, reloadProjectDisplay };

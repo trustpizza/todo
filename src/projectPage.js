@@ -1,28 +1,45 @@
 import { TaskFormLogic } from "./taskFormLogic";
 import PlusSign from "./photos/plus.svg"
 
-const ProjectDisplayFactory = (parent, project) => {
+function ProjectDisplayFactory(project, parent) {
     const container = document.createElement("div");
-    container.className = "container mx-auto my-10 mx-4 bg-white rounded-md flex flex-col"
-
-    const titleSection = TitleDispay(project);
-
+    let titleSection = TitleDisplay(project);
     const content = document.createElement('div');
-    content.id = "tasks-container";
-    content.className = "container mx-auto px-2 rounded flex flex-col items-center";   
-
     const tasksDiv = document.createElement('div');
-    tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col";
-    
-    const form = TaskFormLogic(project, tasksDiv);
-
+    let form = TaskFormLogic(project, tasksDiv);
     const newTaskButton = NewTaskButton(form);
-
     const tasks = project.getTodoTasks();
-
+    
     content.append(newTaskButton, form)
-    container.append(titleSection, content, tasksDiv);
-    parent.appendChild(container);
+    container.append(titleSection, content, tasksDiv); 
+
+    const setupDisplay = () => {
+        container.className = "container mx-auto my-10 mx-4 bg-white rounded-md flex flex-col"
+        container.id = 'projectDisplay';
+
+        content.id = "tasks-container";
+        content.className = "container mx-auto px-2 rounded flex flex-col items-center";   
+    
+        tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col";    
+        
+        return container;
+    };
+
+    
+    const update = (newProject) => {
+        const newTitleSection = TitleDisplay(newProject);
+        const newForm = TaskFormLogic(newProject, tasksDiv);
+
+        titleSection.parentNode.replaceChild(newTitleSection, titleSection);
+        form.parentNode.replaceChild(newForm, form);
+
+        titleSection = newTitleSection;
+        form = newForm;
+    }
+
+    
+
+    return { setupDisplay, update, container };
 }
 
 // From here below are helper functions!
@@ -74,7 +91,7 @@ const TaskDisplayFactory = (task) => {
     return taskDisplay;
 }
 
-const TitleDispay = (project) => {
+const TitleDisplay = (project) => {
     let titleSection = document.createElement('div');
     titleSection.className = "flex flex-col";
 
