@@ -125,7 +125,6 @@ const NewTaskButton = (target) => {
         if (!buttonImage.classList.contains("rotate-45")) { 
             buttonImage.classList.add("rotate-45");
             target.classList.remove('h-0', 'opacity-0', '-translate-y-96');
-            console.log(target);
         } else {
             buttonImage.classList.remove("rotate-45");
             target.classList.add('-translate-y-96', 'h-0', 'opacity-0')

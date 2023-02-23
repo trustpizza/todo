@@ -73,11 +73,6 @@ const TaskFormFactory = () => {
     innerFormDiv.append(title, description, priority)
 
     form.append(innerFormDiv, submit);
-    // form.appendChild(description);
-    // form.appendChild(duedateLabel);
-    //form.appendChild(duedate);
-    //form.appendChild(priority);
-    //form.appendChild(prioritySelections);
 
     // Append form to modal
     newContent.appendChild(form);
