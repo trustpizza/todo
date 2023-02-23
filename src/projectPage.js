@@ -66,8 +66,6 @@ const TaskDisplayFactory = (task) => {
 
     checkBox.addEventListener('click', () => {
         task.isComplete == true ? task.isComplete = false : task.isComplete = true;
-        
-        console.log(task);
         // I shoudl eventually turn this into a function that checks if the checkbox is checked
     });
 
@@ -126,12 +124,11 @@ const NewTaskButton = (target) => {
     const taskButtonControlls = () => {
         if (!buttonImage.classList.contains("rotate-45")) { 
             buttonImage.classList.add("rotate-45");
-            target.classList.remove('hidden');
-            target.classList.remove('-translate-y-96')
+            target.classList.remove('h-0', 'opacity-0', '-translate-y-96');
             console.log(target);
         } else {
             buttonImage.classList.remove("rotate-45");
-            target.classList.add('-translate-y-96', 'hidden')
+            target.classList.add('-translate-y-96', 'h-0', 'opacity-0')
         }
     };
 
