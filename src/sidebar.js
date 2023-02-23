@@ -1,6 +1,6 @@
 import ExclamationPoint from './photos/exclamation-thick.svg'
 import HamburgerMenu from './photos/menu.svg'
-import { allProjects } from '.';
+import { allProjects, currentProject } from '.';
 
 const sidebarList = document.createElement('ul');
 
@@ -45,7 +45,7 @@ const SidebarFactory = () => {
     return sidebar;    
 };
 
-const ListItemFactory = (title) => {
+const ListItemFactory = (project) => {
     let listItem = document.createElement('li');
     let link = document.createElement('a');
     link.className = "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700";
@@ -56,11 +56,15 @@ const ListItemFactory = (title) => {
 
     let listSpan = document.createElement('span');
     listSpan.className = "ml-3";
-    listSpan.textContent = title;
+    listSpan.textContent = project.getName();
 
     link.append(listImg, listSpan);
     listItem.appendChild(link);
 
+    link.addEventListener('click', () => {
+        currentProject.set(project);
+        console.log(currentProject.get().getName())
+    })
     return listItem;
 };
 
@@ -69,7 +73,7 @@ const updateSidebar = () => {
     sidebarList.innerHTML = null;
     sidebarList.appendChild(newProjectButton())
     for (const project of allProjects) {
-        sidebarList.appendChild(ListItemFactory(project.getName()))
+        sidebarList.appendChild(ListItemFactory(project))
     }
 };
 

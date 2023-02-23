@@ -23,6 +23,7 @@ const projectFormLogic = (parentDiv) => {
         const newProject = TodoProject(projectCounter.plus(), projectTitle, projectDescription); // Need to pass projectCounter
         allProjects.push(newProject);
         currentProject.set(newProject);
+        
         updateSidebar();
         hideProjectForm(projectFormWrapper)
     })
