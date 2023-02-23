@@ -5,7 +5,6 @@ import TodoProject from "./todoProject";
 import { SidebarBuilder } from './buildSidebar';
 import { ProjectDisplayFactory } from "./projectPage";
 import { projectFormLogic } from './projectFormLogic';
-import { updateSidebar } from './updateSidebar';
 
 // Create a new project
 //
