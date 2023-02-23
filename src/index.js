@@ -55,11 +55,14 @@ if (allProjects.length === 0) {
 }
 
 const parentContainer = document.getElementById('content');
-let sidebar = SidebarBuilder(parentContainer, allProjects);
+const sidebarDisplay = SidebarBuilder(parentContainer, allProjects);
 
-let display = ProjectDisplayFactory(parentContainer, currentProject.get());
-parentContainer.addEventListener('click', () => {
-    // console.log(currentProject.get().getName())
+const display = ProjectDisplayFactory(parentContainer, currentProject.get());
+parentContainer.addEventListener('click', (e) => {
+    let sidebar = sidebarDisplay.sidebar
+    if (e.target !== sidebar && !sidebar.contains(e.target) && !sidebar.classList.contains('-translate-x-full') && e.target != collapsedSidebar && !collapsedSidebar.contains(e.target)) {
+        sidebar.closeSidebar();
+    }
 })
 projectFormLogic(parentContainer)
 // The following sections ensure that mobile applications can access the sidebar
@@ -68,4 +71,4 @@ projectFormLogic(parentContainer)
 //let collapsedSidebarPointer = document.getElementById('collapsed-sidebar');
 
 
-export { projectCounter, allProjects, parentContainer, currentProject };
+export { projectCounter, allProjects, parentContainer, currentProject, sidebarDisplay };

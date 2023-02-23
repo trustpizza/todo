@@ -36,7 +36,7 @@ function SidebarBuilder(parent, projects) {
         }, 5)
     }
     
-    return { closeSidebar, openSidebar }
+    return { closeSidebar, openSidebar, sidebar }
 };
 
 export {SidebarBuilder};
