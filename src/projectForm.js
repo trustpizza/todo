@@ -1,5 +1,3 @@
-import createProject from "./todoProject";
-
 const projectForm = () => {
     // This will need a form for creating a new project
     // Projects have: Id, Title, Description

@@ -4,7 +4,6 @@ import './styles.css';
 import TodoProject from "./todoProject";
 import { SidebarBuilder } from './buildSidebar';
 import { ProjectDisplayFactory } from "./projectPage";
-import { projectForm } from './projectForm'; 
 import { projectFormLogic } from './projectFormLogic';
 
 // Create a new project

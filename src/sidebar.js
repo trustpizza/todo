@@ -1,6 +1,5 @@
 import ExclamationPoint from './photos/exclamation-thick.svg'
 import HamburgerMenu from './photos/menu.svg'
-import { projectForm } from './projectForm';
 
 const CollapsedSidebarFactory = () => {
     let collapsedSidebar = document.createElement('button');
@@ -34,6 +33,7 @@ const SidebarFactory = (projects) => {
     // Needs new sidebar item button!
     list.appendChild(newProjectButton())
 
+    // Create a function that updates the sidebar here!
     for (const project of projects) {
         list.appendChild(ListItemFactory(project.getName()))
     }
@@ -88,6 +88,10 @@ const newProjectButton = () => {
     return listItem;
 }
 
+function updateSidebar() {
+    console.log(SidebarFactory())
+}
+
 // Each time you click on a  
 
-export { SidebarFactory, CollapsedSidebarFactory };
+export { SidebarFactory, CollapsedSidebarFactory, updateSidebar };
