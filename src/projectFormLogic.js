@@ -8,19 +8,20 @@ const projectFormLogic = (parentDiv) => {
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         
-        let out = [];
+        let formInputs = {};
         const formData = new FormData(form)
         for (const pair of formData) {
-            out.push(pair);
+            formInputs[pair[0]] = pair[1];
         };
 
-        let projectTitle = 'Title'; // Placeholder
-        let projectDescription = 'Description'; // Placeholder
+        let projectTitle = formInputs.title; // Placeholder
+        let projectDescription = formInputs.description; // Placeholder
 
         const newProject = TodoProject(projectCounter.plus(), projectTitle, projectDescription); // Need to pass projectCounter
         allProjects.push(newProject);
         currentProject.set(newProject);
-        console.log(out);
+
+        
     })
 }
 
