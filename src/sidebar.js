@@ -1,5 +1,8 @@
 import ExclamationPoint from './photos/exclamation-thick.svg'
 import HamburgerMenu from './photos/menu.svg'
+import { updateSidebar } from './updateSidebar';
+
+const sidebarList = document.createElement('ul');
 
 const CollapsedSidebarFactory = () => {
     let collapsedSidebar = document.createElement('button');
@@ -27,18 +30,16 @@ const SidebarFactory = (projects) => {
     let sidebarContainer = document.createElement('div');
     sidebarContainer.className = "h-full px-3 py-4 overflow-y-auto bg-gray-200 dark:bg-gray-800";
 
-    let list = document.createElement('ul');
-    list.className = "space-y-2";
+    
+    sidebarList.className = "space-y-2";
 
     // Needs new sidebar item button!
-    list.appendChild(newProjectButton())
+    sidebarList.appendChild(newProjectButton())
 
     // Create a function that updates the sidebar here!
-    for (const project of projects) {
-        list.appendChild(ListItemFactory(project.getName()))
-    }
+    updateSidebar(projects, sidebarList);
 
-    sidebarContainer.appendChild(list);
+    sidebarContainer.appendChild(sidebarList);
     sidebar.appendChild(sidebarContainer);
     // Sidebar will eventually house other elements
     return sidebar;    
@@ -88,10 +89,7 @@ const newProjectButton = () => {
     return listItem;
 }
 
-function updateSidebar() {
-    console.log(SidebarFactory())
-}
-
+updateSidebar()
 // Each time you click on a  
 
-export { SidebarFactory, CollapsedSidebarFactory, updateSidebar };
+export { SidebarFactory, CollapsedSidebarFactory, sidebarList };

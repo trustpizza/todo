@@ -1,7 +1,6 @@
 import { projectForm } from "./projectForm";
 import TodoProject from "./todoProject";
-import { projectCounter, allProjects, currentProject } from ".";
-import { updateSidebar } from "./sidebar";
+import { projectCounter, allProjects, currentProject, sidebar } from ".";
 
 const projectFormLogic = (parentDiv) => {
     const projectFormWrapper = projectForm();

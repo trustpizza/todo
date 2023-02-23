@@ -5,6 +5,7 @@ import TodoProject from "./todoProject";
 import { SidebarBuilder } from './buildSidebar';
 import { ProjectDisplayFactory } from "./projectPage";
 import { projectFormLogic } from './projectFormLogic';
+import { test } from './updateSidebar';
 
 // Create a new project
 //
@@ -45,7 +46,7 @@ const projectCounter = Object.create(counter);
 projectCounter.init();
 
 let currentProject = Object.create(currentProjectObject); // Now it is an array of 1 items
-let allProjects = []; 
+const allProjects = []; 
 if (allProjects.length === 0) {
     let newProject = TodoProject(projectCounter.plus(), 'Default Project', "A brief description about the scope of this project.");
     allProjects.push(newProject);
@@ -56,6 +57,9 @@ if (allProjects.length === 0) {
 
 const parentContainer = document.getElementById('content');
 SidebarBuilder(parentContainer, allProjects);
+
+test();
+
 let display = ProjectDisplayFactory(parentContainer, currentProject.get());
 parentContainer.addEventListener('click', () => {
     // console.log(currentProject.get().getName())
@@ -66,7 +70,5 @@ projectFormLogic(parentContainer)
 //let sidebarPointer = document.getElementById('sidebar');
 //let collapsedSidebarPointer = document.getElementById('collapsed-sidebar');
 
-import { appendTaskModal } from './taskFormLogic';
-// appendTaskModal(parentContainer);
 
-export { projectCounter, allProjects, currentProject };
+export { projectCounter, allProjects, parentContainer, currentProject };
