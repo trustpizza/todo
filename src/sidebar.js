@@ -63,7 +63,6 @@ const ListItemFactory = (project) => {
 
     link.addEventListener('click', () => {
         currentProject.set(project);
-        console.log(currentProject.get().getName())
     })
     return listItem;
 };

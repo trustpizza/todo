@@ -55,7 +55,7 @@ if (allProjects.length === 0) {
 }
 
 const parentContainer = document.getElementById('content');
-SidebarBuilder(parentContainer, allProjects);
+let sidebar = SidebarBuilder(parentContainer, allProjects);
 
 let display = ProjectDisplayFactory(parentContainer, currentProject.get());
 parentContainer.addEventListener('click', () => {

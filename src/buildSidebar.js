@@ -1,6 +1,6 @@
 import { SidebarFactory, CollapsedSidebarFactory } from "./sidebar"
 
-const SidebarBuilder = (parent, projects) => {
+function SidebarBuilder(parent, projects) {
     const sidebar = SidebarFactory(projects);
     const collapsedSidebar = CollapsedSidebarFactory();
 
@@ -35,6 +35,8 @@ const SidebarBuilder = (parent, projects) => {
             sidebar.classList.remove('-translate-x-full');
         }, 5)
     }
+    
+    return { closeSidebar, openSidebar }
 };
 
 export {SidebarBuilder};
