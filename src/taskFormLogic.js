@@ -1,7 +1,7 @@
 import { TaskFormFactory } from './taskForm';
 import { displayTasks } from './projectPage';
 
-const TaskFormLogic = (currentProject, tasksContainer) => {
+const TaskFormLogic = (project, tasksContainer) => {
     let taskForm = TaskFormFactory();
     // Modal Submit Listener
 
@@ -15,9 +15,9 @@ const TaskFormLogic = (currentProject, tasksContainer) => {
         //let duedate = e.target[2].value;
         let priority = parseInt(e.target[2].value);
 
-        currentProject.createNewTask(title, description, priority);
+        project.createNewTask(title, description, priority);
         // Add a show-updated-form
-        displayTasks(currentProject.getTodoTasks(), tasksContainer)
+        displayTasks(project.getTodoTasks(), tasksContainer)
     });
 
     // Priority Div Logic to add event listeners to each selection

@@ -1,5 +1,6 @@
 import { TaskFormLogic } from "./taskFormLogic";
 import PlusSign from "./photos/plus.svg"
+import { currentProject } from ".";
 
 function ProjectDisplayFactory(project, parent) {
     const container = document.createElement("div");
@@ -16,8 +17,8 @@ function ProjectDisplayFactory(project, parent) {
     let titleSection = TitleDisplay(project);
 
     let form = TaskFormLogic(project, tasksDiv);
-    const newTaskButton = NewTaskButton(form);
-    const tasks = project.getTodoTasks();
+    let newTaskButton = NewTaskButton(form);
+    let tasks = project.getTodoTasks();
     
     content.append(newTaskButton, form)
     container.append(titleSection, content, tasksDiv); 
@@ -25,13 +26,21 @@ function ProjectDisplayFactory(project, parent) {
     const update = (newProject) => {
         const newTitleSection = TitleDisplay(newProject);
         const newForm = TaskFormLogic(newProject, tasksDiv);
+        const newerTaskButton = NewTaskButton(newForm);
+        const newTasks = newProject.getTodoTasks();
 
         titleSection.parentNode.replaceChild(newTitleSection, titleSection);
         form.parentNode.replaceChild(newForm, form);
+        newTaskButton.parentNode.replaceChild(newerTaskButton, newTaskButton);
 
         titleSection = newTitleSection;
         form = newForm;
+        newTaskButton = newerTaskButton;
+        tasks = newTasks;
+
+        displayTasks(tasks, tasksDiv);
     }
+
 
     return { update, container };
 }
@@ -39,6 +48,7 @@ function ProjectDisplayFactory(project, parent) {
 // From here below are helper functions!
 
 function displayTasks(tasks, parent) {
+    console.log(console.log(parent), tasks);
     parent.innerHTML = "";
     Object.keys(tasks).forEach( (key) => {
         const task = tasks[key];
