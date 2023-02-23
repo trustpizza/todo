@@ -3,28 +3,24 @@ import PlusSign from "./photos/plus.svg"
 
 function ProjectDisplayFactory(project, parent) {
     const container = document.createElement("div");
-    let titleSection = TitleDisplay(project);
+    container.className = "container mx-auto my-10 mx-4 bg-white rounded-md flex flex-col"
+    container.id = 'projectDisplay';
+
     const content = document.createElement('div');
+    content.id = "tasks-container";
+    content.className = "container mx-auto px-2 rounded flex flex-col items-center";   
+    
     const tasksDiv = document.createElement('div');
+    tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col";    
+
+    let titleSection = TitleDisplay(project);
+
     let form = TaskFormLogic(project, tasksDiv);
     const newTaskButton = NewTaskButton(form);
     const tasks = project.getTodoTasks();
     
     content.append(newTaskButton, form)
     container.append(titleSection, content, tasksDiv); 
-
-    const setupDisplay = () => {
-        container.className = "container mx-auto my-10 mx-4 bg-white rounded-md flex flex-col"
-        container.id = 'projectDisplay';
-
-        content.id = "tasks-container";
-        content.className = "container mx-auto px-2 rounded flex flex-col items-center";   
-    
-        tasksDiv.className = "container mx-auto px-2 w-full h-full rounded flex flex-col";    
-        
-        return container;
-    };
-
     
     const update = (newProject) => {
         const newTitleSection = TitleDisplay(newProject);
@@ -37,9 +33,7 @@ function ProjectDisplayFactory(project, parent) {
         form = newForm;
     }
 
-    
-
-    return { setupDisplay, update, container };
+    return { update, container };
 }
 
 // From here below are helper functions!

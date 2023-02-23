@@ -1,6 +1,6 @@
 import ExclamationPoint from './photos/exclamation-thick.svg'
 import HamburgerMenu from './photos/menu.svg'
-import { allProjects, currentProject } from '.';
+import { allProjects, currentProject, reloadProjectDisplay } from '.';
 
 const sidebarList = document.createElement('ul');
 
@@ -63,6 +63,7 @@ const ListItemFactory = (project) => {
 
     link.addEventListener('click', () => {
         currentProject.set(project);
+        reloadProjectDisplay();
     })
     return listItem;
 };

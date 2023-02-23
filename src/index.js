@@ -63,14 +63,14 @@ const sidebarDisplay = SidebarBuilder(parentContainer, allProjects);
 const displayProject = ProjectDisplayFactory(currentProject.get());
 
 
-parentContainer.appendChild(displayProject.setupDisplay())
+parentContainer.appendChild(displayProject.container)
 
 parentContainer.addEventListener('click', (e) => {
     let sidebar = sidebarDisplay.sidebar
     if (e.target !== sidebar && !sidebar.contains(e.target) && !sidebar.classList.contains('-translate-x-full') && e.target != collapsedSidebar && !collapsedSidebar.contains(e.target)) {
         sidebar.closeSidebar();
     }
-    reloadProjectDisplay();
+    // reloadProjectDisplay();
 })
 projectFormLogic(parentContainer)
 // The following sections ensure that mobile applications can access the sidebar
