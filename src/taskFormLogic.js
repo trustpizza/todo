@@ -16,7 +16,6 @@ const TaskFormLogic = (project, tasksContainer) => {
     // let duedate = e.target[2].value;
     const priority = parseInt(e.target[2].value);
 
-    console.log(project);
     project.createNewTask(title, description, priority);
 
     saveToLocalStorage();

@@ -51,8 +51,8 @@ function ProjectDisplayFactory(project) {
 // From here below are helper functions!
 
 function displayTasks(parent, project) {
-  console.log(project);
   const tasks = project.getTodoTasks();
+
   parent.innerHTML = "";
   Object.keys(tasks).forEach((key) => {
     const task = tasks[key];
@@ -63,49 +63,6 @@ function displayTasks(parent, project) {
 const TaskDisplayFactory = (task, project) => {
   const taskDisplay = document.createElement("div");
   taskDisplay.className = "flex mb-4 items-center w-80 self-center";
-
-  const checkButton = document.createElement("button");
-  checkButton.className =
-    "flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white ";
-  updateCheckButton();
-
-  checkButton.addEventListener("click", () => {
-    task.isComplete == true
-      ? (task.isComplete = false)
-      : (task.isComplete = true);
-
-    updateCheckButton();
-    saveToLocalStorage();
-  });
-
-  function updateCheckButton() {
-    if (task.isComplete == false) {
-      checkButton.textContent = "Not Done";
-      checkButton.classList.add(
-        "text-grey",
-        "border-gray-400",
-        "hover:bg-gray-500"
-      );
-      checkButton.classList.remove(
-        "text-green",
-        "border-green-300",
-        "hover:bg-green-500"
-      );
-    } else {
-      checkButton.textContent = "Done";
-      checkButton.classList.remove(
-        "text-grey",
-        "border-gray-400",
-        "hover:bg-gray-500"
-      );
-      checkButton.classList.add(
-        "text-green",
-        "border-green-300",
-        "hover:bg-green-500"
-      );
-    }
-  }
- 
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Remove";
@@ -136,6 +93,70 @@ const TaskDisplayFactory = (task, project) => {
   priority.textContent = `${task.priority}`;
   priority.className = "row-span-3 p-2";
 
+  const checkButton = document.createElement("button");
+  checkButton.className =
+    "flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white ";
+  updateCheckButton();
+  updateTaskText();
+
+  checkButton.addEventListener("click", () => {
+    task.isComplete == true
+      ? (task.isComplete = false)
+      : (task.isComplete = true);
+
+    updateCheckButton();
+    updateTaskText();
+    saveToLocalStorage();
+  });
+
+  function updateCheckButton() {
+    if (task.isComplete) {
+      checkButton.textContent = "Done";
+      checkButton.classList.remove(
+        "text-grey",
+        "border-gray-400",
+        "hover:bg-gray-500"
+      );
+      checkButton.classList.add(
+        "text-green",
+        "border-green-300",
+        "hover:bg-green-500"
+      );
+    } else {
+      checkButton.textContent = "Not Done";
+      checkButton.classList.add(
+        "text-grey",
+        "border-gray-400",
+        "hover:bg-gray-500"
+      );
+      checkButton.classList.remove(
+        "text-green",
+        "border-green-300",
+        "hover:bg-green-500"
+      );
+    }
+  }
+
+  function updateTaskText() {
+    const strikethrough = [title, description]
+
+    if (task.isComplete) {
+      for (const text of strikethrough) {
+        text.classList.add(
+          "text-green-400",
+          "line-through"
+        )
+      } 
+    } else {
+      for (const text of strikethrough) {
+        text.classList.remove(
+          "text-green-400",
+          "line-through"
+        )
+      }
+    }
+  }
+ 
   taskDisplay.append(sectionDiv, checkButton, deleteButton);
 
   return taskDisplay;
