@@ -24,6 +24,10 @@ const createProject = (
 
   const getTask = (key) => todoTasks[key];
 
+  const deleteTask = (id) => {
+    Reflect.deleteProperty(todoTasks, `${id}`);
+  };
+
   const getId = () => id;
 
   const getName = () => name;
@@ -40,6 +44,7 @@ const createProject = (
     getTask,
     getDesc,
     getCounter,
+    deleteTask
   };
 };
 

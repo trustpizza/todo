@@ -1,9 +1,9 @@
+import { update } from "lodash";
 import { TaskFormLogic } from "./taskFormLogic";
 import PlusSign from "./photos/plus.svg";
 import { saveToLocalStorage } from ".";
-import { update } from "lodash";
 
-function ProjectDisplayFactory(project, parent) {
+function ProjectDisplayFactory(project) {
   const container = document.createElement("div");
   container.className =
     "container mx-auto my-10 mx-4 bg-white rounded-md flex flex-col";
@@ -42,7 +42,7 @@ function ProjectDisplayFactory(project, parent) {
     newTaskButton = newerTaskButton;
     tasks = newTasks;
 
-    displayTasks(tasks, tasksDiv);
+    displayTasks(tasks, tasksDiv, project);
   };
 
   return { update, container };
@@ -50,53 +50,76 @@ function ProjectDisplayFactory(project, parent) {
 
 // From here below are helper functions!
 
-function displayTasks(tasks, parent) {
+function displayTasks(tasks, parent, project) {
   parent.innerHTML = "";
   Object.keys(tasks).forEach((key) => {
     const task = tasks[key];
-    parent.appendChild(TaskDisplayFactory(task));
+    parent.appendChild(TaskDisplayFactory(task, project));
   });
 }
 
-const TaskDisplayFactory = (task) => {
+const TaskDisplayFactory = (task, project) => {
   const taskDisplay = document.createElement("div");
   taskDisplay.className = "flex mb-4 items-center w-80 self-center";
 
-  const checkButton = document.createElement('button');
-  checkButton.className = "flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white "
+  const checkButton = document.createElement("button");
+  checkButton.className =
+    "flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white ";
   updateCheckButton();
 
   checkButton.addEventListener("click", () => {
     task.isComplete == true
       ? (task.isComplete = false)
       : (task.isComplete = true);
-    
+
     updateCheckButton();
     saveToLocalStorage();
   });
 
   function updateCheckButton() {
-    if (task.isComplete == false ) {
+    if (task.isComplete == false) {
       checkButton.textContent = "Not Done";
-      checkButton.classList.add("text-grey", "border-gray-400", "hover:bg-gray-500")
-      checkButton.classList.remove("text-green", "border-green-300", "hover:bg-green-500")
+      checkButton.classList.add(
+        "text-grey",
+        "border-gray-400",
+        "hover:bg-gray-500"
+      );
+      checkButton.classList.remove(
+        "text-green",
+        "border-green-300",
+        "hover:bg-green-500"
+      );
     } else {
-      checkButton.textContent = "Done"
-      checkButton.classList.remove("text-grey", "border-gray-400", "hover:bg-gray-500")
-      checkButton.classList.add("text-green", "border-green-300", "hover:bg-green-500")
+      checkButton.textContent = "Done";
+      checkButton.classList.remove(
+        "text-grey",
+        "border-gray-400",
+        "hover:bg-gray-500"
+      );
+      checkButton.classList.add(
+        "text-green",
+        "border-green-300",
+        "hover:bg-green-500"
+      );
     }
-    
   }
-
-  const deleteButton = document.createElement('button');
-  deleteButton.textContent = 'Remove'
-  deleteButton.className = "flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red-400 hover:text-white hover:bg-red-400"
-  deleteButton.addEventListener('click', () => {
-    // Delete task
-  })
-
+  const deleteTaskButton = (project) => {
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Remove";
+    deleteButton.className =
+      "flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red-400 hover:text-white hover:bg-red-400";
+    deleteButton.addEventListener("click", () => {
+      project.deleteTask(task);
+      saveToLocalStorage();
+    });
+  
+    return deleteButton;
+  }
+  const deleteButton = deleteTaskButton(project);
+  
   const sectionDiv = document.createElement("div");
-  sectionDiv.className = "flex gap-2 items-start justify-center flex-grow flex-col";
+  sectionDiv.className =
+    "flex gap-2 items-start justify-center flex-grow flex-col";
 
   const title = document.createElement("p");
   title.textContent = `${task.title}:`;
@@ -160,5 +183,7 @@ const NewTaskButton = (target) => {
 
   return newTaskButton;
 };
+
+
 
 export { ProjectDisplayFactory, displayTasks };
