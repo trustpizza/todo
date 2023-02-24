@@ -1,17 +1,20 @@
-import { TaskFormLogic } from './taskFormLogic';
-import PlusSign from './photos/plus.svg';
+import { TaskFormLogic } from "./taskFormLogic";
+import PlusSign from "./photos/plus.svg";
 
 function ProjectDisplayFactory(project, parent) {
-  const container = document.createElement('div');
-  container.className = 'container mx-auto my-10 mx-4 bg-white rounded-md flex flex-col';
-  container.id = 'projectDisplay';
+  const container = document.createElement("div");
+  container.className =
+    "container mx-auto my-10 mx-4 bg-white rounded-md flex flex-col";
+  container.id = "projectDisplay";
 
-  const content = document.createElement('div');
-  content.id = 'tasks-container';
-  content.className = 'container mx-auto px-2 rounded flex flex-col items-center';
+  const content = document.createElement("div");
+  content.id = "tasks-container";
+  content.className =
+    "container mx-auto px-2 rounded flex flex-col items-center";
 
-  const tasksDiv = document.createElement('div');
-  tasksDiv.className = 'container mx-auto px-2 w-full h-full rounded flex flex-col';
+  const tasksDiv = document.createElement("div");
+  tasksDiv.className =
+    "container mx-auto px-2 w-full h-full rounded flex flex-col";
 
   let titleSection = TitleDisplay(project);
 
@@ -46,7 +49,7 @@ function ProjectDisplayFactory(project, parent) {
 // From here below are helper functions!
 
 function displayTasks(tasks, parent) {
-  parent.innerHTML = '';
+  parent.innerHTML = "";
   Object.keys(tasks).forEach((key) => {
     const task = tasks[key];
     parent.appendChild(TaskDisplayFactory(task));
@@ -54,35 +57,39 @@ function displayTasks(tasks, parent) {
 }
 
 const TaskDisplayFactory = (task) => {
-  const taskDisplay = document.createElement('div');
-  taskDisplay.className = 'flex items-center justify-center gap-10';
+  const taskDisplay = document.createElement("div");
+  taskDisplay.className = "flex items-center justify-center gap-10";
 
-  const checkBox = document.createElement('input');
-  checkBox.setAttribute('type', 'checkbox');
-  checkBox.className = 'row-span-2 p-2 md:w-10 md:h-10 h-6 w-6';
-  if (task.isComplete) { checkBox.checked = true; }
+  const checkBox = document.createElement("input");
+  checkBox.setAttribute("type", "checkbox");
+  checkBox.className = "row-span-2 p-2 md:w-10 md:h-10 h-6 w-6";
+  if (task.isComplete) {
+    checkBox.checked = true;
+  }
 
-  checkBox.addEventListener('click', () => {
-    task.isComplete == true ? task.isComplete = false : task.isComplete = true;
+  checkBox.addEventListener("click", () => {
+    task.isComplete == true
+      ? (task.isComplete = false)
+      : (task.isComplete = true);
     // I shoudl eventually turn this into a function that checks if the checkbox is checked
   });
 
-  const sectionDiv = document.createElement('div');
-  sectionDiv.className = ' flex- flex-col p-2';
+  const sectionDiv = document.createElement("div");
+  sectionDiv.className = " flex- flex-col p-2";
 
-  const title = document.createElement('h2');
+  const title = document.createElement("h2");
   title.textContent = `${task.title}:`;
-  title.className = 'text-2xl';
+  title.className = "text-2xl";
 
-  const description = document.createElement('div');
+  const description = document.createElement("div");
   description.textContent = `${task.description}`;
-  description.className = 'text-slate-600';
+  description.className = "text-slate-600";
 
   sectionDiv.append(title, description);
 
-  const priority = document.createElement('div');
+  const priority = document.createElement("div");
   priority.textContent = `${task.priority}`;
-  priority.className = 'row-span-3 p-2';
+  priority.className = "row-span-3 p-2";
 
   taskDisplay.append(checkBox, sectionDiv, priority);
 
@@ -90,41 +97,43 @@ const TaskDisplayFactory = (task) => {
 };
 
 const TitleDisplay = (project) => {
-  const titleSection = document.createElement('div');
-  titleSection.className = 'flex flex-col';
+  const titleSection = document.createElement("div");
+  titleSection.className = "flex flex-col";
 
-  const title = document.createElement('h1');
+  const title = document.createElement("h1");
   title.textContent = project.getName();
-  title.className = 'text-4xl font-bold text-center';
+  title.className = "text-4xl font-bold text-center";
 
-  const projDescription = document.createElement('span');
+  const projDescription = document.createElement("span");
   projDescription.textContent = project.getDesc();
-  projDescription.className = 'text-slate-600 text-center';
+  projDescription.className = "text-slate-600 text-center";
 
   titleSection.append(title, projDescription);
   return titleSection;
 };
 
 const NewTaskButton = (target) => {
-  const newTaskButton = document.createElement('button');
+  const newTaskButton = document.createElement("button");
   const buttonImage = new Image();
   buttonImage.src = PlusSign;
-  buttonImage.className = 'h-10 w-10 p-0 fill-slate-50 transition ease-in-out duration-100';
+  buttonImage.className =
+    "h-10 w-10 p-0 fill-slate-50 transition ease-in-out duration-100";
 
   newTaskButton.append(buttonImage);
 
-  newTaskButton.className = 'bg-blue-500 hover:bg-blue-600 text-white font-bold rounded self-center';
-  newTaskButton.addEventListener('click', () => {
+  newTaskButton.className =
+    "bg-blue-500 hover:bg-blue-600 text-white font-bold rounded self-center";
+  newTaskButton.addEventListener("click", () => {
     taskButtonControlls();
   });
 
   const taskButtonControlls = () => {
-    if (!buttonImage.classList.contains('rotate-45')) {
-      buttonImage.classList.add('rotate-45');
-      target.classList.remove('h-0', 'opacity-0', '-translate-y-96');
+    if (!buttonImage.classList.contains("rotate-45")) {
+      buttonImage.classList.add("rotate-45");
+      target.classList.remove("h-0", "opacity-0", "-translate-y-96");
     } else {
-      buttonImage.classList.remove('rotate-45');
-      target.classList.add('-translate-y-96', 'h-0', 'opacity-0');
+      buttonImage.classList.remove("rotate-45");
+      target.classList.add("-translate-y-96", "h-0", "opacity-0");
     }
   };
 

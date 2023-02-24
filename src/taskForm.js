@@ -1,34 +1,37 @@
 const TaskFormFactory = () => {
-  const newTaskForm = document.createElement('div');
-  newTaskForm.id = 'newTaskForm';
-  newTaskForm.className = '-translate-y-96 h-0 opacity-0 transition duration-250 ease-in-out max-w-xs md:max-w-lg'; // Have newTaskForml hidden by default
+  const newTaskForm = document.createElement("div");
+  newTaskForm.id = "newTaskForm";
+  newTaskForm.className =
+    "-translate-y-96 h-0 opacity-0 transition duration-250 ease-in-out max-w-xs md:max-w-lg"; // Have newTaskForml hidden by default
 
-  const newContent = document.createElement('div');
-  newContent.className = 'flex items-center justify-center';
+  const newContent = document.createElement("div");
+  newContent.className = "flex items-center justify-center";
 
-  const newTaskTitle = document.createElement('h3');
-  newTaskTitle.textContent = 'New Task';
+  const newTaskTitle = document.createElement("h3");
+  newTaskTitle.textContent = "New Task";
 
-  const form = document.createElement('form');
-  form.id = 'new-task-form';
-  form.className = 'w-full max-w-sm flex flex-col gap-2';
+  const form = document.createElement("form");
+  form.id = "new-task-form";
+  form.className = "w-full max-w-sm flex flex-col gap-2";
 
-  const innerFormDiv = document.createElement('div');
-  innerFormDiv.className = 'flex items-center border-b border-teal-500 py-2';
+  const innerFormDiv = document.createElement("div");
+  innerFormDiv.className = "flex items-center border-b border-teal-500 py-2";
 
-  const title = document.createElement('input');
-  title.type = 'text';
-  title.placeholder = 'Title';
+  const title = document.createElement("input");
+  title.type = "text";
+  title.placeholder = "Title";
   title.required = true;
   title.maxLength = 20;
-  title.className = 'appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight';
+  title.className =
+    "appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight";
 
-  const description = document.createElement('input');
-  description.type = 'text';
-  description.placeholder = 'Description...';
+  const description = document.createElement("input");
+  description.type = "text";
+  description.placeholder = "Description...";
   description.required = false;
   description.maxLength = 240;
-  description.className = 'flex-grow appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight';
+  description.className =
+    "flex-grow appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight";
 
   /*
     let duedateLabel = document.createElement('label');
@@ -44,14 +47,15 @@ const TaskFormFactory = () => {
   //
   // I need an element which takes a value of either 1, 2 or 3
   // Options: dropdown menu, radio buttons(preference)
-  const priority = document.createElement('select');
-  priority.className = 'block appearance-none bg-white border border-gray-400 hover:border-gray-500 rounded px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline';
-  const defaultOption = document.createElement('option');
+  const priority = document.createElement("select");
+  priority.className =
+    "block appearance-none bg-white border border-gray-400 hover:border-gray-500 rounded px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline";
+  const defaultOption = document.createElement("option");
   defaultOption.disabled = true;
-  defaultOption.textContent = 'Priority';
+  defaultOption.textContent = "Priority";
   priority.options.add(defaultOption);
   for (let i = 0; i < 3; i++) {
-    const option = document.createElement('option');
+    const option = document.createElement("option");
     option.value = i + 1;
     option.textContent = i + 1;
     priority.options.add(option);
@@ -61,11 +65,12 @@ const TaskFormFactory = () => {
 
   // Now I need to create buttons/spans that correspond to those values?
 
-  const submit = document.createElement('input');
-  submit.type = 'submit';
-  submit.value = 'Add Task';
-  submit.className = 'flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 text-sm border-4 text-white py-1 px-2 rounded';
-  submit.id = 'submit';
+  const submit = document.createElement("input");
+  submit.type = "submit";
+  submit.value = "Add Task";
+  submit.className =
+    "flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 text-sm border-4 text-white py-1 px-2 rounded";
+  submit.id = "submit";
 
   //  Add all items to modal-form
   innerFormDiv.append(title, description, priority);

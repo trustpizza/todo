@@ -1,6 +1,12 @@
-import TodoTask from './todoTask';
+import TodoTask from "./todoTask";
 
-const createProject = (id, name, description, todoTasks = {}, counterVariable = 0) => {
+const createProject = (
+  id,
+  name,
+  description,
+  todoTasks = {},
+  counterVariable = 0
+) => {
   let counter = counterVariable;
 
   // Ability to create a new task
@@ -27,7 +33,13 @@ const createProject = (id, name, description, todoTasks = {}, counterVariable = 
   const getCounter = () => counter;
 
   return {
-    getTodoTasks, getId, getName, createNewTask, getTask, getDesc, getCounter,
+    getTodoTasks,
+    getId,
+    getName,
+    createNewTask,
+    getTask,
+    getDesc,
+    getCounter,
   };
 };
 

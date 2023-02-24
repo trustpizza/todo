@@ -1,8 +1,5 @@
-module.exports = {    
-  content: [
-    './dist/*.html',
-    './src/**/*.js'
-  ],
+module.exports = {
+  content: ["./dist/*.html", "./src/**/*.js"],
   theme: {
     extend: {},
   },
@@ -10,4 +7,4 @@ module.exports = {
     extend: {},
   },
   plugins: [],
-} 
+};

@@ -1,4 +1,4 @@
-import { SidebarFactory, CollapsedSidebarFactory } from './sidebar';
+import { SidebarFactory, CollapsedSidebarFactory } from "./sidebar";
 
 function SidebarBuilder(parent, projects) {
   const sidebar = SidebarFactory(projects);
@@ -6,33 +6,39 @@ function SidebarBuilder(parent, projects) {
 
   parent.append(sidebar, collapsedSidebar);
 
-  collapsedSidebar.addEventListener('click', (e) => {
-    if (sidebar.classList.contains('-translate-x-full')) {
+  collapsedSidebar.addEventListener("click", (e) => {
+    if (sidebar.classList.contains("-translate-x-full")) {
       openSidebar();
     }
   });
 
-  parent.addEventListener('click', (e) => {
-    if (e.target !== sidebar && !sidebar.contains(e.target) && !sidebar.classList.contains('-translate-x-full') && e.target != collapsedSidebar && !collapsedSidebar.contains(e.target)) {
+  parent.addEventListener("click", (e) => {
+    if (
+      e.target !== sidebar &&
+      !sidebar.contains(e.target) &&
+      !sidebar.classList.contains("-translate-x-full") &&
+      e.target != collapsedSidebar &&
+      !collapsedSidebar.contains(e.target)
+    ) {
       closeSidebar();
     }
     // This checks to make sure that neither the sidebar, any of the sidebar's children, the collapsedSidebar button NOr its children are the event Target
   });
 
   const closeSidebar = () => {
-    collapsedSidebar.classList.remove('hidden');
-    sidebar.classList.add('-translate-x-full');
+    collapsedSidebar.classList.remove("hidden");
+    sidebar.classList.add("-translate-x-full");
     setTimeout(() => {
-      sidebar.classList.add('hidden');
+      sidebar.classList.add("hidden");
     }, 5);
     // sidebar.classList.add('fixed');
   };
 
   const openSidebar = () => {
-    collapsedSidebar.classList.add('hidden');
-    sidebar.classList.remove('hidden');
+    collapsedSidebar.classList.add("hidden");
+    sidebar.classList.remove("hidden");
     setTimeout(() => {
-      sidebar.classList.remove('-translate-x-full');
+      sidebar.classList.remove("-translate-x-full");
     }, 5);
   };
 

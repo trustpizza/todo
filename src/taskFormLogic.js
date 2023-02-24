@@ -1,6 +1,6 @@
-import { TaskFormFactory } from './taskForm';
-import { displayTasks } from './projectPage';
-import { saveToLocalStorage } from '.';
+import { TaskFormFactory } from "./taskForm";
+import { displayTasks } from "./projectPage";
+import { saveToLocalStorage } from ".";
 
 const TaskFormLogic = (project, tasksContainer) => {
   const taskForm = TaskFormFactory();
@@ -8,7 +8,7 @@ const TaskFormLogic = (project, tasksContainer) => {
 
   const form = taskForm.firstChild.firstChild;
 
-  form.addEventListener('submit', (e) => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const title = e.target[0].value;
@@ -25,10 +25,10 @@ const TaskFormLogic = (project, tasksContainer) => {
   });
 
   // Priority Div Logic to add event listeners to each selection
-  for (const priority of document.getElementsByClassName('priority-div')) {
-    priority.addEventListener('click', (e) => {
+  for (const priority of document.getElementsByClassName("priority-div")) {
+    priority.addEventListener("click", (e) => {
       const value = e.target.id.slice(-1);
-      document.getElementsByClassName('hidden-priority')[0].value = value;
+      document.getElementsByClassName("hidden-priority")[0].value = value;
     });
   }
 

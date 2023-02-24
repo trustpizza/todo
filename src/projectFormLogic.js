@@ -1,16 +1,20 @@
-import { projectForm } from './projectForm';
-import TodoProject from './todoProject';
+import { projectForm } from "./projectForm";
+import TodoProject from "./todoProject";
 import {
-  projectCounter, allProjects, currentProject, sidebar, saveToLocalStorage,
-} from '.';
-import { updateSidebar } from './sidebar';
+  projectCounter,
+  allProjects,
+  currentProject,
+  sidebar,
+  saveToLocalStorage,
+} from ".";
+import { updateSidebar } from "./sidebar";
 
 const projectFormLogic = (parentDiv) => {
   const projectFormWrapper = projectForm();
   parentDiv.append(projectFormWrapper);
 
-  const form = document.getElementById('newProjectForm');
-  form.addEventListener('submit', (e) => {
+  const form = document.getElementById("newProjectForm");
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     const formInputs = {};
@@ -22,7 +26,11 @@ const projectFormLogic = (parentDiv) => {
     const projectTitle = formInputs.title; // Placeholder
     const projectDescription = formInputs.description; // Placeholder
 
-    const newProject = TodoProject(projectCounter.plus(), projectTitle, projectDescription); // Need to pass projectCounter
+    const newProject = TodoProject(
+      projectCounter.plus(),
+      projectTitle,
+      projectDescription
+    ); // Need to pass projectCounter
     allProjects.push(newProject);
     currentProject.set(newProject);
 
@@ -34,8 +42,8 @@ const projectFormLogic = (parentDiv) => {
 };
 
 function hideProjectForm(projectFormWrapper) {
-  projectFormWrapper.classList.remove('z-50');
-  projectFormWrapper.classList.add('hidden');
+  projectFormWrapper.classList.remove("z-50");
+  projectFormWrapper.classList.add("hidden");
 }
 
 export { projectFormLogic };

@@ -1,10 +1,10 @@
 // CSS Files
-import './styles.css';
+import "./styles.css";
 
-import TodoProject from './todoProject';
-import { SidebarBuilder } from './buildSidebar';
-import { ProjectDisplayFactory } from './projectPage';
-import { projectFormLogic } from './projectFormLogic';
+import TodoProject from "./todoProject";
+import { SidebarBuilder } from "./buildSidebar";
+import { ProjectDisplayFactory } from "./projectPage";
+import { projectFormLogic } from "./projectFormLogic";
 
 const counter = {
   init() {
@@ -37,22 +37,32 @@ const projectCounter = Object.create(counter);
 projectCounter.init();
 
 const currentProject = Object.create(currentProjectObject); // Now it is an array of 1 items
-let allProjects = JSON.parse(localStorage.getItem('projects') || '[]');
+let allProjects = JSON.parse(localStorage.getItem("projects") || "[]");
 
 if (allProjects.length === 0) {
-  const newProject = TodoProject(projectCounter.plus(), 'Default Project', 'A brief description about the scope of this project.');
+  const newProject = TodoProject(
+    projectCounter.plus(),
+    "Default Project",
+    "A brief description about the scope of this project."
+  );
 
   allProjects.push(newProject);
   currentProject.set(newProject);
 } else {
   allProjects = allProjects.map((project) => {
-    const newProject = TodoProject(projectCounter.plus(), project.name, project.description, project.tasks, project.counter);
+    const newProject = TodoProject(
+      projectCounter.plus(),
+      project.name,
+      project.description,
+      project.tasks,
+      project.counter
+    );
     return newProject;
   });
   currentProject.set(allProjects[0]);
 }
 
-const parentContainer = document.getElementById('content');
+const parentContainer = document.getElementById("content");
 const sidebarDisplay = SidebarBuilder(parentContainer, allProjects);
 
 const displayProject = ProjectDisplayFactory(currentProject.get());
@@ -60,9 +70,15 @@ reloadProjectDisplay();
 
 parentContainer.appendChild(displayProject.container);
 
-parentContainer.addEventListener('click', (e) => {
+parentContainer.addEventListener("click", (e) => {
   const { sidebar } = sidebarDisplay;
-  if (e.target !== sidebar && !sidebar.contains(e.target) && !sidebar.classList.contains('-translate-x-full') && e.target != collapsedSidebar && !collapsedSidebar.contains(e.target)) {
+  if (
+    e.target !== sidebar &&
+    !sidebar.contains(e.target) &&
+    !sidebar.classList.contains("-translate-x-full") &&
+    e.target != collapsedSidebar &&
+    !collapsedSidebar.contains(e.target)
+  ) {
     sidebar.closeSidebar();
   }
   // reloadProjectDisplay();
@@ -72,7 +88,7 @@ projectFormLogic(parentContainer);
 // The following sections ensure that mobile applications can access the sidebar
 
 function reloadProjectDisplay() {
-  const projectDisplay = document.getElementById('projectDisplay');
+  const projectDisplay = document.getElementById("projectDisplay");
   displayProject.update(currentProject.get());
 }
 
@@ -87,12 +103,18 @@ function saveToLocalStorage() {
     };
     projects.push(projObj);
   }
-  localStorage.setItem('projects', JSON.stringify(projects));
+  localStorage.setItem("projects", JSON.stringify(projects));
 }
 
 // let sidebarPointer = document.getElementById('sidebar');
 // let collapsedSidebarPointer = document.getElementById('collapsed-sidebar');
 
 export {
-  projectCounter, allProjects, parentContainer, currentProject, sidebarDisplay, reloadProjectDisplay, saveToLocalStorage,
+  projectCounter,
+  allProjects,
+  parentContainer,
+  currentProject,
+  sidebarDisplay,
+  reloadProjectDisplay,
+  saveToLocalStorage,
 };
