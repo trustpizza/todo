@@ -1,5 +1,7 @@
 import { TaskFormLogic } from "./taskFormLogic";
 import PlusSign from "./photos/plus.svg";
+import { saveToLocalStorage } from ".";
+import { update } from "lodash";
 
 function ProjectDisplayFactory(project, parent) {
   const container = document.createElement("div");
@@ -58,32 +60,45 @@ function displayTasks(tasks, parent) {
 
 const TaskDisplayFactory = (task) => {
   const taskDisplay = document.createElement("div");
-  taskDisplay.className = "flex items-center justify-center gap-10";
+  taskDisplay.className = "flex mb-4 items-center";
 
-  const checkBox = document.createElement("input");
-  checkBox.setAttribute("type", "checkbox");
-  checkBox.className = "row-span-2 p-2 md:w-10 md:h-10 h-6 w-6";
-  if (task.isComplete) {
-    checkBox.checked = true;
-  }
+  const checkButton = document.createElement('button');
+  checkButton.className = "flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white "
+  updateCheckButton();
 
-  checkBox.addEventListener("click", () => {
+  checkButton.addEventListener("click", () => {
     task.isComplete == true
       ? (task.isComplete = false)
       : (task.isComplete = true);
-    // I shoudl eventually turn this into a function that checks if the checkbox is checked
+    
+    updateCheckButton();
+    saveToLocalStorage();
   });
 
-  const sectionDiv = document.createElement("div");
-  sectionDiv.className = " flex- flex-col p-2";
+  function updateCheckButton() {
+    if (task.isComplete == false ) {
+      checkButton.textContent = "Not Done";
+      checkButton.classList.add("text-grey", "border-gray", "hover:bg-gray")
+      checkButton.classList.remove("text-green", "border-green", "hover:bg-green")
+    } else {
+      checkButton.textContent = "Done"
+      checkButton.classList.remove("text-grey", "border-gray", "hover:bg-gray")
+      checkButton.classList.add("text-green", "border-green", "hover:bg-green")
+    }
+    
+  }
 
-  const title = document.createElement("h2");
+  const sectionDiv = document.createElement("div");
+  sectionDiv.className = "flex mb-4 items-center flex-grow";
+
+  const title = document.createElement("p");
   title.textContent = `${task.title}:`;
   title.className = "text-2xl";
 
   const description = document.createElement("div");
   description.textContent = `${task.description}`;
-  description.className = "text-slate-600";
+  description.className = "flex-grow";
+  console.log(description)
 
   sectionDiv.append(title, description);
 
@@ -91,7 +106,7 @@ const TaskDisplayFactory = (task) => {
   priority.textContent = `${task.priority}`;
   priority.className = "row-span-3 p-2";
 
-  taskDisplay.append(checkBox, sectionDiv, priority);
+  taskDisplay.append(checkButton, sectionDiv, priority);
 
   return taskDisplay;
 };
