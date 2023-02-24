@@ -73,8 +73,6 @@ projectFormLogic(parentContainer)
 function reloadProjectDisplay() {
     let projectDisplay = document.getElementById('projectDisplay');
     displayProject.update(currentProject.get())
-    // console.log(displayProject.update(currentProject.get()))
-    // projectDisplay.parentNode.replaceChild(displayProject.update(currentProject.get()), projectDisplay);
 }
 
 function saveToLocalStorage() {

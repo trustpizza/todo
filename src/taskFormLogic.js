@@ -1,5 +1,6 @@
 import { TaskFormFactory } from './taskForm';
 import { displayTasks } from './projectPage';
+import { saveToLocalStorage } from '.';
 
 const TaskFormLogic = (project, tasksContainer) => {
     let taskForm = TaskFormFactory();
@@ -12,10 +13,12 @@ const TaskFormLogic = (project, tasksContainer) => {
 
         let title = e.target[0].value;
         let description = e.target[1].value;
-        //let duedate = e.target[2].value;
+        //let duedate = e.target[2].value;  
         let priority = parseInt(e.target[2].value);
 
         project.createNewTask(title, description, priority);
+        saveToLocalStorage();
+
         // Add a show-updated-form
         displayTasks(project.getTodoTasks(), tasksContainer)
     });
