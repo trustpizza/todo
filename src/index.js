@@ -6,14 +6,6 @@ import { SidebarBuilder } from './buildSidebar';
 import { ProjectDisplayFactory } from "./projectPage";
 import { projectFormLogic } from './projectFormLogic';
 
-// Create a new project
-//
-// Psuedocode
-// we need a counter variable to count how many projects there are
-// We need a currentProject variable that is undefined
-// We need to create an array of all projects that starts as empty
-// Run a check to see if the all-Projets array is empty, if empty, create a new project using the counter
-// Set the currentProject to the first entry to allProjects (now the new projects)
 const counter = {
     init: function() {
         this.number = 0;
@@ -45,16 +37,19 @@ const projectCounter = Object.create(counter);
 projectCounter.init();
 
 let currentProject = Object.create(currentProjectObject); // Now it is an array of 1 items
-const allProjects = []; 
+let allProjects = JSON.parse(localStorage.getItem('projects') || '[]')
+
 if (allProjects.length === 0) {
     let newProject = TodoProject(projectCounter.plus(), 'Default Project', "A brief description about the scope of this project.");
-    let proj = TodoProject(projectCounter.plus(), 'second', 'asd;lfkjasd;flj');
-    
+
     allProjects.push(newProject);
-    allProjects.push(proj);
     currentProject.set(newProject);
 } else {
-    // Create ability to create new projects and/or switch to projects later
+    allProjects = allProjects.map(project => {
+        const newProject = TodoProject(projectCounter.plus(), project.name, project.description, project.tasks)
+        return newProject
+    })
+    currentProject.set(allProjects[0]);
 }
 
 const parentContainer = document.getElementById('content');
@@ -82,8 +77,24 @@ function reloadProjectDisplay() {
     // projectDisplay.parentNode.replaceChild(displayProject.update(currentProject.get()), projectDisplay);
 }
 
+function saveToLocalStorage() {
+    let projects = []
+    for (const project of allProjects) {
+        const projObj = {
+            counter: project.getCounter(),
+            description: project.getDesc(),
+            name: project.getName(),
+            tasks: project.getTodoTasks()
+        }
+        projects.push(projObj)
+    }
+    localStorage.setItem('projects', JSON.stringify(projects));
+
+}
+
+
 //let sidebarPointer = document.getElementById('sidebar');
 //let collapsedSidebarPointer = document.getElementById('collapsed-sidebar');
 
 
-export { projectCounter, allProjects, parentContainer, currentProject, sidebarDisplay, reloadProjectDisplay };
+export { projectCounter, allProjects, parentContainer, currentProject, sidebarDisplay, reloadProjectDisplay, saveToLocalStorage };

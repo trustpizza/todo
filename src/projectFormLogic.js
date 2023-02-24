@@ -1,6 +1,6 @@
 import { projectForm } from "./projectForm";
 import TodoProject from "./todoProject";
-import { projectCounter, allProjects, currentProject, sidebar } from ".";
+import { projectCounter, allProjects, currentProject, sidebar, saveToLocalStorage } from ".";
 import { updateSidebar } from "./sidebar";
 
 const projectFormLogic = (parentDiv) => {
@@ -25,6 +25,8 @@ const projectFormLogic = (parentDiv) => {
         currentProject.set(newProject);
 
         updateSidebar();
+        saveToLocalStorage();
+
         hideProjectForm(projectFormWrapper)
     })
 }
