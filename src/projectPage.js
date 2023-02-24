@@ -47,7 +47,6 @@ function ProjectDisplayFactory(project, parent) {
 // From here below are helper functions!
 
 function displayTasks(tasks, parent) {
-    console.log(console.log(parent), tasks);
     parent.innerHTML = "";
     Object.keys(tasks).forEach( (key) => {
         const task = tasks[key];
@@ -88,7 +87,7 @@ const TaskDisplayFactory = (task) => {
 
 
     taskDisplay.append(checkBox, sectionDiv, priority);
-    console.log(taskDisplay)
+
     return taskDisplay;
 }
 

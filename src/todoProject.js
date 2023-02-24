@@ -1,6 +1,4 @@
 import TodoTask from "./todoTask";
-import { saveToLocalStorage } from '.';
-
 
 const createProject = (id, name, description, todoTasks = {}, counterVariable = 0) => {
     let counter = counterVariable;

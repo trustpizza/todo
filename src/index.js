@@ -56,7 +56,7 @@ const parentContainer = document.getElementById('content');
 const sidebarDisplay = SidebarBuilder(parentContainer, allProjects);
 
 const displayProject = ProjectDisplayFactory(currentProject.get());
-
+reloadProjectDisplay();
 
 parentContainer.appendChild(displayProject.container)
 

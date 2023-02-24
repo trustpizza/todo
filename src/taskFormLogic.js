@@ -8,8 +8,6 @@ const TaskFormLogic = (project, tasksContainer) => {
 
     let form = taskForm.firstChild.firstChild;
 
-    console.log(project.getTodoTasks());
-    
     form.addEventListener('submit', (e) => {
         e.preventDefault();
 
