@@ -1,39 +1,41 @@
-import { projectForm } from "./projectForm";
-import TodoProject from "./todoProject";
-import { projectCounter, allProjects, currentProject, sidebar, saveToLocalStorage } from ".";
-import { updateSidebar } from "./sidebar";
+import { projectForm } from './projectForm';
+import TodoProject from './todoProject';
+import {
+  projectCounter, allProjects, currentProject, sidebar, saveToLocalStorage,
+} from '.';
+import { updateSidebar } from './sidebar';
 
 const projectFormLogic = (parentDiv) => {
-    const projectFormWrapper = projectForm();
-    parentDiv.append(projectFormWrapper);
+  const projectFormWrapper = projectForm();
+  parentDiv.append(projectFormWrapper);
 
-    const form = document.getElementById('newProjectForm');
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        let formInputs = {};
-        const formData = new FormData(form)
-        for (const pair of formData) {
-            formInputs[pair[0]] = pair[1];
-        };
+  const form = document.getElementById('newProjectForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-        let projectTitle = formInputs.title; // Placeholder
-        let projectDescription = formInputs.description; // Placeholder
+    const formInputs = {};
+    const formData = new FormData(form);
+    for (const pair of formData) {
+      formInputs[pair[0]] = pair[1];
+    }
 
-        const newProject = TodoProject(projectCounter.plus(), projectTitle, projectDescription); // Need to pass projectCounter
-        allProjects.push(newProject);
-        currentProject.set(newProject);
+    const projectTitle = formInputs.title; // Placeholder
+    const projectDescription = formInputs.description; // Placeholder
 
-        updateSidebar();
-        saveToLocalStorage();
+    const newProject = TodoProject(projectCounter.plus(), projectTitle, projectDescription); // Need to pass projectCounter
+    allProjects.push(newProject);
+    currentProject.set(newProject);
 
-        hideProjectForm(projectFormWrapper)
-    })
-}
+    updateSidebar();
+    saveToLocalStorage();
+
+    hideProjectForm(projectFormWrapper);
+  });
+};
 
 function hideProjectForm(projectFormWrapper) {
-    projectFormWrapper.classList.remove('z-50');
-    projectFormWrapper.classList.add('hidden')
+  projectFormWrapper.classList.remove('z-50');
+  projectFormWrapper.classList.add('hidden');
 }
 
-export { projectFormLogic } 
+export { projectFormLogic };

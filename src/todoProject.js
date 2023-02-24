@@ -1,45 +1,34 @@
-import TodoTask from "./todoTask";
+import TodoTask from './todoTask';
 
 const createProject = (id, name, description, todoTasks = {}, counterVariable = 0) => {
-    let counter = counterVariable;
+  let counter = counterVariable;
 
-    // Ability to create a new task
-   
+  // Ability to create a new task
 
-    const inputTask = (task) => {
-        todoTasks[task.id] = task
-    }
+  const inputTask = (task) => {
+    todoTasks[task.id] = task;
+  };
 
-    const createNewTask = (title, description, duedate, priority) => {
-        let newTask = TodoTask(counter++, title, description, duedate, priority)
-        inputTask(newTask);
-    };
-    
-    const getTodoTasks = () => {
-        return todoTasks;
-    };
+  const createNewTask = (title, description, duedate, priority) => {
+    const newTask = TodoTask(counter++, title, description, duedate, priority);
+    inputTask(newTask);
+  };
 
-    const getTask = (key) => {
-        return todoTasks[key];
-    }
-    
-    const getId = () => {
-        return id;
-    }
+  const getTodoTasks = () => todoTasks;
 
-    const getName = () => {
-        return name;
-    }
+  const getTask = (key) => todoTasks[key];
 
-    const getDesc = () => {
-        return description
-    }
+  const getId = () => id;
 
-    const getCounter = () => {
-        return counter;
-    }
+  const getName = () => name;
 
-    return { getTodoTasks, getId, getName, createNewTask, getTask , getDesc, getCounter };
+  const getDesc = () => description;
+
+  const getCounter = () => counter;
+
+  return {
+    getTodoTasks, getId, getName, createNewTask, getTask, getDesc, getCounter,
+  };
 };
 
 export default createProject;
