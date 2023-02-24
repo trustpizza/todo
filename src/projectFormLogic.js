@@ -16,7 +16,7 @@ const projectFormLogic = (parentDiv) => {
   const form = document.getElementById("newProjectForm");
   form.addEventListener("submit", (e) => {
     e.preventDefault();
-
+    
     const formInputs = {};
     const formData = new FormData(form);
     for (const pair of formData) {

@@ -1,7 +1,7 @@
 import { update } from "lodash";
 import { TaskFormLogic } from "./taskFormLogic";
 import PlusSign from "./photos/plus.svg";
-import { saveToLocalStorage } from ".";
+import { currentProject, reloadProjectDisplay, saveToLocalStorage } from ".";
 
 function ProjectDisplayFactory(project) {
   const container = document.createElement("div");
@@ -42,7 +42,7 @@ function ProjectDisplayFactory(project) {
     newTaskButton = newerTaskButton;
     tasks = newTasks;
 
-    displayTasks(tasks, tasksDiv, project);
+    displayTasks(tasksDiv, project);
   };
 
   return { update, container };
@@ -50,7 +50,9 @@ function ProjectDisplayFactory(project) {
 
 // From here below are helper functions!
 
-function displayTasks(tasks, parent, project) {
+function displayTasks(parent, project) {
+  console.log(project);
+  const tasks = project.getTodoTasks();
   parent.innerHTML = "";
   Object.keys(tasks).forEach((key) => {
     const task = tasks[key];
@@ -103,19 +105,18 @@ const TaskDisplayFactory = (task, project) => {
       );
     }
   }
-  const deleteTaskButton = (project) => {
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Remove";
-    deleteButton.className =
-      "flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red-400 hover:text-white hover:bg-red-400";
-    deleteButton.addEventListener("click", () => {
-      project.deleteTask(task);
-      saveToLocalStorage();
-    });
-  
-    return deleteButton;
-  }
-  const deleteButton = deleteTaskButton(project);
+ 
+
+  const deleteButton = document.createElement("button");
+  deleteButton.textContent = "Remove";
+  deleteButton.className =
+    "flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red-400 hover:text-white hover:bg-red-400";
+  deleteButton.addEventListener("click", () => {
+    project.deleteTask(task.id);
+    saveToLocalStorage();
+    reloadProjectDisplay();
+  });
+
   
   const sectionDiv = document.createElement("div");
   sectionDiv.className =

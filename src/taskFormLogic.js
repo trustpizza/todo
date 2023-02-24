@@ -16,12 +16,13 @@ const TaskFormLogic = (project, tasksContainer) => {
     // let duedate = e.target[2].value;
     const priority = parseInt(e.target[2].value);
 
+    console.log(project);
     project.createNewTask(title, description, priority);
 
     saveToLocalStorage();
 
     // Add a show-updated-form
-    displayTasks(project.getTodoTasks(), tasksContainer);
+    displayTasks(tasksContainer, project);
   });
 
   // Priority Div Logic to add event listeners to each selection
