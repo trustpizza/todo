@@ -1,4 +1,3 @@
-import { update } from "lodash";
 import { TaskFormLogic } from "./taskFormLogic";
 import PlusSign from "./photos/plus.svg";
 import { currentProject, reloadProjectDisplay, saveToLocalStorage } from ".";
@@ -42,7 +41,7 @@ function ProjectDisplayFactory(project) {
     newTaskButton = newerTaskButton;
     tasks = newTasks;
 
-    displayTasks(tasksDiv, project);
+    displayTasks(tasksDiv);
   };
 
   return { update, container };
@@ -50,7 +49,8 @@ function ProjectDisplayFactory(project) {
 
 // From here below are helper functions!
 
-function displayTasks(parent, project) {
+function displayTasks(parent) {
+  const project = currentProject.get();
   const tasks = project.getTodoTasks();
 
   parent.innerHTML = "";
@@ -62,7 +62,7 @@ function displayTasks(parent, project) {
 
 const TaskDisplayFactory = (task, project) => {
   const taskDisplay = document.createElement("div");
-  taskDisplay.className = "flex mb-4 items-center w-80 self-center";
+  taskDisplay.className = "flex mb-4 items-center w-full self-center px-10";
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Remove";
@@ -80,14 +80,14 @@ const TaskDisplayFactory = (task, project) => {
     "flex gap-2 items-start justify-center flex-grow flex-col";
 
   const title = document.createElement("p");
-  title.textContent = `${task.title}:`;
-  title.className = "text-2xl";
+  title.textContent = `${task.title}`;
+  title.className = "text-2xl break-all";
 
   const description = document.createElement("div");
   description.textContent = `${task.description}`;
   description.className = "flex-grow break-all";
 
-  sectionDiv.append(title, description);
+  sectionDiv.append(title);
 
   const priority = document.createElement("div");
   priority.textContent = `${task.priority}`;
