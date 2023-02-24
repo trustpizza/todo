@@ -60,7 +60,7 @@ function displayTasks(tasks, parent) {
 
 const TaskDisplayFactory = (task) => {
   const taskDisplay = document.createElement("div");
-  taskDisplay.className = "flex mb-4 items-center";
+  taskDisplay.className = "flex mb-4 items-center w-80 self-center";
 
   const checkButton = document.createElement('button');
   checkButton.className = "flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white "
@@ -78,18 +78,25 @@ const TaskDisplayFactory = (task) => {
   function updateCheckButton() {
     if (task.isComplete == false ) {
       checkButton.textContent = "Not Done";
-      checkButton.classList.add("text-grey", "border-gray", "hover:bg-gray")
-      checkButton.classList.remove("text-green", "border-green", "hover:bg-green")
+      checkButton.classList.add("text-grey", "border-gray-400", "hover:bg-gray-500")
+      checkButton.classList.remove("text-green", "border-green-300", "hover:bg-green-500")
     } else {
       checkButton.textContent = "Done"
-      checkButton.classList.remove("text-grey", "border-gray", "hover:bg-gray")
-      checkButton.classList.add("text-green", "border-green", "hover:bg-green")
+      checkButton.classList.remove("text-grey", "border-gray-400", "hover:bg-gray-500")
+      checkButton.classList.add("text-green", "border-green-300", "hover:bg-green-500")
     }
     
   }
 
+  const deleteButton = document.createElement('button');
+  deleteButton.textContent = 'Remove'
+  deleteButton.className = "flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red-400 hover:text-white hover:bg-red-400"
+  deleteButton.addEventListener('click', () => {
+    // Delete task
+  })
+
   const sectionDiv = document.createElement("div");
-  sectionDiv.className = "flex mb-4 items-center flex-grow";
+  sectionDiv.className = "flex gap-2 items-start justify-center flex-grow flex-col";
 
   const title = document.createElement("p");
   title.textContent = `${task.title}:`;
@@ -97,8 +104,7 @@ const TaskDisplayFactory = (task) => {
 
   const description = document.createElement("div");
   description.textContent = `${task.description}`;
-  description.className = "flex-grow";
-  console.log(description)
+  description.className = "flex-grow break-all";
 
   sectionDiv.append(title, description);
 
@@ -106,7 +112,7 @@ const TaskDisplayFactory = (task) => {
   priority.textContent = `${task.priority}`;
   priority.className = "row-span-3 p-2";
 
-  taskDisplay.append(checkButton, sectionDiv, priority);
+  taskDisplay.append(sectionDiv, checkButton, deleteButton);
 
   return taskDisplay;
 };
