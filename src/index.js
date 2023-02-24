@@ -46,7 +46,7 @@ if (allProjects.length === 0) {
     currentProject.set(newProject);
 } else {
     allProjects = allProjects.map(project => {
-        const newProject = TodoProject(projectCounter.plus(), project.name, project.description, project.tasks)
+        const newProject = TodoProject(projectCounter.plus(), project.name, project.description, project.tasks, project.counter)
         return newProject
     })
     currentProject.set(allProjects[0]);
@@ -67,6 +67,7 @@ parentContainer.addEventListener('click', (e) => {
     }
     // reloadProjectDisplay();
 })
+
 projectFormLogic(parentContainer)
 // The following sections ensure that mobile applications can access the sidebar
 

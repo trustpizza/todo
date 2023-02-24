@@ -74,6 +74,7 @@ const TaskFormFactory = () => {
 
     form.append(innerFormDiv, submit);
 
+
     // Append form to modal
     newContent.appendChild(form);
     //newContent.appendChild(submit);

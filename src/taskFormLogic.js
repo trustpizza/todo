@@ -6,7 +6,9 @@ const TaskFormLogic = (project, tasksContainer) => {
     let taskForm = TaskFormFactory();
     // Modal Submit Listener
 
-    let form = taskForm.firstChild.firstChild
+    let form = taskForm.firstChild.firstChild;
+
+    console.log(project.getTodoTasks());
     
     form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -17,6 +19,7 @@ const TaskFormLogic = (project, tasksContainer) => {
         let priority = parseInt(e.target[2].value);
 
         project.createNewTask(title, description, priority);
+
         saveToLocalStorage();
 
         // Add a show-updated-form
@@ -30,6 +33,7 @@ const TaskFormLogic = (project, tasksContainer) => {
             document.getElementsByClassName('hidden-priority')[0].value = value;
         })
     };
+
     return taskForm;
 }
 

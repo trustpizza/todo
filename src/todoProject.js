@@ -2,8 +2,8 @@ import TodoTask from "./todoTask";
 import { saveToLocalStorage } from '.';
 
 
-const createProject = (id, name, description, todoTasks = {}) => {
-    let counter = 0;
+const createProject = (id, name, description, todoTasks = {}, counterVariable = 0) => {
+    let counter = counterVariable;
 
     // Ability to create a new task
    
