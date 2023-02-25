@@ -33,6 +33,7 @@ const taskFormDisplayFactory = (project, tasksContainer) => {
 
   const form = TaskFormFactory(project, tasksContainer);
 
+  formWrapper.appendChild(form);
   return formWrapper;
 }
 

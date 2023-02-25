@@ -21,15 +21,16 @@ function ProjectDisplayFactory(project) {
   let formWrapper = taskFormDisplayFactory(project, tasksDiv);
   let tasks = project.getTodoTasks();
 
-  container.append(titleSection, content, tasksDiv);
+  console.log(container);
+  container.append(titleSection, formWrapper, content, tasksDiv);
 
   const update = (newProject) => {
     const newTitleSection = TitleDisplay(newProject);
     const newFormWrapper = TaskFormFactory(newProject, tasksDiv);
     const newTasks = newProject.getTodoTasks();
 
-    //titleSection.parentNode.replaceChild(newTitleSection, titleSection);
-    //formWrapper.parentNode.replaceChild(newFormWrapper, formWrapper);
+    titleSection.parentNode.replaceChild(newTitleSection, titleSection);
+    formWrapper.parentNode.replaceChild(newFormWrapper, formWrapper);
 
 
     titleSection = newTitleSection;
