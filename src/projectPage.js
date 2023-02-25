@@ -1,5 +1,5 @@
 import { currentProject, reloadProjectDisplay, saveToLocalStorage } from ".";
-import { TaskFormFactory, taskFormDisplayFactory } from "./taskForm";
+import { taskFormDisplayFactory } from "./taskForm";
 
 function ProjectDisplayFactory(project) {
   const container = document.createElement("div");
@@ -19,6 +19,7 @@ function ProjectDisplayFactory(project) {
   let titleSection = TitleDisplay(project);
 
   let formWrapper = taskFormDisplayFactory(project, tasksDiv);
+  console.log(formWrapper);
   let tasks = project.getTodoTasks();
 
   console.log(container);
@@ -26,7 +27,7 @@ function ProjectDisplayFactory(project) {
 
   const update = (newProject) => {
     const newTitleSection = TitleDisplay(newProject);
-    const newFormWrapper = TaskFormFactory(newProject, tasksDiv);
+    const newFormWrapper = taskFormDisplayFactory(newProject, tasksDiv);
     const newTasks = newProject.getTodoTasks();
 
     titleSection.parentNode.replaceChild(newTitleSection, titleSection);

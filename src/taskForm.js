@@ -1,10 +1,20 @@
 const TaskFormFactory = (project, tasksContainer) => {
   const newTaskForm = document.createElement('form');
+  newTaskForm.className = "flex mt-4"
 
-  const input = document.createElement('input');
-  input.setAttribute('placeholder', 'Add Todo');
-  input.className = 
-    "shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker";
+  const titleInput = document.createElement('input');
+  titleInput.setAttribute('placeholder', 'Add Todo');
+  titleInput.className = 
+    "shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-gray-400";
+
+  
+  function inputGenerator(name) {
+    const input = document.createElement('input');
+    const label = document.createElement('label');
+    
+    input.setAttribute('name', name);
+
+  }
 
   const submitButton = document.createElement('button');
   submitButton.addEventListener('click', (e) => {
@@ -30,6 +40,7 @@ const TaskFormFactory = (project, tasksContainer) => {
 
 const taskFormDisplayFactory = (project, tasksContainer) => {
   const formWrapper = document.createElement('div');
+  formWrapper.classList.add('mb-4')
 
   const form = TaskFormFactory(project, tasksContainer);
 
