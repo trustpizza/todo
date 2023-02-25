@@ -82,14 +82,12 @@ parentContainer.addEventListener("click", (e) => {
     sidebar.closeSidebar();
   }
 
-  console.log(currentProject.get().getName())
 });
 
 projectFormDisplayFactory(parentContainer);
 // The following sections ensure that mobile applications can access the sidebar
 
 function reloadProjectDisplay() {
-  const projectDisplay = document.getElementById("projectDisplay");
   displayProject.update(currentProject.get());
 }
 

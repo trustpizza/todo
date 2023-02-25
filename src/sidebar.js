@@ -79,7 +79,9 @@ const ListItemFactory = (project) => {
 };
 
 const updateSidebar = () => {
-  sidebarList.innerHTML = null;
+  while (sidebarList.firstChild) {
+    sidebarList.removeChild(sidebarList.firstChild)
+  }
   sidebarList.appendChild(newProjectButton());
   for (const project of allProjects) {
     sidebarList.appendChild(ListItemFactory(project));
@@ -97,16 +99,15 @@ const deleteProjectButton = (project) => {
     "";
   deleteButton.addEventListener('click', () => {
     const index = allProjects.indexOf(project);
-    console.log(allProjects)
   
     if (allProjects.length > 1) {
+      if (currentProject.get() == project ) {
+        setNewCurrentProject(index);
+        reloadProjectDisplay();
+      };
       allProjects.splice(index, 1)
-      
-      setNewCurrentProject();
-      console.log(currentProject.get().getName());
+      console.log(allProjects)
       updateSidebar();
-      reloadProjectDisplay();
-
       saveToLocalStorage();
     } else {
       alert('You must have at least 1 project')
@@ -117,13 +118,10 @@ const deleteProjectButton = (project) => {
 };
 
 function setNewCurrentProject(index) {
-  console.log(index === allProjects.length, index, allProjects.length)
   if (index === 0) {
-    currentProject.set(allProjects[index])
-  } else if ((index + 1) === allProjects.length) {
-    currentProject.set(allProjects[allProjects.length - 2])
-  } else if (index === allProjects.indexOf(currentProject.get())) {
-
+    currentProject.set(allProjects[index + 1])
+  } else {
+    currentProject.set(allProjects[index - 1])
   }
 }
 

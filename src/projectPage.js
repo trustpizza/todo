@@ -160,7 +160,6 @@ const TitleDisplay = (project) => {
   titleSection.className = "flex flex-col";
 
   const title = document.createElement("h1");
-  console.log(project);
 
   title.textContent = project.getName();
   title.className = "text-4xl font-bold text-center";
