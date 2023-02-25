@@ -1,3 +1,50 @@
+import { allProjects, currentProject, saveToLocalStorage } from ".";
+import { updateSidebar } from "./sidebar";
+
+const projectFormFactory = () => {
+  const newProjectForm = document.createElement("form");
+  newProjectForm.className =
+    "flex flex-col p-4 overflow-x-hidden overflow-y-auto md:inset-0 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4";
+ 
+  const titleSection = formSection("title");
+  const description = formSection("description");
+
+  const submitButton = document.createElement("button");
+  submitButton.textContent = "Create Project";
+  submitButton.className =
+    "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline";
+  
+    newProjectForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+    
+      const formInputs = {};
+      const formData = new FormData(form);
+      for (const pair of formData) {
+        formInputs[pair[0]] = pair[1];
+      }
+      
+      const newProject = TodoProject(
+        projectCounter.plus(),
+        formInputs.title,
+        formInputs.description
+      )
+
+      allProjects.push(newProject);
+      currentProject.set(newProject);
+
+      updateSidebar();
+      saveToLocalStorage();
+    });
+
+    newProjectForm.append(
+      titleSection,
+      description,
+      submitButton
+    );
+
+    return newProjectForm;
+}
+
 const projectForm = () => {
   // This will need a form for creating a new project
   // Projects have: Id, Title, Description
@@ -27,7 +74,17 @@ const projectForm = () => {
   return formWrapper;
 };
 
-const formSection = (labelName, inputFor = null) => {
+const projectFormDisplayFactory = (parentDiv) => {
+  const projectForm = projectFormFactory();
+  
+  const projectFormWrapper = document.createElement("div");
+  projectFormWrapper.className =
+    "w-full h-full fixed hidden bg-gray-200 flex items-center justify-center";
+  
+  projectFormWrapper.append(projectForm);
+}
+
+const formSection = (labelName) => {
   const parentElement = document.createElement("div");
   parentElement.className = "mb-4";
 
@@ -52,4 +109,4 @@ Object.defineProperty(String.prototype, "capitalize", {
   enumerable: false,
 });
 
-export { projectForm };
+export { projectFormDisplayFactory };

@@ -4,7 +4,7 @@ import "./styles.css";
 import TodoProject from "./todoProject";
 import { SidebarBuilder } from "./buildSidebar";
 import { ProjectDisplayFactory } from "./projectPage";
-import { projectFormLogic } from "./projectFormLogic";
+import { projectFormDisplayFactory } from "./projectForm";
 
 const counter = {
   init() {
@@ -84,7 +84,7 @@ parentContainer.addEventListener("click", (e) => {
   // reloadProjectDisplay();
 });
 
-projectFormLogic(parentContainer);
+projectFormDisplayFactory(parentContainer);
 // The following sections ensure that mobile applications can access the sidebar
 
 function reloadProjectDisplay() {

@@ -7,6 +7,7 @@ const TaskFormFactory = (project, tasksContainer) => {
 
   const titleInput = inputGenerator('title');
   titleInput.required = true;
+  
   const descriptionInput = inputGenerator('description');
 
   function inputGenerator(name) {
