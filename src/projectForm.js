@@ -1,4 +1,9 @@
-import { allProjects, currentProject, saveToLocalStorage, projectCounter } from ".";
+import {
+  allProjects,
+  currentProject,
+  saveToLocalStorage,
+  projectCounter,
+} from ".";
 import { updateSidebar } from "./sidebar";
 import TodoProject from "./todoProject";
 
@@ -14,53 +19,50 @@ const projectFormFactory = () => {
   submitButton.textContent = "Create Project";
   submitButton.className =
     "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline";
-  
+
   newProjectForm.addEventListener("submit", (e) => {
     e.preventDefault();
-  
+
     const formInputs = {};
     const formData = new FormData(newProjectForm);
     for (const pair of formData) {
       formInputs[pair[0]] = pair[1];
     }
-    
+
     const newProject = TodoProject(
       projectCounter.plus(),
       formInputs.title,
       formInputs.description
-    )
+    );
 
     allProjects.push(newProject);
     currentProject.set(newProject);
-    
+
+    hideProjectForm(newProjectForm);
     updateSidebar();
     saveToLocalStorage();
   });
 
-  function closeForm() {
-    newProjectForm.parentElement.classList.add('hidden');
-    console.log(newProjectForm.parentElement)
-  }
-
-  newProjectForm.append(
-    titleSection,
-    description,
-    submitButton
-  );
+  newProjectForm.append(titleSection, description, submitButton);
 
   return newProjectForm;
-}
+};
 
 const projectFormDisplayFactory = (parentDiv) => {
   const projectForm = projectFormFactory();
-  
+
   const projectFormWrapper = document.createElement("div");
   projectFormWrapper.className =
     "w-full h-full fixed hidden bg-gray-200 flex items-center justify-center";
   projectFormWrapper.id = "newProjectFormWrapper";
-  
+
   projectFormWrapper.append(projectForm);
   parentDiv.append(projectFormWrapper);
+};
+
+function hideProjectForm(form) {
+  form.parentElement.classList.remove("z-50");
+  form.parentElement.classList.add("hidden");
 }
 
 const formSection = (labelName) => {

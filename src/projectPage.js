@@ -31,7 +31,6 @@ function ProjectDisplayFactory(project) {
     titleSection.parentNode.replaceChild(newTitleSection, titleSection);
     formWrapper.parentNode.replaceChild(newFormWrapper, formWrapper);
 
-
     titleSection = newTitleSection;
     formWrapper = newFormWrapper;
     tasks = newTasks;
@@ -69,7 +68,6 @@ const TaskDisplayFactory = (task, project) => {
     reloadProjectDisplay();
   });
 
-  
   const sectionDiv = document.createElement("div");
   sectionDiv.className =
     "flex gap-2 items-start justify-center flex-grow flex-col";
@@ -133,25 +131,19 @@ const TaskDisplayFactory = (task, project) => {
   }
 
   function updateTaskText() {
-    const strikethrough = [title, description]
+    const strikethrough = [title, description];
 
     if (task.isComplete) {
       for (const text of strikethrough) {
-        text.classList.add(
-          "text-green-400",
-          "line-through"
-        )
-      } 
+        text.classList.add("text-green-400", "line-through");
+      }
     } else {
       for (const text of strikethrough) {
-        text.classList.remove(
-          "text-green-400",
-          "line-through"
-        )
+        text.classList.remove("text-green-400", "line-through");
       }
     }
   }
- 
+
   taskDisplay.append(sectionDiv, checkButton, deleteButton);
 
   return taskDisplay;

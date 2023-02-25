@@ -44,7 +44,7 @@ const createProject = (
     getTask,
     getDesc,
     getCounter,
-    deleteTask
+    deleteTask,
   };
 };
 

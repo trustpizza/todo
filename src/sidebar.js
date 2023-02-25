@@ -93,7 +93,9 @@ const newProjectButton = () => {
   listItem.append(link);
 
   link.addEventListener("click", () => {
-    const newProjectFormWrapper = document.getElementById("newProjectFormWrapper");
+    const newProjectFormWrapper = document.getElementById(
+      "newProjectFormWrapper"
+    );
     if (newProjectFormWrapper.classList.contains("hidden")) {
       newProjectFormWrapper.classList.remove("hidden");
       newProjectFormWrapper.classList.add("z-50");
