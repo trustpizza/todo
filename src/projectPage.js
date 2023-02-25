@@ -19,10 +19,8 @@ function ProjectDisplayFactory(project) {
   let titleSection = TitleDisplay(project);
 
   let formWrapper = taskFormDisplayFactory(project, tasksDiv);
-  console.log(formWrapper);
   let tasks = project.getTodoTasks();
 
-  console.log(container);
   container.append(titleSection, formWrapper, content, tasksDiv);
 
   const update = (newProject) => {
