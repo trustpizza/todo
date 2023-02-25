@@ -32,10 +32,15 @@ const projectFormFactory = () => {
 
     allProjects.push(newProject);
     currentProject.set(newProject);
-
+    
     updateSidebar();
     saveToLocalStorage();
   });
+
+  function closeForm() {
+    newProjectForm.parentElement.classList.add('hidden');
+    console.log(newProjectForm.parentElement)
+  }
 
   newProjectForm.append(
     titleSection,
@@ -55,7 +60,7 @@ const projectFormDisplayFactory = (parentDiv) => {
   projectFormWrapper.id = "newProjectFormWrapper";
   
   projectFormWrapper.append(projectForm);
-  parentDiv.append(projectFormWrapper)
+  parentDiv.append(projectFormWrapper);
 }
 
 const formSection = (labelName) => {
