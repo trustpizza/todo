@@ -1,6 +1,5 @@
-import { TaskFormLogic } from "./taskFormLogic";
-import PlusSign from "./photos/plus.svg";
 import { currentProject, reloadProjectDisplay, saveToLocalStorage } from ".";
+import { taskFormDisplayFactory } from "./taskForm";
 
 function ProjectDisplayFactory(project) {
   const container = document.createElement("div");
@@ -19,26 +18,22 @@ function ProjectDisplayFactory(project) {
 
   let titleSection = TitleDisplay(project);
 
-  let form = TaskFormLogic(project, tasksDiv);
-  let newTaskButton = NewTaskButton(form);
+  let formWrapper = taskFormDisplayFactory(project, tasksDiv);
   let tasks = project.getTodoTasks();
 
-  content.append(newTaskButton, form);
-  container.append(titleSection, content, tasksDiv);
+  container.append(titleSection, formWrapper, content, tasksDiv);
 
   const update = (newProject) => {
     const newTitleSection = TitleDisplay(newProject);
-    const newForm = TaskFormLogic(newProject, tasksDiv);
-    const newerTaskButton = NewTaskButton(newForm);
+    const newFormWrapper = taskFormDisplayFactory(newProject, tasksDiv);
     const newTasks = newProject.getTodoTasks();
 
     titleSection.parentNode.replaceChild(newTitleSection, titleSection);
-    form.parentNode.replaceChild(newForm, form);
-    newTaskButton.parentNode.replaceChild(newerTaskButton, newTaskButton);
+    formWrapper.parentNode.replaceChild(newFormWrapper, formWrapper);
+
 
     titleSection = newTitleSection;
-    form = newForm;
-    newTaskButton = newerTaskButton;
+    formWrapper = newFormWrapper;
     tasks = newTasks;
 
     displayTasks(tasksDiv);
@@ -177,35 +172,4 @@ const TitleDisplay = (project) => {
   titleSection.append(title, projDescription);
   return titleSection;
 };
-
-const NewTaskButton = (target) => {
-  const newTaskButton = document.createElement("button");
-  const buttonImage = new Image();
-  buttonImage.src = PlusSign;
-  buttonImage.className =
-    "h-10 w-10 p-0 fill-slate-50 transition ease-in-out duration-100";
-
-  newTaskButton.append(buttonImage);
-
-  newTaskButton.className =
-    "bg-blue-500 hover:bg-blue-600 text-white font-bold rounded self-center";
-  newTaskButton.addEventListener("click", () => {
-    taskButtonControlls();
-  });
-
-  const taskButtonControlls = () => {
-    if (!buttonImage.classList.contains("rotate-45")) {
-      buttonImage.classList.add("rotate-45");
-      target.classList.remove("h-0", "opacity-0", "-translate-y-96");
-    } else {
-      buttonImage.classList.remove("rotate-45");
-      target.classList.add("-translate-y-96", "h-0", "opacity-0");
-    }
-  };
-
-  return newTaskButton;
-};
-
-
-
 export { ProjectDisplayFactory, displayTasks };
