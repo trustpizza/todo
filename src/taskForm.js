@@ -1,28 +1,37 @@
+import { saveToLocalStorage } from ".";
+import { displayTasks } from "./projectPage";
+
 const TaskFormFactory = (project, tasksContainer) => {
   const newTaskForm = document.createElement('form');
   newTaskForm.className = "flex mt-4"
 
-  const titleInput = document.createElement('input');
-  titleInput.setAttribute('placeholder', 'Add Todo');
-  titleInput.className = 
-    "shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-gray-400";
+  const titleInput = inputGenerator('title');
+  titleInput.required = true;
+  const descriptionInput = inputGenerator('description');
 
-  
   function inputGenerator(name) {
     const input = document.createElement('input');
-    const label = document.createElement('label');
+    input.type = 'text';
+    input.placeholder = `${name}`;
+    input.className = 
+      "shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker"
     
     input.setAttribute('name', name);
 
+    return input;
   }
 
   const submitButton = document.createElement('button');
-  submitButton.addEventListener('click', (e) => {
+  submitButton.className = 
+    "flex-no-shrink p-2 border-2 rounded text-blue-400 border-blue-600 hover:text-white hover:bg-blue-600";
+  submitButton.textContent = 'Add';
+
+  newTaskForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const title = e.target[0].value;
-    const description = e.target[1].value;
-    const priority = parseInt(e.target[2].value);
+    const title = titleInput.value
+    const description = descriptionInput.value
+    const priority = 1
 
     project.createNewTask(title, description, priority);
 
@@ -31,10 +40,9 @@ const TaskFormFactory = (project, tasksContainer) => {
     // Add a show-updated-form
     displayTasks(tasksContainer, project);
   });
-  submitButton.className = 
-    "flex-no-shrink p-2 border-2 rounded text-teal border-teal hover:text-white hover:bg-teal";
 
-  newTaskForm.append(input, submitButton);  
+  newTaskForm.append(titleInput, descriptionInput, submitButton); 
+  
   return newTaskForm;
 };
 
