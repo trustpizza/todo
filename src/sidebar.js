@@ -93,15 +93,16 @@ const newProjectButton = () => {
   listItem.append(link);
 
   link.addEventListener("click", () => {
-    const newProjectForm = document.getElementById("newProjectFormWrapper");
-    if (newProjectForm.classList.contains("hidden")) {
-      newProjectForm.classList.remove("hidden");
-      newProjectForm.classList.add("z-50");
+    const newProjectFormWrapper = document.getElementById("newProjectFormWrapper");
+    if (newProjectFormWrapper.classList.contains("hidden")) {
+      newProjectFormWrapper.classList.remove("hidden");
+      newProjectFormWrapper.classList.add("z-50");
     } else {
-      newProjectForm.classList.remove("z-50");
-      newProjectForm.classList.add("hidden");
+      newProjectFormWrapper.classList.remove("z-50");
+      newProjectFormWrapper.classList.add("hidden");
     }
   });
+
   return listItem;
 };
 

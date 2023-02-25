@@ -1,11 +1,12 @@
-import { allProjects, currentProject, saveToLocalStorage } from ".";
+import { allProjects, currentProject, saveToLocalStorage, projectCounter } from ".";
 import { updateSidebar } from "./sidebar";
+import TodoProject from "./todoProject";
 
 const projectFormFactory = () => {
   const newProjectForm = document.createElement("form");
   newProjectForm.className =
     "flex flex-col p-4 overflow-x-hidden overflow-y-auto md:inset-0 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4";
- 
+
   const titleSection = formSection("title");
   const description = formSection("description");
 
@@ -14,65 +15,36 @@ const projectFormFactory = () => {
   submitButton.className =
     "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline";
   
-    newProjectForm.addEventListener("submit", (e) => {
-      e.preventDefault();
+  newProjectForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+  
+    const formInputs = {};
+    const formData = new FormData(newProjectForm);
+    for (const pair of formData) {
+      formInputs[pair[0]] = pair[1];
+    }
     
-      const formInputs = {};
-      const formData = new FormData(form);
-      for (const pair of formData) {
-        formInputs[pair[0]] = pair[1];
-      }
-      
-      const newProject = TodoProject(
-        projectCounter.plus(),
-        formInputs.title,
-        formInputs.description
-      )
+    const newProject = TodoProject(
+      projectCounter.plus(),
+      formInputs.title,
+      formInputs.description
+    )
 
-      allProjects.push(newProject);
-      currentProject.set(newProject);
+    allProjects.push(newProject);
+    currentProject.set(newProject);
 
-      updateSidebar();
-      saveToLocalStorage();
-    });
+    updateSidebar();
+    saveToLocalStorage();
+  });
 
-    newProjectForm.append(
-      titleSection,
-      description,
-      submitButton
-    );
+  newProjectForm.append(
+    titleSection,
+    description,
+    submitButton
+  );
 
-    return newProjectForm;
+  return newProjectForm;
 }
-
-const projectForm = () => {
-  // This will need a form for creating a new project
-  // Projects have: Id, Title, Description
-  const formWrapper = document.createElement("div");
-  formWrapper.className =
-    "w-full h-full fixed hidden bg-gray-200 flex items-center justify-center";
-  formWrapper.id = "newProjectFormWrapper";
-
-  const form = document.createElement("form");
-  form.className =
-    "flex flex-col p-4 overflow-x-hidden overflow-y-auto md:inset-0 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4";
-  form.id = "newProjectForm";
-
-  const titleSection = formSection("title");
-
-  const descriptionSection = formSection("description");
-
-  const submitButton = document.createElement("button");
-  submitButton.value = "Create Project";
-  submitButton.textContent = "Create Project";
-  submitButton.className =
-    "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline";
-  submitButton.id = "submit";
-
-  form.append(titleSection, descriptionSection, submitButton);
-  formWrapper.appendChild(form);
-  return formWrapper;
-};
 
 const projectFormDisplayFactory = (parentDiv) => {
   const projectForm = projectFormFactory();
@@ -80,8 +52,10 @@ const projectFormDisplayFactory = (parentDiv) => {
   const projectFormWrapper = document.createElement("div");
   projectFormWrapper.className =
     "w-full h-full fixed hidden bg-gray-200 flex items-center justify-center";
+  projectFormWrapper.id = "newProjectFormWrapper";
   
   projectFormWrapper.append(projectForm);
+  parentDiv.append(projectFormWrapper)
 }
 
 const formSection = (labelName) => {
