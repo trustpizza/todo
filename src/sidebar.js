@@ -97,20 +97,34 @@ const deleteProjectButton = (project) => {
     "";
   deleteButton.addEventListener('click', () => {
     const index = allProjects.indexOf(project);
+    console.log(allProjects)
   
     if (allProjects.length > 1) {
-      allProjects.splice(index, index+1)
-
-      currentProject.set(allProjects[index-1]);
+      allProjects.splice(index, 1)
+      
+      setNewCurrentProject();
+      console.log(currentProject.get().getName());
+      updateSidebar();
       reloadProjectDisplay();
+
+      saveToLocalStorage();
     } else {
       alert('You must have at least 1 project')
     }
-    saveToLocalStorage();
-    updateSidebar();
   })
   deleteButton.appendChild(redTrashImg)
   return deleteButton;
+};
+
+function setNewCurrentProject(index) {
+  console.log(index === allProjects.length, index, allProjects.length)
+  if (index === 0) {
+    currentProject.set(allProjects[index])
+  } else if ((index + 1) === allProjects.length) {
+    currentProject.set(allProjects[allProjects.length - 2])
+  } else if (index === allProjects.indexOf(currentProject.get())) {
+
+  }
 }
 
 const newProjectButton = () => {
