@@ -81,7 +81,8 @@ parentContainer.addEventListener("click", (e) => {
   ) {
     sidebar.closeSidebar();
   }
-  // reloadProjectDisplay();
+
+  console.log(allProjects)
 });
 
 projectFormDisplayFactory(parentContainer);
@@ -90,6 +91,7 @@ projectFormDisplayFactory(parentContainer);
 function reloadProjectDisplay() {
   const projectDisplay = document.getElementById("projectDisplay");
   displayProject.update(currentProject.get());
+  console.log(projectDisplay)
 }
 
 function saveToLocalStorage() {

@@ -1,6 +1,7 @@
 import ExclamationPoint from "./photos/exclamation-thick.svg";
 import HamburgerMenu from "./photos/menu.svg";
-import { allProjects, currentProject, reloadProjectDisplay } from ".";
+import RedTrashCan from "./photos/trash-can-outline-red.svg"
+import { allProjects, currentProject, reloadProjectDisplay, saveToLocalStorage } from ".";
 
 const sidebarList = document.createElement("ul");
 
@@ -57,12 +58,18 @@ const ListItemFactory = (project) => {
     "w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white";
   listImg.src = ExclamationPoint;
 
+  const deleteButton = deleteProjectButton(project);
+  
+
   const listSpan = document.createElement("span");
   listSpan.className = "ml-3";
   listSpan.textContent = project.getName();
 
   link.append(listImg, listSpan);
-  listItem.appendChild(link);
+
+  listItem.className =
+    "flex items-center justify-between"
+  listItem.append(link, deleteButton);
 
   link.addEventListener("click", () => {
     currentProject.set(project);
@@ -78,6 +85,31 @@ const updateSidebar = () => {
     sidebarList.appendChild(ListItemFactory(project));
   }
 };
+
+const deleteProjectButton = (project) => {
+  const deleteButton = document.createElement('button');
+  const redTrashImg = new Image();
+  redTrashImg.className = 
+    "w-8 h-8 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white";
+  redTrashImg.src = RedTrashCan;
+
+  deleteButton.className = 
+    "";
+  deleteButton.addEventListener('click', () => {
+    const index = allProjects.indexOf(project);
+    allProjects.splice(index, index+1)
+    saveToLocalStorage();
+    updateSidebar();
+    if (allProjects.length > 0) {
+      currentProject.set(allProjects[index-1]);
+      reloadProjectDisplay();
+    } else {
+      // do something? not sure yet
+    }
+  })
+  deleteButton.appendChild(redTrashImg)
+  return deleteButton;
+}
 
 const newProjectButton = () => {
   const listItem = document.createElement("li");
