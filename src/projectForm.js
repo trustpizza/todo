@@ -6,11 +6,12 @@ import {
 } from ".";
 import { updateSidebar } from "./sidebar";
 import TodoProject from "./todoProject";
+import closeImage from "./photos/close-circle-outline.svg"
 
 const projectFormFactory = () => {
   const newProjectForm = document.createElement("form");
   newProjectForm.className =
-    "flex flex-col p-4 overflow-x-hidden overflow-y-auto md:inset-0 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4";
+    "relative flex flex-col p-4  md:inset-0 bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4";
 
   const titleSection = formSection("title");
   const description = formSection("description");
@@ -43,7 +44,9 @@ const projectFormFactory = () => {
     saveToLocalStorage();
   });
 
-  newProjectForm.append(titleSection, description, submitButton);
+  const xButton = closeButton();
+
+  newProjectForm.append(titleSection, description, submitButton, xButton);
 
   return newProjectForm;
 };
@@ -60,6 +63,18 @@ const projectFormDisplayFactory = (parentDiv) => {
   parentDiv.append(projectFormWrapper);
 };
 
+const closeButton = () => {
+  const closeButton = document.createElement("button");
+
+  closeButton.className = 
+    "absolute -top-4 -right-4 h-12 w-12";
+  const buttonContent = new Image();
+  buttonContent.src = closeImage;
+
+  closeButton.appendChild(buttonContent)
+  return closeButton
+}
+
 function hideProjectForm(form) {
   form.parentElement.classList.remove("z-50");
   form.parentElement.classList.add("hidden");
@@ -68,7 +83,7 @@ function hideProjectForm(form) {
 const formSection = (labelName) => {
   const parentElement = document.createElement("div");
   parentElement.className = "mb-4";
-
+  
   const label = document.createElement("label");
   label.className = "block text-gray-700 text-sm font-bold mb-2";
   label.textContent = labelName.capitalize();
