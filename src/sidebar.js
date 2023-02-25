@@ -51,7 +51,7 @@ const ListItemFactory = (project) => {
   const listItem = document.createElement("li");
   const link = document.createElement("a");
   link.className =
-    "flex items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700";
+    "flex flex-grow items-center p-2 text-base font-normal text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700";
 
   const listImg = new Image();
   listImg.className =
@@ -97,15 +97,17 @@ const deleteProjectButton = (project) => {
     "";
   deleteButton.addEventListener('click', () => {
     const index = allProjects.indexOf(project);
-    allProjects.splice(index, index+1)
-    saveToLocalStorage();
-    updateSidebar();
-    if (allProjects.length > 0) {
+  
+    if (allProjects.length > 1) {
+      allProjects.splice(index, index+1)
+
       currentProject.set(allProjects[index-1]);
       reloadProjectDisplay();
     } else {
-      // do something? not sure yet
+      alert('You must have at least 1 project')
     }
+    saveToLocalStorage();
+    updateSidebar();
   })
   deleteButton.appendChild(redTrashImg)
   return deleteButton;
