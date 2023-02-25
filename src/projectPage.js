@@ -1,3 +1,4 @@
+import { check } from "prettier";
 import { currentProject, reloadProjectDisplay, saveToLocalStorage } from ".";
 import { taskFormDisplayFactory } from "./taskForm";
 
@@ -56,7 +57,7 @@ function displayTasks(parent) {
 
 const TaskDisplayFactory = (task, project) => {
   const taskDisplay = document.createElement("div");
-  taskDisplay.className = "flex mb-4 items-center w-full self-center px-10";
+  taskDisplay.className = "flex mb-4 items-center w-full self-center";
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Remove";
@@ -74,7 +75,7 @@ const TaskDisplayFactory = (task, project) => {
 
   const title = document.createElement("p");
   title.textContent = `${task.title}`;
-  title.className = "text-2xl break-all";
+  title.className = "text-xl break-all";
 
   const description = document.createElement("div");
   description.textContent = `${task.description}`;
@@ -88,7 +89,7 @@ const TaskDisplayFactory = (task, project) => {
 
   const checkButton = document.createElement("button");
   checkButton.className =
-    "flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white ";
+    "flex-no-shrink w-max p-2 ml-4 mr-2 border-2 rounded hover:text-white ";
   updateCheckButton();
   updateTaskText();
 
@@ -142,9 +143,14 @@ const TaskDisplayFactory = (task, project) => {
         text.classList.remove("text-green-400", "line-through");
       }
     }
-  }
+  };
 
-  taskDisplay.append(sectionDiv, checkButton, deleteButton);
+  const buttonSection = document.createElement("div");
+  buttonSection.className = 
+    "flex items-end"
+  buttonSection.append(checkButton, deleteButton);
+
+  taskDisplay.append(sectionDiv, buttonSection);
 
   return taskDisplay;
 };
