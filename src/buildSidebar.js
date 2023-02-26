@@ -13,11 +13,8 @@ function SidebarBuilder(parent, projects) {
   });
 
   parent.addEventListener("click", (e) => {
-    const checkIfContains = e.target.closest('#sidebar')
-    if (
-      !checkIfContains && 
-      !sidebar.classList.contains("-translate-x-full")
-    ) {
+    const checkIfContains = e.target.closest("#sidebar");
+    if (!checkIfContains && !sidebar.classList.contains("-translate-x-full")) {
       closeSidebar();
     }
   });

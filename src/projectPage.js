@@ -142,11 +142,10 @@ const TaskDisplayFactory = (task, project) => {
         text.classList.remove("text-green-400", "line-through");
       }
     }
-  };
+  }
 
   const buttonSection = document.createElement("div");
-  buttonSection.className = 
-    "flex items-end"
+  buttonSection.className = "flex items-end";
   buttonSection.append(checkButton, deleteButton);
 
   taskDisplay.append(sectionDiv, buttonSection);

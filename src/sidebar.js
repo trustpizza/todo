@@ -1,8 +1,13 @@
 import ExclamationPoint from "./photos/exclamation-thick.svg";
 import HamburgerMenu from "./photos/menu.svg";
-import RedTrashCan from "./photos/trash-can-outline-red.svg"
-import DownloadIcon from "./photos/download.svg"
-import { allProjects, currentProject, reloadProjectDisplay, saveToLocalStorage } from ".";
+import RedTrashCan from "./photos/trash-can-outline-red.svg";
+import DownloadIcon from "./photos/download.svg";
+import {
+  allProjects,
+  currentProject,
+  reloadProjectDisplay,
+  saveToLocalStorage,
+} from ".";
 import { download, tableGenerator, toCSV } from "./tableGeneratorForExcel";
 
 const sidebarList = document.createElement("ul");
@@ -43,7 +48,6 @@ const SidebarFactory = () => {
   // Create a function that updates the sidebar here!
   updateSidebar();
 
-
   sidebarContainer.appendChild(sidebarList);
   sidebar.appendChild(sidebarContainer);
   // Sidebar will eventually house other elements
@@ -63,8 +67,7 @@ const ListItemFactory = (project) => {
 
   const deleteButton = deleteProjectButton(project);
 
-  const downloadButton = downloadProjectButton(project)
-  
+  const downloadButton = downloadProjectButton(project);
 
   const listSpan = document.createElement("span");
   listSpan.className = "ml-3";
@@ -72,8 +75,7 @@ const ListItemFactory = (project) => {
 
   link.append(listImg, listSpan);
 
-  listItem.className =
-    "flex items-center justify-between"
+  listItem.className = "flex items-center justify-between";
   listItem.append(link, downloadButton, deleteButton);
 
   link.addEventListener("click", () => {
@@ -83,68 +85,66 @@ const ListItemFactory = (project) => {
   return listItem;
 };
 
-function updateSidebar(){
+function updateSidebar() {
   // SIDEBAR RELOAD HAPPENS HERE!
   while (sidebarList.firstChild) {
-    sidebarList.removeChild(sidebarList.firstChild)
+    sidebarList.removeChild(sidebarList.firstChild);
   }
 
   sidebarList.appendChild(newProjectButton());
   for (const project of allProjects) {
     sidebarList.appendChild(ListItemFactory(project));
   }
-};
+}
 
 const deleteProjectButton = (project) => {
-  const deleteButton = document.createElement('button');
-  deleteButton.className = 
-    "w-8 h-8"
+  const deleteButton = document.createElement("button");
+  deleteButton.className = "w-8 h-8";
   const redTrashImg = new Image();
-  redTrashImg.className = 
+  redTrashImg.className =
     "w-8 h-8 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white";
   redTrashImg.src = RedTrashCan;
 
-  deleteButton.addEventListener('click', () => {
+  deleteButton.addEventListener("click", () => {
     const index = allProjects.indexOf(project);
-    
+
     if (allProjects.length > 1) {
-      if (currentProject.get() == project ) {
+      if (currentProject.get() == project) {
         setNewCurrentProject(index);
         reloadProjectDisplay();
-      };
-      allProjects.splice(index, 1)
+      }
+      allProjects.splice(index, 1);
       updateSidebar();
       saveToLocalStorage();
     } else {
-      alert('You must have at least 1 project')
+      alert("You must have at least 1 project");
     }
-  })
-  deleteButton.appendChild(redTrashImg)
+  });
+  deleteButton.appendChild(redTrashImg);
   return deleteButton;
 };
 
 const downloadProjectButton = (project) => {
-  const downloadButton = document.createElement('button');
-  downloadButton.className =
-    "w-8 h-8"
+  const downloadButton = document.createElement("button");
+  downloadButton.className = "w-8 h-8";
   const downloadImage = new Image();
   downloadImage.src = DownloadIcon;
 
   const table = tableGenerator(project);
-  downloadButton.addEventListener('click', () => {
+  downloadButton.addEventListener("click", () => {
     const csv = toCSV(table);
-    download(csv, `table-${project.getName()}-${project.getId()}`)
-  })
+    download(csv, `table-${project.getName()}-${project.getId()}`);
+  });
 
-  downloadButton.append(downloadImage)
-  return downloadButton
-}
+  downloadButton.append(downloadImage);
+  return downloadButton;
+};
 
 function setNewCurrentProject(index) {
   if (index === 0) {
-    currentProject.set(allProjects[index + 1])
+    currentProject.set(allProjects[index + 1]);
   } else {
-    currentProject.set(allProjects[index - 1])
+    currentProject.set(allProjects[index - 1]);
   }
 }
 

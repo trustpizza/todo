@@ -6,7 +6,7 @@ import {
 } from ".";
 import { updateSidebar } from "./sidebar";
 import TodoProject from "./todoProject";
-import closeImage from "./photos/close-circle-outline.svg"
+import closeImage from "./photos/close-circle-outline.svg";
 
 const projectFormFactory = () => {
   const newProjectForm = document.createElement("form");
@@ -66,14 +66,13 @@ const projectFormDisplayFactory = (parentDiv) => {
 const closeButton = () => {
   const closeButton = document.createElement("button");
 
-  closeButton.className = 
-    "absolute -top-4 -right-4 h-12 w-12";
+  closeButton.className = "absolute -top-4 -right-4 h-12 w-12";
   const buttonContent = new Image();
   buttonContent.src = closeImage;
 
-  closeButton.appendChild(buttonContent)
-  return closeButton
-}
+  closeButton.appendChild(buttonContent);
+  return closeButton;
+};
 
 function hideProjectForm(form) {
   form.parentElement.classList.remove("z-50");
@@ -83,7 +82,7 @@ function hideProjectForm(form) {
 const formSection = (labelName) => {
   const parentElement = document.createElement("div");
   parentElement.className = "mb-4";
-  
+
   const label = document.createElement("label");
   label.className = "block text-gray-700 text-sm font-bold mb-2";
   label.textContent = labelName.capitalize();

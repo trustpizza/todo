@@ -81,7 +81,6 @@ parentContainer.addEventListener("click", (e) => {
   ) {
     sidebar.closeSidebar();
   }
-
 });
 
 projectFormDisplayFactory(parentContainer);
