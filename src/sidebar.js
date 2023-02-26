@@ -80,6 +80,7 @@ const ListItemFactory = (project) => {
 };
 
 const updateSidebar = () => {
+  // SIDEBAR RELOAD HAPPENS HERE!
   while (sidebarList.firstChild) {
     // sidebarList.removeChild(sidebarList.firstChild)
   }
