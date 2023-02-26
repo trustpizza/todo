@@ -41,6 +41,7 @@ const SidebarFactory = () => {
   // Create a function that updates the sidebar here!
   updateSidebar();
 
+
   sidebarContainer.appendChild(sidebarList);
   sidebar.appendChild(sidebarContainer);
   // Sidebar will eventually house other elements
@@ -80,7 +81,7 @@ const ListItemFactory = (project) => {
 
 const updateSidebar = () => {
   while (sidebarList.firstChild) {
-    sidebarList.removeChild(sidebarList.firstChild)
+    // sidebarList.removeChild(sidebarList.firstChild)
   }
   sidebarList.appendChild(newProjectButton());
   for (const project of allProjects) {
@@ -90,23 +91,22 @@ const updateSidebar = () => {
 
 const deleteProjectButton = (project) => {
   const deleteButton = document.createElement('button');
+  deleteButton.className = 
+    "w-8 h-8"
   const redTrashImg = new Image();
   redTrashImg.className = 
     "w-8 h-8 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white";
   redTrashImg.src = RedTrashCan;
 
-  deleteButton.className = 
-    "";
   deleteButton.addEventListener('click', () => {
     const index = allProjects.indexOf(project);
-  
+    
     if (allProjects.length > 1) {
       if (currentProject.get() == project ) {
         setNewCurrentProject(index);
         reloadProjectDisplay();
       };
       allProjects.splice(index, 1)
-      console.log(allProjects)
       updateSidebar();
       saveToLocalStorage();
     } else {

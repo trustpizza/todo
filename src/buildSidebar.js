@@ -13,16 +13,13 @@ function SidebarBuilder(parent, projects) {
   });
 
   parent.addEventListener("click", (e) => {
+    const checkIfContains = e.target.closest('#sidebar')
     if (
-      e.target !== sidebar &&
-      !sidebar.contains(e.target) &&
-      !sidebar.classList.contains("-translate-x-full") &&
-      e.target != collapsedSidebar &&
-      !collapsedSidebar.contains(e.target)
+      !checkIfContains && 
+      !sidebar.classList.contains("-translate-x-full")
     ) {
       closeSidebar();
     }
-    // This checks to make sure that neither the sidebar, any of the sidebar's children, the collapsedSidebar button NOr its children are the event Target
   });
 
   const closeSidebar = () => {
