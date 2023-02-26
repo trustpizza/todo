@@ -80,7 +80,11 @@ const TaskDisplayFactory = (task, project) => {
   description.textContent = `${task.description}`;
   description.className = "flex-grow break-all text-gray-400";
 
-  sectionDiv.append(title, description);
+  sectionDiv.append(title);
+
+  sectionDiv.addEventListener('click', () => {
+    // EXPAND TASK HERE!
+  })
 
   const priority = document.createElement("div");
   priority.textContent = `${task.priority}`;
