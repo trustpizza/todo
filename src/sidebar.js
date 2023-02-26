@@ -3,7 +3,7 @@ import HamburgerMenu from "./photos/menu.svg";
 import RedTrashCan from "./photos/trash-can-outline-red.svg"
 import DownloadIcon from "./photos/download.svg"
 import { allProjects, currentProject, reloadProjectDisplay, saveToLocalStorage } from ".";
-import { tableGenerator } from "./tableGeneratorForExcel";
+import { download, tableGenerator, toCSV } from "./tableGeneratorForExcel";
 
 const sidebarList = document.createElement("ul");
 
@@ -132,7 +132,8 @@ const downloadProjectButton = (project) => {
 
   const table = tableGenerator(project);
   downloadButton.addEventListener('click', () => {
-    console.log(table);
+    const csv = toCSV(table);
+    download(csv, `table-${project.getName()}-${project.getId()}`)
   })
 
   downloadButton.append(downloadImage)
