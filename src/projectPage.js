@@ -1,4 +1,3 @@
-import { check } from "prettier";
 import { currentProject, reloadProjectDisplay, saveToLocalStorage } from ".";
 import { taskFormDisplayFactory } from "./taskForm";
 
@@ -79,9 +78,9 @@ const TaskDisplayFactory = (task, project) => {
 
   const description = document.createElement("div");
   description.textContent = `${task.description}`;
-  description.className = "flex-grow break-all";
+  description.className = "flex-grow break-all text-gray-400";
 
-  sectionDiv.append(title);
+  sectionDiv.append(title, description);
 
   const priority = document.createElement("div");
   priority.textContent = `${task.priority}`;

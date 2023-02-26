@@ -60,6 +60,8 @@ const ListItemFactory = (project) => {
   listImg.src = ExclamationPoint;
 
   const deleteButton = deleteProjectButton(project);
+
+  const downloadButton = downloadProjectButton(project)
   
 
   const listSpan = document.createElement("span");
@@ -70,7 +72,7 @@ const ListItemFactory = (project) => {
 
   listItem.className =
     "flex items-center justify-between"
-  listItem.append(link, deleteButton);
+  listItem.append(link, downloadButton, deleteButton);
 
   link.addEventListener("click", () => {
     currentProject.set(project);
@@ -118,6 +120,12 @@ const deleteProjectButton = (project) => {
   deleteButton.appendChild(redTrashImg)
   return deleteButton;
 };
+
+const downloadProjectButton = (project) => {
+  const downloadButton = document.createElement('button');
+
+  return downloadButton
+}
 
 function setNewCurrentProject(index) {
   if (index === 0) {
