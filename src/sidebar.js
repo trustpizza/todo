@@ -1,7 +1,9 @@
 import ExclamationPoint from "./photos/exclamation-thick.svg";
 import HamburgerMenu from "./photos/menu.svg";
 import RedTrashCan from "./photos/trash-can-outline-red.svg"
+import DownloadIcon from "./photos/download.svg"
 import { allProjects, currentProject, reloadProjectDisplay, saveToLocalStorage } from ".";
+import { tableGenerator } from "./tableGeneratorForExcel";
 
 const sidebarList = document.createElement("ul");
 
@@ -123,7 +125,17 @@ const deleteProjectButton = (project) => {
 
 const downloadProjectButton = (project) => {
   const downloadButton = document.createElement('button');
+  downloadButton.className =
+    "w-8 h-8"
+  const downloadImage = new Image();
+  downloadImage.src = DownloadIcon;
 
+  const table = tableGenerator(project);
+  downloadButton.addEventListener('click', () => {
+    console.log(table);
+  })
+
+  downloadButton.append(downloadImage)
   return downloadButton
 }
 
