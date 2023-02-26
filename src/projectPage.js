@@ -56,7 +56,7 @@ function displayTasks(parent) {
 
 const TaskDisplayFactory = (task, project) => {
   const taskDisplay = document.createElement("div");
-  taskDisplay.className = "flex mb-4 items-center w-full self-center";
+  taskDisplay.className = "flex flex-col mb-4 items-center w-full self-center";
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Remove";
@@ -76,14 +76,13 @@ const TaskDisplayFactory = (task, project) => {
   title.textContent = `${task.title}`;
   title.className = "text-xl break-all";
 
-  const description = document.createElement("div");
-  description.textContent = `${task.description}`;
-  description.className = "flex-grow break-all text-gray-400";
-
   sectionDiv.append(title);
 
+  const hiddenSectionDiv = expandableTaskSection(task);
+  hiddenSectionDiv.className = "flex mb-4 items-center w-full self-center"
+
   sectionDiv.addEventListener('click', () => {
-    // EXPAND TASK HERE!
+    console.log(hiddenSectionDiv)
   })
 
   const priority = document.createElement("div");
@@ -135,7 +134,7 @@ const TaskDisplayFactory = (task, project) => {
   }
 
   function updateTaskText() {
-    const strikethrough = [title, description];
+    const strikethrough = [title];
 
     if (task.isComplete) {
       for (const text of strikethrough) {
@@ -152,10 +151,28 @@ const TaskDisplayFactory = (task, project) => {
   buttonSection.className = "flex items-end";
   buttonSection.append(checkButton, deleteButton);
 
-  taskDisplay.append(sectionDiv, buttonSection);
+  const shownTaskDisplay = document.createElement('div');
+  shownTaskDisplay.className = "flex mb-4 items-center w-full self-center";
+  shownTaskDisplay.append(sectionDiv, buttonSection);
+
+
+  taskDisplay.append(shownTaskDisplay, hiddenSectionDiv);
 
   return taskDisplay;
 };
+
+const expandableTaskSection = (task) => {
+  const hiddenSection = document.createElement('div');
+  const description = document.createElement("div");
+  description.textContent = `${task.description}`;
+  description.className = "flex-grow break-all text-gray-400";
+
+  const priority = document.createElement('div');
+
+  console.log(task)
+  hiddenSection.append(description, priority)
+  return hiddenSection
+}
 
 const TitleDisplay = (project) => {
   const titleSection = document.createElement("div");
