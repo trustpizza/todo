@@ -79,11 +79,12 @@ const ListItemFactory = (project) => {
   return listItem;
 };
 
-const updateSidebar = () => {
+function updateSidebar(){
   // SIDEBAR RELOAD HAPPENS HERE!
   while (sidebarList.firstChild) {
-    // sidebarList.removeChild(sidebarList.firstChild)
+    sidebarList.removeChild(sidebarList.firstChild)
   }
+
   sidebarList.appendChild(newProjectButton());
   for (const project of allProjects) {
     sidebarList.appendChild(ListItemFactory(project));
