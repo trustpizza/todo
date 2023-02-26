@@ -130,10 +130,14 @@ const downloadProjectButton = (project) => {
   const downloadImage = new Image();
   downloadImage.src = DownloadIcon;
 
-  const table = tableGenerator(project);
   downloadButton.addEventListener("click", () => {
-    const csv = toCSV(table);
-    download(csv, `table-${project.getName()}-${project.getId()}`);
+    if (Object.keys(project.getTodoTasks()).length > 0) {
+      const table = tableGenerator(project);
+      const csv = toCSV(table);
+      download(csv, `table-${project.getName()}-${project.getId()}`);
+    } else {
+      alert("Project has no tasks");
+    }
   });
 
   downloadButton.append(downloadImage);
