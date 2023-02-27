@@ -2,6 +2,7 @@ import { currentProject, reloadProjectDisplay, saveToLocalStorage } from ".";
 import { taskFormDisplayFactory } from "./taskForm";
 import BlackExclamation from "./photos/exclamation-thick.svg";
 import RedExclamation from "./photos/exclamation-thick-red.svg";
+import DoubleExclamation from "./photos/double-exclamation.svg";
 import Alert from "./photos/alert.svg";
 
 function ProjectDisplayFactory(project) {
@@ -181,7 +182,7 @@ const taskPriority = (task) => {
   if (task.priority === 1) {
     priority.src = BlackExclamation;
   } else if (task.priority === 2) {
-    priority.src = RedExclamation;
+    priority.src = DoubleExclamation;
   } else if (task.priority === 3) {
     priority.src = Alert;
   }
