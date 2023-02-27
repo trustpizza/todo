@@ -1,7 +1,6 @@
 import { currentProject, reloadProjectDisplay, saveToLocalStorage } from ".";
 import { taskFormDisplayFactory } from "./taskForm";
 import BlackExclamation from "./photos/exclamation-thick.svg";
-import RedExclamation from "./photos/exclamation-thick-red.svg";
 import DoubleExclamation from "./photos/double-exclamation.svg";
 import Alert from "./photos/alert.svg";
 
@@ -18,7 +17,7 @@ function ProjectDisplayFactory(project) {
 
   const tasksDiv = document.createElement("div");
   tasksDiv.className =
-    "container mx-auto px-2 w-full h-full rounded flex flex-col";
+    "container mx-auto px-2 w-full h-full rounded flex flex-col gap-2";
 
   let titleSection = TitleDisplay(project);
 
@@ -60,7 +59,7 @@ function displayTasks(parent) {
 
 const TaskDisplayFactory = (task, project) => {
   const taskDisplay = document.createElement("div");
-  taskDisplay.className = "flex flex-col mb-4 items-center w-full self-center";
+  taskDisplay.className = "flex flex-col items-center w-full self-center";
 
   const deleteButton = document.createElement("button");
   deleteButton.textContent = "Remove";
@@ -83,10 +82,10 @@ const TaskDisplayFactory = (task, project) => {
   sectionDiv.append(title);
 
   const hiddenSectionDiv = expandableTaskSection(task);
-  hiddenSectionDiv.className = "flex mb-4 items-center w-full self-center"
+  hiddenSectionDiv.className = "flex items-center w-full self-center"
 
   sectionDiv.addEventListener('click', () => {
-    console.log(hiddenSectionDiv)
+    console.log(hiddenSectionDiv);
   })
 
   const checkButton = document.createElement("button");
@@ -179,7 +178,6 @@ const taskPriority = (task) => {
   const priority = new Image();
   priority.className = 
     "h-10 w-10"
-    console.log(task.priority);
   if (task.priority === 1) {
     priority.src = BlackExclamation;
   } else if (task.priority === 2) {
