@@ -1,8 +1,8 @@
 import { currentProject, reloadProjectDisplay, saveToLocalStorage } from ".";
 import { taskFormDisplayFactory } from "./taskForm";
-import WhiteExclamation from "./photos/exclamation-thick.svg";
-import RedExclamation from "./photos/exclamation-thick-red.svg"
-import Alert from "./photos/alert.svg"
+import BlackExclamation from "./photos/exclamation-thick.svg";
+import RedExclamation from "./photos/exclamation-thick-red.svg";
+import Alert from "./photos/alert.svg";
 
 function ProjectDisplayFactory(project) {
   const container = document.createElement("div");
@@ -88,10 +88,6 @@ const TaskDisplayFactory = (task, project) => {
     console.log(hiddenSectionDiv)
   })
 
-  const priority = document.createElement("div");
-  priority.textContent = `${task.priority}`;
-  priority.className = "row-span-3 p-2";
-
   const checkButton = document.createElement("button");
   checkButton.className =
     "flex-no-shrink w-max p-2 ml-4 mr-2 border-2 rounded hover:text-white ";
@@ -172,11 +168,34 @@ const expandableTaskSection = (task) => {
   description.textContent = `${task.description}`;
   description.className = "flex-grow break-all text-gray-400";
 
-  const priority = new Image();
-  priority.src = Icon
+  const priority = taskPriority(task);
 
   hiddenSection.append(description, priority)
   return hiddenSection
+}
+
+const taskPriority = (task) => {
+  const priority = new Image();
+  priority.className = 
+    "h-10 w-10"
+  if (task.priority === 1) {
+    priority.src = BlackExclamation;
+  } else if (task.priority === 2) {
+    priority.src = RedExclamation;
+  } else if (task.priority === 3) {
+    priority.src = Alert;
+  }
+
+  priority.addEventListener('click', () => {
+    if (task.priority < 3) {
+      task.priority++; 
+    } else {
+      task.priority = 1;
+    }
+    saveToLocalStorage();
+    reloadProjectDisplay();
+  })
+  return priority;
 }
 
 const TitleDisplay = (project) => {
