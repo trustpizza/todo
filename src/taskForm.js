@@ -3,22 +3,43 @@ import { displayTasks } from "./projectPage";
 
 const TaskFormFactory = (project, tasksContainer) => {
   const newTaskForm = document.createElement("form");
-  newTaskForm.className = "flex mt-4";
+  newTaskForm.className = "flex mt-4 gap-2";
 
   const titleInput = inputGenerator("title");
   titleInput.required = true;
 
   const descriptionInput = inputGenerator("description");
 
+  const priorityInput = document.createElement("select");
+  const priorityOptions = {
+    "Low": "1",
+    "Med": "2",
+    "High": "3"
+  };
+
+  priorityInput.className =
+    "bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 border-2"
+
+  for (const key in priorityOptions) {
+    const option = document.createElement("option");
+    option.setAttribute("value", priorityOptions[key]);
+
+
+    const optionText = document.createTextNode(key);
+    option.appendChild(optionText);
+
+    priorityInput.appendChild(option);
+  }
+  // console.log(priorityOptions)
+
   function inputGenerator(name) {
     const input = document.createElement("input");
     input.type = "text";
     input.placeholder = `${name}`;
     input.className =
-      "shadow appearance-none border rounded w-full py-2 px-3 mr-4 text-grey-darker";
+      "shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker";
 
     input.setAttribute("name", name);
-
     return input;
   }
 
@@ -32,7 +53,7 @@ const TaskFormFactory = (project, tasksContainer) => {
 
     const title = titleInput.value;
     const description = descriptionInput.value;
-    const priority = 1;
+    const priority = parseInt(priorityInput.value);
 
     project.createNewTask(title, description, priority);
 
@@ -42,7 +63,7 @@ const TaskFormFactory = (project, tasksContainer) => {
     displayTasks(tasksContainer, project);
   });
 
-  newTaskForm.append(titleInput, descriptionInput, submitButton);
+  newTaskForm.append(titleInput, descriptionInput, priorityInput, submitButton);
 
   return newTaskForm;
 };

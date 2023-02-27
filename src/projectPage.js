@@ -179,6 +179,7 @@ const taskPriority = (task) => {
   const priority = new Image();
   priority.className = 
     "h-10 w-10"
+    console.log(task.priority);
   if (task.priority === 1) {
     priority.src = BlackExclamation;
   } else if (task.priority === 2) {
