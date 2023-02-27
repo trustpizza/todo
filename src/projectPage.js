@@ -1,5 +1,8 @@
 import { currentProject, reloadProjectDisplay, saveToLocalStorage } from ".";
 import { taskFormDisplayFactory } from "./taskForm";
+import WhiteExclamation from "./photos/exclamation-thick.svg";
+import RedExclamation from "./photos/exclamation-thick-red.svg"
+import Alert from "./photos/alert.svg"
 
 function ProjectDisplayFactory(project) {
   const container = document.createElement("div");
@@ -163,13 +166,15 @@ const TaskDisplayFactory = (task, project) => {
 
 const expandableTaskSection = (task) => {
   const hiddenSection = document.createElement('div');
+  hiddenSection.className = 
+    "flex"
   const description = document.createElement("div");
   description.textContent = `${task.description}`;
   description.className = "flex-grow break-all text-gray-400";
 
-  const priority = document.createElement('div');
+  const priority = new Image();
+  priority.src = Icon
 
-  console.log(task)
   hiddenSection.append(description, priority)
   return hiddenSection
 }
