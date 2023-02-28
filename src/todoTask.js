@@ -1,8 +1,9 @@
-export default function (id, title, description, priority) {
+export default function (id, title, description, duedate, priority) {
   const todoTask = {
     id,
     title,
     description,
+    duedate,
     priority,
     isComplete: false,
   };

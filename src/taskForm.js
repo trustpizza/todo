@@ -31,7 +31,8 @@ const TaskFormFactory = (project, tasksContainer) => {
     priorityInput.appendChild(option);
   };
 
-  const calendarInput = calendarSection()
+  const calendarInputSection = calendarSection()
+  const calendarInput = calendarInputSection.firstChild
 
   function inputGenerator(name) {
     const input = document.createElement("input");
@@ -55,8 +56,9 @@ const TaskFormFactory = (project, tasksContainer) => {
     const title = titleInput.value;
     const description = descriptionInput.value;
     const priority = parseInt(priorityInput.value);
+    const date = calendarInput.value;
 
-    project.createNewTask(title, description, priority);
+    project.createNewTask(title, description, date, priority);
 
     saveToLocalStorage();
 
@@ -64,7 +66,7 @@ const TaskFormFactory = (project, tasksContainer) => {
     displayTasks(tasksContainer, project);
   });
 
-  newTaskForm.append(titleInput, descriptionInput, calendarInput, priorityInput, submitButton);
+  newTaskForm.append(titleInput, descriptionInput, calendarInputSection, priorityInput, submitButton);
 
   return newTaskForm;
 };
@@ -78,20 +80,6 @@ const calendarSection = () => {
   calendarInput.setAttribute("type", "date");
   calendarInput.className =
     "calendar"
- 
-
-
-  // const calendarLabel = document.createElement("label");
-  // calendarLabel.setAttribute("name", "date");
-  // calendarLabel.className = 
-  //   "w-8 flex items-center justify-center";
-
-  // calendarLabel.addEventListener('click', () => {
-  //   calendarInput.click();
-  //   console.log(calendarInput)
-  // })
-
-  // calendarLabel.appendChild(calendarIcon);
 
   sectionDiv.append(calendarInput)
   return sectionDiv
