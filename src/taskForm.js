@@ -1,5 +1,6 @@
 import { saveToLocalStorage } from ".";
 import { displayTasks } from "./projectPage";
+import Calendar from "./photos/calendar.svg"
 
 const TaskFormFactory = (project, tasksContainer) => {
   const newTaskForm = document.createElement("form");
@@ -18,19 +19,19 @@ const TaskFormFactory = (project, tasksContainer) => {
   };
 
   priorityInput.className =
-    "bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 border-2"
+    "bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600 border-2";
 
   for (const key in priorityOptions) {
     const option = document.createElement("option");
     option.setAttribute("value", priorityOptions[key]);
 
-
     const optionText = document.createTextNode(key);
     option.appendChild(optionText);
 
     priorityInput.appendChild(option);
-  }
-  // console.log(priorityOptions)
+  };
+
+  const calendarInput = calendarSection()
 
   function inputGenerator(name) {
     const input = document.createElement("input");
@@ -63,10 +64,38 @@ const TaskFormFactory = (project, tasksContainer) => {
     displayTasks(tasksContainer, project);
   });
 
-  newTaskForm.append(titleInput, descriptionInput, priorityInput, submitButton);
+  newTaskForm.append(titleInput, descriptionInput, calendarInput, priorityInput, submitButton);
 
   return newTaskForm;
 };
+
+const calendarSection = () => {
+  const sectionDiv = document.createElement('div');
+  sectionDiv.className =
+    "flex justify-center items-center"
+
+  const calendarInput = document.createElement("input");
+  calendarInput.setAttribute("type", "date");
+  calendarInput.className =
+    "calendar"
+ 
+
+
+  // const calendarLabel = document.createElement("label");
+  // calendarLabel.setAttribute("name", "date");
+  // calendarLabel.className = 
+  //   "w-8 flex items-center justify-center";
+
+  // calendarLabel.addEventListener('click', () => {
+  //   calendarInput.click();
+  //   console.log(calendarInput)
+  // })
+
+  // calendarLabel.appendChild(calendarIcon);
+
+  sectionDiv.append(calendarInput)
+  return sectionDiv
+}
 
 const taskFormDisplayFactory = (project, tasksContainer) => {
   const formWrapper = document.createElement("div");

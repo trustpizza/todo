@@ -82,11 +82,11 @@ const TaskDisplayFactory = (task, project) => {
   sectionDiv.append(title);
 
   const hiddenSectionDiv = expandableTaskSection(task);
-  hiddenSectionDiv.className = "flex items-center w-full self-center"
+  hiddenSectionDiv.className = "flex items-center w-full self-center";
 
   sectionDiv.addEventListener('click', () => {
     console.log(hiddenSectionDiv);
-  })
+  });
 
   const checkButton = document.createElement("button");
   checkButton.className =
