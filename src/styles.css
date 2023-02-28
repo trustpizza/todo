@@ -7,13 +7,15 @@
 }
 @layer components {
     /* These make calendar's unique */
-    ::-webkit-datetime-edit { padding: 1em; }
-    ::-webkit-datetime-edit-fields-wrapper { background: silver; }
-    ::-webkit-datetime-edit-text { color: red; padding: 0 0.3em; }
-    ::-webkit-datetime-edit-month-field { color: blue; }
-    ::-webkit-datetime-edit-day-field { color: green; }
-    ::-webkit-datetime-edit-year-field { color: purple; }
+    ::-webkit-datetime-edit { display: none; }
+    ::-webkit-datetime-edit-fields-wrapper { display: none; }
+    ::-webkit-datetime-edit-text { display: none; }
+    ::-webkit-datetime-edit-month-field { display: none; }
+    ::-webkit-datetime-edit-day-field { display: none; }
+    ::-webkit-datetime-edit-year-field { display: none; }
     ::-webkit-inner-spin-button { display: none; }
-    ::-webkit-calendar-picker-indicator { background: orange; }
-    
-  }
+    ::-webkit-calendar-picker-indicator {
+        height: 1.5rem;
+        width: 1.5rem
+      }
+}
