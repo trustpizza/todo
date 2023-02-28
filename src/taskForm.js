@@ -56,12 +56,18 @@ const TaskFormFactory = (project, tasksContainer) => {
     const title = titleInput.value;
     const description = descriptionInput.value;
     const priority = parseInt(priorityInput.value);
-    const date = calendarInput.value;
+    let dateArray;
+    let date = null;
+    if (calendarInput.value) {
+      dateArray = calendarInput.value.split('-') || null;
+      date = new Date(dateArray[0], dateArray[1]-1, dateArray[2]);
+      console.log(date)
+    }
+  
 
     project.createNewTask(title, description, date, priority);
 
     saveToLocalStorage();
-
     // Add a show-updated-form
     displayTasks(tasksContainer, project);
   });

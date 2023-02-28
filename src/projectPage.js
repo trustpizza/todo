@@ -4,6 +4,10 @@ import BlackExclamation from "./photos/exclamation-thick.svg";
 import DoubleExclamation from "./photos/double-exclamation.svg";
 import Alert from "./photos/alert.svg";
 
+Array.prototype.move = function (from, to) {
+  this.splice(to, 0, this.splice(from, 1)[0])
+}
+
 function ProjectDisplayFactory(project) {
   const container = document.createElement("div");
   container.className =
@@ -170,7 +174,9 @@ const expandableTaskSection = (task) => {
 
   const priority = taskPriority(task);
 
-  hiddenSection.append(description, priority)
+  const date = taskDate(task);
+
+  hiddenSection.append(description, date, priority)
   return hiddenSection
 }
 
@@ -196,6 +202,38 @@ const taskPriority = (task) => {
     reloadProjectDisplay();
   })
   return priority;
+};
+
+const taskDate = (task) => {
+  const dateSection = document.createElement('div');
+
+  console.log(task.duedate)
+  // if (task.duedate) {
+  //   const dateToday = new Date() // .toISOString().split('T')[0].split('-');
+
+  //   const tempDateToday = dateToday.toISOString().split('T')[0].split('-');
+  //   tempDateToday.move(0,2);
+  //   const viewableDateToday = tempDateToday.join('-')
+
+  //   const taskDate = task.duedate
+  //   console.log(taskDate)
+
+  //   const tempTaskDate = task.duedate.toISOString().split('T')[0]
+  //   tempTaskDate.move(0,2)
+  //   const viewableTaskDate = tempTaskDate.join('-')
+
+  //   dateSection.textContent = `Due: ${viewableDateToday}`
+  //   dateSection.className =
+  //     "text-sm md:text-lg"
+
+  //   if (viewableDateToday == viewableTaskDate ) {
+  //     dateSection.classList.add("text-red-500", "underline")
+  //   } else if (taskDate < dateToday) {
+  //     console.log(taskDate, dateToday)
+  //   }
+  // };
+
+  return dateSection
 }
 
 const TitleDisplay = (project) => {
