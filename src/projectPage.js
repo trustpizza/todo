@@ -207,31 +207,30 @@ const taskPriority = (task) => {
 const taskDate = (task) => {
   const dateSection = document.createElement('div');
 
-  console.log(task.duedate)
-  // if (task.duedate) {
-  //   const dateToday = new Date() // .toISOString().split('T')[0].split('-');
+  // console.log(task.duedate)
+  if (task.duedate) {
+    const dateToday = new Date() // .toISOString().split('T')[0].split('-');
 
-  //   const tempDateToday = dateToday.toISOString().split('T')[0].split('-');
-  //   tempDateToday.move(0,2);
-  //   const viewableDateToday = tempDateToday.join('-')
+    const taskDate = task.duedate;
+    let viewableTaskDate = taskDate.split('-')
+    viewableTaskDate.push(viewableTaskDate.shift());
+    viewableTaskDate = viewableTaskDate.join('-');
+    console.log(task.duedate)
+    dateSection.textContent = `Due: ${task.duedate}`
+    dateSection.className =
+      "text-sm md:text-lg"
 
-  //   const taskDate = task.duedate
-  //   console.log(taskDate)
+    // if (viewableDateToday == viewableTaskDate ) {
+    //   dateSection.classList.add("text-red-500", "underline")
+    // } else if (taskDate < dateToday) {
+    //   console.log(taskDate, dateToday)
+    // }
 
-  //   const tempTaskDate = task.duedate.toISOString().split('T')[0]
-  //   tempTaskDate.move(0,2)
-  //   const viewableTaskDate = tempTaskDate.join('-')
+    function compareDateToToday() {
+      
+    }
 
-  //   dateSection.textContent = `Due: ${viewableDateToday}`
-  //   dateSection.className =
-  //     "text-sm md:text-lg"
-
-  //   if (viewableDateToday == viewableTaskDate ) {
-  //     dateSection.classList.add("text-red-500", "underline")
-  //   } else if (taskDate < dateToday) {
-  //     console.log(taskDate, dateToday)
-  //   }
-  // };
+  };
 
   return dateSection
 }

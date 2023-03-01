@@ -56,14 +56,7 @@ const TaskFormFactory = (project, tasksContainer) => {
     const title = titleInput.value;
     const description = descriptionInput.value;
     const priority = parseInt(priorityInput.value);
-    let dateArray;
-    let date = null;
-    if (calendarInput.value) {
-      dateArray = calendarInput.value.split('-') || null;
-      date = new Date(dateArray[0], dateArray[1]-1, dateArray[2]);
-      console.log(date)
-    }
-  
+    const date = calendarInput.value
 
     project.createNewTask(title, description, date, priority);
 
