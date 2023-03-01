@@ -1,6 +1,6 @@
 import { saveToLocalStorage } from ".";
 import { displayTasks } from "./projectPage";
-import Calendar from "./photos/calendar.svg"
+import Calendar from "./photos/calendar.svg";
 
 const TaskFormFactory = (project, tasksContainer) => {
   const newTaskForm = document.createElement("form");
@@ -13,9 +13,9 @@ const TaskFormFactory = (project, tasksContainer) => {
 
   const priorityInput = document.createElement("select");
   const priorityOptions = {
-    "Low": "1",
-    "Med": "2",
-    "High": "3"
+    Low: "1",
+    Med: "2",
+    High: "3",
   };
 
   priorityInput.className =
@@ -29,10 +29,10 @@ const TaskFormFactory = (project, tasksContainer) => {
     option.appendChild(optionText);
 
     priorityInput.appendChild(option);
-  };
+  }
 
-  const calendarInputSection = calendarSection()
-  const calendarInput = calendarInputSection.firstChild
+  const calendarInputSection = calendarSection();
+  const calendarInput = calendarInputSection.firstChild;
 
   function inputGenerator(name) {
     const input = document.createElement("input");
@@ -56,7 +56,7 @@ const TaskFormFactory = (project, tasksContainer) => {
     const title = titleInput.value;
     const description = descriptionInput.value;
     const priority = parseInt(priorityInput.value);
-    const date = calendarInput.value
+    const date = calendarInput.value;
 
     project.createNewTask(title, description, date, priority);
 
@@ -65,24 +65,28 @@ const TaskFormFactory = (project, tasksContainer) => {
     displayTasks(tasksContainer, project);
   });
 
-  newTaskForm.append(titleInput, descriptionInput, calendarInputSection, priorityInput, submitButton);
+  newTaskForm.append(
+    titleInput,
+    descriptionInput,
+    calendarInputSection,
+    priorityInput,
+    submitButton
+  );
 
   return newTaskForm;
 };
 
 const calendarSection = () => {
-  const sectionDiv = document.createElement('div');
-  sectionDiv.className =
-    "flex justify-center items-center"
+  const sectionDiv = document.createElement("div");
+  sectionDiv.className = "flex justify-center items-center";
 
   const calendarInput = document.createElement("input");
   calendarInput.setAttribute("type", "date");
-  calendarInput.className =
-    "calendar"
+  calendarInput.className = "calendar";
 
-  sectionDiv.append(calendarInput)
-  return sectionDiv
-}
+  sectionDiv.append(calendarInput);
+  return sectionDiv;
+};
 
 const taskFormDisplayFactory = (project, tasksContainer) => {
   const formWrapper = document.createElement("div");

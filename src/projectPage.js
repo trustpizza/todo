@@ -5,8 +5,8 @@ import DoubleExclamation from "./photos/double-exclamation.svg";
 import Alert from "./photos/alert.svg";
 
 Array.prototype.move = function (from, to) {
-  this.splice(to, 0, this.splice(from, 1)[0])
-}
+  this.splice(to, 0, this.splice(from, 1)[0]);
+};
 
 function ProjectDisplayFactory(project) {
   const container = document.createElement("div");
@@ -88,7 +88,7 @@ const TaskDisplayFactory = (task, project) => {
   const hiddenSectionDiv = expandableTaskSection(task);
   hiddenSectionDiv.className = "flex items-center w-full self-center";
 
-  sectionDiv.addEventListener('click', () => {
+  sectionDiv.addEventListener("click", () => {
     console.log(hiddenSectionDiv);
   });
 
@@ -154,10 +154,9 @@ const TaskDisplayFactory = (task, project) => {
   buttonSection.className = "flex items-end";
   buttonSection.append(checkButton, deleteButton);
 
-  const shownTaskDisplay = document.createElement('div');
+  const shownTaskDisplay = document.createElement("div");
   shownTaskDisplay.className = "flex mb-4 items-center w-full self-center";
   shownTaskDisplay.append(sectionDiv, buttonSection);
-
 
   taskDisplay.append(shownTaskDisplay, hiddenSectionDiv);
 
@@ -165,9 +164,8 @@ const TaskDisplayFactory = (task, project) => {
 };
 
 const expandableTaskSection = (task) => {
-  const hiddenSection = document.createElement('div');
-  hiddenSection.className = 
-    "flex"
+  const hiddenSection = document.createElement("div");
+  hiddenSection.className = "flex";
   const description = document.createElement("div");
   description.textContent = `${task.description}`;
   description.className = "flex-grow break-all text-gray-400";
@@ -176,14 +174,13 @@ const expandableTaskSection = (task) => {
 
   const date = taskDate(task);
 
-  hiddenSection.append(description, date, priority)
-  return hiddenSection
-}
+  hiddenSection.append(description, date, priority);
+  return hiddenSection;
+};
 
 const taskPriority = (task) => {
   const priority = new Image();
-  priority.className = 
-    "h-10 w-10"
+  priority.className = "h-10 w-10";
   if (task.priority === 1) {
     priority.src = BlackExclamation;
   } else if (task.priority === 2) {
@@ -192,62 +189,61 @@ const taskPriority = (task) => {
     priority.src = Alert;
   }
 
-  priority.addEventListener('click', () => {
+  priority.addEventListener("click", () => {
     if (task.priority < 3) {
-      task.priority++; 
+      task.priority++;
     } else {
       task.priority = 1;
     }
     saveToLocalStorage();
     reloadProjectDisplay();
-  })
+  });
   return priority;
 };
 
 const taskDate = (task) => {
-  const dateSection = document.createElement('div');
+  const dateSection = document.createElement("div");
 
   // console.log(task.duedate)
   if (task.duedate) {
     // .toISOString().split('T')[0].split('-');
 
     const taskDate = task.duedate;
-    let viewableTaskDate = taskDate.split('-');
+    let viewableTaskDate = taskDate.split("-");
     viewableTaskDate.push(viewableTaskDate.shift());
-    viewableTaskDate = viewableTaskDate.join('-');
+    viewableTaskDate = viewableTaskDate.join("-");
 
-    dateSection.textContent = `Due: ${task.duedate}`
-    dateSection.className =
-      "text-sm md:text-lg"
-    
-    const dateComparisonArray = compareDateToToday(task.duedate)
+    dateSection.textContent = `Due: ${task.duedate}`;
+    dateSection.className = "text-sm md:text-lg";
+
+    const dateComparisonArray = compareDateToToday(task.duedate);
     if (dateComparisonArray[0] == dateComparisonArray[1]) {
       dateSection.classList.add("text-red-500", "underline");
-      dateSection.textContent = "Due: Today!"
+      dateSection.textContent = "Due: Today!";
     } else if (dateComparisonArray[1] > dateComparisonArray[0]) {
       dateSection.classList.add("text-gray-400", "italic");
-      dateSection.textContent += " (overdue)"
-    } 
-    //console.log(compareDateToToday(task.duedate))
-  };
+      dateSection.textContent += " (overdue)";
+    }
+    // console.log(compareDateToToday(task.duedate))
+  }
 
-  return dateSection
-}
+  return dateSection;
+};
 
 function compareDateToToday(taskDate) {
-  const dateToday = new Date()
-  dateToday.toISOString().split('T')[0].split('-');
-  dateToday.setHours(0,0,0,0)
+  const dateToday = new Date();
+  dateToday.toISOString().split("T")[0].split("-");
+  dateToday.setHours(0, 0, 0, 0);
 
-  let taskDateArray = taskDate.split('-');
+  let taskDateArray = taskDate.split("-");
   taskDateArray[2] = parseInt(taskDateArray[2]) + 1;
-  taskDateArray = taskDateArray.join('-');
+  taskDateArray = taskDateArray.join("-");
 
-  const comparableTaskDate = new Date(taskDateArray)
-  comparableTaskDate.toISOString().split('T')[0].split('-')
-  comparableTaskDate.setHours(0,0,0,0);
+  const comparableTaskDate = new Date(taskDateArray);
+  comparableTaskDate.toISOString().split("T")[0].split("-");
+  comparableTaskDate.setHours(0, 0, 0, 0);
 
-  return [comparableTaskDate.getTime(), dateToday.getTime()]
+  return [comparableTaskDate.getTime(), dateToday.getTime()];
 }
 
 const TitleDisplay = (project) => {
