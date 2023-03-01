@@ -209,30 +209,44 @@ const taskDate = (task) => {
 
   // console.log(task.duedate)
   if (task.duedate) {
-    const dateToday = new Date() // .toISOString().split('T')[0].split('-');
+    // .toISOString().split('T')[0].split('-');
 
     const taskDate = task.duedate;
-    let viewableTaskDate = taskDate.split('-')
+    let viewableTaskDate = taskDate.split('-');
     viewableTaskDate.push(viewableTaskDate.shift());
     viewableTaskDate = viewableTaskDate.join('-');
-    console.log(task.duedate)
+
     dateSection.textContent = `Due: ${task.duedate}`
     dateSection.className =
       "text-sm md:text-lg"
-
-    // if (viewableDateToday == viewableTaskDate ) {
-    //   dateSection.classList.add("text-red-500", "underline")
-    // } else if (taskDate < dateToday) {
-    //   console.log(taskDate, dateToday)
-    // }
-
-    function compareDateToToday() {
-      
-    }
-
+    
+    const dateComparisonArray = compareDateToToday(task.duedate)
+    if (dateComparisonArray[0] == dateComparisonArray[1]) {
+      dateSection.classList.add("text-red-500", "underline");
+      dateSection.textContent = "Due: Today!"
+    } else if (false) {
+      console.log("PASTDUE")
+    } 
+    //console.log(compareDateToToday(task.duedate))
   };
 
   return dateSection
+}
+
+function compareDateToToday(taskDate) {
+  const dateToday = new Date()
+  dateToday.toISOString().split('T')[0].split('-');
+  dateToday.setHours(0,0,0,0)
+
+  let taskDateArray = taskDate.split('-');
+  taskDateArray[2] = parseInt(taskDateArray[2]) + 1;
+  taskDateArray = taskDateArray.join('-');
+
+  const comparableTaskDate = new Date(taskDateArray)
+  comparableTaskDate.toISOString().split('T')[0].split('-')
+  comparableTaskDate.setHours(0,0,0,0);
+
+  return [comparableTaskDate.getTime(), dateToday.getTime()]
 }
 
 const TitleDisplay = (project) => {
