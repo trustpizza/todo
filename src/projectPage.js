@@ -204,10 +204,7 @@ const taskPriority = (task) => {
 const taskDate = (task) => {
   const dateSection = document.createElement("div");
 
-  // console.log(task.duedate)
   if (task.duedate) {
-    // .toISOString().split('T')[0].split('-');
-
     const taskDate = task.duedate;
     let viewableTaskDate = taskDate.split("-");
     viewableTaskDate.push(viewableTaskDate.shift());
@@ -224,7 +221,6 @@ const taskDate = (task) => {
       dateSection.classList.add("text-gray-400", "italic");
       dateSection.textContent += " (overdue)";
     }
-    // console.log(compareDateToToday(task.duedate))
   }
 
   return dateSection;
