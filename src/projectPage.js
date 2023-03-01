@@ -224,8 +224,9 @@ const taskDate = (task) => {
     if (dateComparisonArray[0] == dateComparisonArray[1]) {
       dateSection.classList.add("text-red-500", "underline");
       dateSection.textContent = "Due: Today!"
-    } else if (false) {
-      console.log("PASTDUE")
+    } else if (dateComparisonArray[1] > dateComparisonArray[0]) {
+      dateSection.classList.add("text-gray-400", "italic");
+      dateSection.textContent += " (overdue)"
     } 
     //console.log(compareDateToToday(task.duedate))
   };
