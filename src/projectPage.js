@@ -86,10 +86,14 @@ const TaskDisplayFactory = (task, project) => {
   sectionDiv.append(title);
 
   const hiddenSectionDiv = expandableTaskSection(task);
-  hiddenSectionDiv.className = "flex items-center w-full self-center";
+  hiddenSectionDiv.className = "flex items-center w-full self-center hidden";
 
   sectionDiv.addEventListener("click", () => {
-    console.log(hiddenSectionDiv);
+    if (hiddenSectionDiv.classList.contains('hidden')) {
+      hiddenSectionDiv.classList.remove('hidden')
+    } else {
+      hiddenSectionDiv.classList.add('hidden')
+    }
   });
 
   const checkButton = document.createElement("button");
@@ -165,7 +169,7 @@ const TaskDisplayFactory = (task, project) => {
 
 const expandableTaskSection = (task) => {
   const hiddenSection = document.createElement("div");
-  hiddenSection.className = "flex";
+  hiddenSection.className = "flex hidden";
   const description = document.createElement("div");
   description.textContent = `${task.description}`;
   description.className = "flex-grow break-all text-gray-400";
