@@ -172,7 +172,7 @@ const expandableTaskSection = (task) => {
   hiddenSection.className = "flex hidden";
   const description = document.createElement("div");
   description.textContent = `${task.description}`;
-  description.className = "flex-grow break-all text-gray-400";
+  description.className = "flex-grow break-all text-gray-400 text-ellipsis";
 
   const priority = taskPriority(task);
 
@@ -215,7 +215,7 @@ const taskDate = (task) => {
     viewableTaskDate = viewableTaskDate.join("-");
 
     dateSection.textContent = `Due: ${task.duedate}`;
-    dateSection.className = "text-sm md:text-lg";
+    dateSection.className = "text-sm shrink-0 md:text-lg";
 
     const dateComparisonArray = compareDateToToday(task.duedate);
     if (dateComparisonArray[0] == dateComparisonArray[1]) {
